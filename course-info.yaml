@@ -1,0 +1,12 @@
+type: marketplace
+title: AlphaZero
+language: English
+summary: '# TODO'
+programming_language: Python
+environment: unittest
+content:
+  - TicTacToe
+  - MCTS
+  - ResNetEstimator
+  - AlphaMCTS
+  - AlphaZero
