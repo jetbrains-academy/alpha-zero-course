@@ -5,11 +5,11 @@ In this step, we'll implement an interactive interface for Tic-tac-toe. Try play
 
 ### Task
 Complete the parts of the code following the rules:
-- `play_game()` should return `True` if game is not ended
+- `play_game` function should return `True` if game is not ended
 - List of valid moves should be printed in the format: `valid_moves [<posible_actions>]`. For example, before first action, it will consist of all possible actions `valid_moves [0, 1, 2, 3, 4, 5, 6, 7, 8]`
-- If `play_game()` receive `action` which not valid, print `action not valid` and exit the function
-- If player is won, print `1 won`
-- If -player is won, print `-1 won`
+- If `play_game` function receive `action` which not valid, print `action not valid` and exit the function
+- If `player` is won, print `1 won`
+- If `-player` is won, print `-1 won`
 - Print `draw` if game ends with draw
 
 Example of possible game log (to better ensure what the output should be):
