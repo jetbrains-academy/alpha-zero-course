@@ -1,13 +1,12 @@
 from abc import ABC
-
 import numpy as np
 from GameInterface import Game
-
 from TicTacToe.Board.task import Board
+
 
 class TicTacToe(Game, ABC):
     def __init__(self, size=3):
-        self.size = size  # Size of the TicTacToe board
+        self.size = size
         self.board = Board(self.size)
 
     def get_init_board(self):
@@ -25,7 +24,6 @@ class TicTacToe(Game, ABC):
         return board
 
     def get_valid_moves(self, board, player=1):
-        # Returns a flat array indicating valid moves
         return (board.pieces.reshape(-1) == 0).astype(np.uint8)
 
     def get_game_ended(self, board, player):
@@ -61,6 +59,4 @@ class TicTacToe(Game, ABC):
         encoded_state = np.stack(
             (board.pieces == -1, board.pieces == 0, board.pieces == 1)
         ).astype(np.float32)
-
         return encoded_state
-

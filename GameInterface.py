@@ -12,6 +12,7 @@ class Game:
     See 'TicTacToe/GameImplementation/Game.py' for an example implementation.
     """
 
+    @abstractmethod
     def __init__(self):
         raise NotImplementedError
 

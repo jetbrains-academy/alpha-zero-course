@@ -11,7 +11,7 @@ class Board:
     The default board size is 3x3.
     Board data:
       1=white(O), -1=black(X), 0=empty
-      first dim is column , 2nd is row:
+      first dim is column, second is row:
          pieces[0][0] is the top left square,
          pieces[2][0] is the bottom left square,
     Squares are stored and manipulated as (x,y) tuples.
@@ -21,7 +21,7 @@ class Board:
     def __init__(self, size: int = 3):
         """Set up initial board configuration"""
         self._size = size
-        # Create the empty board array.
+        # Create an empty board (numpy 2-dimensional array)
         self._pieces = np.array([[EMPTY] * size for _ in range(size)])
 
     def __getitem__(self, index):
@@ -48,9 +48,6 @@ class Board:
     def size(self, value):
         self._size = value
 
-    def get_legal_moves(self) -> list:
-        return [(x, y) for y in range(self.size) for x in range(self.size) if self[x][y] == EMPTY]
-
     def has_legal_moves(self) -> bool:
         return any(self[x, y] == EMPTY for y in range(self.size) for x in range(self.size))
 
@@ -69,11 +66,8 @@ class Board:
 
     def __str__(self):
         n = self.size
-
         board_str = []
-
         for y in range(n):
-            # print the row
             for x in range(n):
                 piece = self[y, x]
                 if piece == 1:
