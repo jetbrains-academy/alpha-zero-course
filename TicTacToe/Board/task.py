@@ -11,7 +11,7 @@ class Board:
     The default board size is 3x3.
     Board data:
       1=white(O), -1=black(X), 0=empty
-      first dim is column , 2nd is row:
+      first dim is column, second is row:
          pieces[0][0] is the top left square,
          pieces[2][0] is the bottom left square,
     Squares are stored and manipulated as (x,y) tuples.
@@ -21,7 +21,7 @@ class Board:
     def __init__(self, size: int = 3):
         """Set up initial board configuration"""
         self._size = size
-        # Create the empty board (numpy 2-dimensional array).
+        # Create an empty board (numpy 2-dimensional array)
         self._pieces = np.array([[EMPTY] * size for _ in range(size)])
 
     def __getitem__(self, index):
