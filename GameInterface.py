@@ -9,7 +9,7 @@ class Game:
 
     Use 1 for player1 and -1 for player2.
 
-    See 'TicTacToe/GameImplementation/Game.py' for an example implementation.
+    See 'TicTacToe/Game/Game.py' for an example implementation.
     """
 
     @abstractmethod

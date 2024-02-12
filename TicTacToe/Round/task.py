@@ -1,7 +1,7 @@
-from TicTacToe.GameImplementation.Game import TicTacToe
+from TicTacToe.Game.Game import TicTacToe
 
 
-class FirstRound:
+class Round:
     def __init__(self):
         self.tictactoe = TicTacToe()
         self.player = 1
@@ -38,7 +38,7 @@ class FirstRound:
 
 
 if __name__ == '__main__':
-    first_round = FirstRound()
+    first_round = Round()
     is_playing = True
     while is_playing:
         first_round.print_game_layout()

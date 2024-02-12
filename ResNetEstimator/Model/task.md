@@ -15,6 +15,6 @@ Below is a diagram of the neural network that we propose to use.
 ![NNScheme.png](NNScheme.png)
 
 ### Task
-1. Implement the `startBlock` as sequential `torch.nn` layers: Conv2d, BatchNorm2d and ReLU.
-2. Implement the `policyHead` as sequential `torch.nn` layers: Conv2d, BatchNorm2d, ReLU, Flatten and Linear.
-3. Implement the `valueHead` as sequential `torch.nn` layers: Conv2d, BatchNorm2d, ReLU, Flatten, Linear and Tanh.
+1. Implement the `startBlock` using sequential `torch.nn` layers: Conv2d, BatchNorm2d and ReLU.
+2. Implement the `policyHead` using sequential `torch.nn` layers: Conv2d, BatchNorm2d, ReLU, Flatten and Linear.
+3. Implement the `valueHead` using sequential `torch.nn` layers: Conv2d, BatchNorm2d, ReLU, Flatten, Linear and Tanh.
