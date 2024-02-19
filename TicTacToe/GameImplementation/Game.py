@@ -51,7 +51,7 @@ class TicTacToe(Game, ABC):
         return -value
 
     def change_perspective(self, board, player):
-        board_changed = Board()
+        board_changed = Board(self.size)
         board_changed.pieces = board.pieces * player
         return board_changed
 

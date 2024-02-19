@@ -2,6 +2,28 @@ type: edu
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 687
+        length: 33
+        placeholder_text: '# TODO'
+      - offset: 1054
+        length: 213
+        placeholder_text: '# TODO'
+      - offset: 1355
+        length: 68
+        placeholder_text: '# TODO'
+      - offset: 1535
+        length: 162
+        placeholder_text: '# implement selection phase'
+      - offset: 2078
+        length: 615
+        placeholder_text: '# implement expansion step'
+      - offset: 2784
+        length: 839
+        placeholder_text: '# implement simulation step'
+      - offset: 3777
+        length: 187
+        placeholder_text: '# implement backpropagation step'
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

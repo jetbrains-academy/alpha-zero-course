@@ -20,7 +20,7 @@ files:
         length: 44
         placeholder_text: '# Change 1 to -1 and vice versa for -1 player and save it in
       changed_board'
-      - offset: 1515
+      - offset: 1524
         length: 109
         placeholder_text: '# numpy stack of boards'
   - name: tests/test_task.py
