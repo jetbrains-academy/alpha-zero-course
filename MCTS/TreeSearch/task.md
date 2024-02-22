@@ -1,5 +1,5 @@
 ## MCTS algorithm
-On this step we will implement MCTS algorithm. 
+On this step, we will implement MCTS algorithm. 
 You don't have to implement everything from scratch — the interface and some methods are already provided.
 Take a good look at `TreeNode` and `TreeSearch` before you start.
 

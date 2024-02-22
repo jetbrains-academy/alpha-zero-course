@@ -67,7 +67,7 @@ class Node:
 
         child_state = Board(self.state.size)
         child_state.pieces = self.state.pieces.copy()
-        # instead of changing the player it's easier to change node.game.change_perspective
+        # instead of changing the player, it's easier to change node.game.change_perspective
         child_state = self.game.get_next_state(child_state, 1, action)
         child_state = self.game.change_perspective(child_state, player=-1)
 
@@ -100,7 +100,7 @@ class Node:
             rollout_player = self.game.get_opponent(rollout_player)
 
     def backpropagate(self, value):
-        # implement backpropagation step. Hint: do not forget to switch value when passing it to the parent
+        # implement a backpropagation step. Hint: do not forget to switch value when passing it to the parent
         self.value_sum += value
         self.visit_count += 1
 

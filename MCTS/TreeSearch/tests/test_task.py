@@ -13,7 +13,7 @@ class TestCase(unittest.TestCase):
         probs = mcts.search(board)
         self.assertTrue(probs.max() - 1 < 0.01)
 
-        mcts = MCTS(game, args = {'C': 1.41, 'num_searches': 2})
+        mcts = MCTS(game, args={'C': 1.41, 'num_searches': 2})
         probs = mcts.search(board)
         self.assertTrue(probs.max() - 0.5 < 0.01)
 
