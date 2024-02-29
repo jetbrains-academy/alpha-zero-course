@@ -3,25 +3,25 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 687
+      - offset: 1783
         length: 33
         placeholder_text: '# TODO'
-      - offset: 1054
+      - offset: 2150
         length: 213
         placeholder_text: '# TODO'
-      - offset: 1355
+      - offset: 2451
         length: 68
         placeholder_text: '# TODO'
-      - offset: 1535
+      - offset: 2631
         length: 162
         placeholder_text: '# implement selection phase'
-      - offset: 2078
+      - offset: 3174
         length: 615
         placeholder_text: '# implement expansion step'
-      - offset: 2784
+      - offset: 3880
         length: 839
         placeholder_text: '# implement simulation step'
-      - offset: 3777
+      - offset: 4873
         length: 187
         placeholder_text: '# implement backpropagation step'
   - name: tests/test_task.py

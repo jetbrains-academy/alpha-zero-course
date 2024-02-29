@@ -21,7 +21,7 @@ class Node:
             assert parent is None
 
         self.children = []
-        # add counter for expandable moves
+        # add calculation for expandable moves
         self.expandable_moves = game.get_valid_moves(board_state)
 
         # The number of times the node has been visited during the simulation phase of MCTS

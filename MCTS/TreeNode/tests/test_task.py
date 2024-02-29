@@ -53,7 +53,8 @@ def _get_root_with_first_best_child():
 class TestCase(unittest.TestCase):
     def test_tree_node_init(self):
         root = _init_root()
-        self.assertEqual(root.expandable_moves.sum(), 4)
+        actual = root.expandable_moves.sum()
+        self.assertEqual(actual, 4, msg=f"Wrong number of expandable moves. Expected: 4, actual: {actual}")
 
     def test_get_player(self):
         root = _init_root()

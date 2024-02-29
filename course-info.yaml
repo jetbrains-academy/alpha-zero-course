@@ -5,5 +5,8 @@ summary: '# TODO'
 programming_language: Python
 environment: unittest
 content:
-  - MCTS
   - TicTacToe
+  - MCTS
+  - ResNetEstimator
+  - AlphaMCTS
+  - AlphaZero

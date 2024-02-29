@@ -4,7 +4,7 @@ files:
     visible: true
     placeholders:
       - offset: 304
-        length: 594
+        length: 681
         placeholder_text: '# implement mcts 4-step algorithm'
   - name: tests/test_task.py
     visible: false

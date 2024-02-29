@@ -6,7 +6,7 @@ decision space, like moves in a game, without exploring every option.
 This gives a good estimate of the best moves, so the algorithm can focus 
 on the more promising parts of the decision tree. If you're not familiar with MCTS,
 you may want to read more before proceeding to the next steps. Our team suggests checking out
-this video https://youtu.be/wuSQpLinRB4?t=343&si=IU8DwHXrLPsiEAXv
+<a href="https://youtu.be/wuSQpLinRB4?t=343&si=IU8DwHXrLPsiEAXv" target="_blank">this video</a>
 
 **Decision tree** represents the possible moves in a game from the different states.
 Each **node** in the decision tree corresponds to a game state.
