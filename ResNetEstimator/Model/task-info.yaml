@@ -2,9 +2,21 @@ type: edu
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 727
+        length: 150
+        placeholder_text: "pass # TODO"
+      - offset: 1021
+        length: 237
+        placeholder_text: "pass # TODO"
+      - offset: 1285
+        length: 236
+        placeholder_text: "pass # TODO"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py
     visible: false
   - name: tests/__init__.py
     visible: false
+  - name: NNScheme.png
+    visible: true

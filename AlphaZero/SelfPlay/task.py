@@ -6,7 +6,7 @@ import torch
 import torch.nn.functional as F
 from tqdm import trange
 
-from TicTacToe.GameImplementation.Game import TicTacToe
+from TicTacToe.Game.Game import TicTacToe
 from ResNetEstimator.Model.task import ResNet
 from AlphaMCTS.TreeSearch.task import MCTS
 

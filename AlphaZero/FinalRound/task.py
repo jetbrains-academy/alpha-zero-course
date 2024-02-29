@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import torch
 
-from TicTacToe.GameImplementation.Game import TicTacToe
+from TicTacToe.Game.Game import TicTacToe
 from ResNetEstimator.Model.task import ResNet
 
 tictactoe = TicTacToe()

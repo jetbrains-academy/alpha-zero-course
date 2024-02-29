@@ -1,6 +1,6 @@
 import torch
 
-from TicTacToe.GameImplementation.Game import TicTacToe
+from TicTacToe.Game.Game import TicTacToe
 from ResNetEstimator.Model.task import ResNet
 from AlphaZero.SelfPlay.task import AlphaZero
 
