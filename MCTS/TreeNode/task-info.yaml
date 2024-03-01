@@ -3,25 +3,25 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 1783
-        length: 33
-        placeholder_text: '# TODO'
-      - offset: 2150
-        length: 213
-        placeholder_text: '# TODO'
-      - offset: 2451
+      - offset: 667
+        length: 57
+        placeholder_text: '# add calculation for expandable moves'
+      - offset: 1066
+        length: 205
+        placeholder_text: '# return player for this node'
+      - offset: 1359
         length: 68
-        placeholder_text: '# TODO'
-      - offset: 2631
-        length: 162
-        placeholder_text: '# implement selection phase'
-      - offset: 3174
-        length: 615
-        placeholder_text: '# implement expansion step'
-      - offset: 3880
+        placeholder_text: '# check if the node can be expanded and is fully expanded'
+      - offset: 1459
+        length: 269
+        placeholder_text: '# return the best child using UCB formula'
+      - offset: 2083
+        length: 636
+        placeholder_text: "# implement expansion step, return new child for the node"
+      - offset: 2789
         length: 839
-        placeholder_text: '# implement simulation step'
-      - offset: 4873
+        placeholder_text: '# simulate random game from the current node'
+      - offset: 3784
         length: 187
         placeholder_text: '# implement backpropagation step'
   - name: tests/test_task.py
