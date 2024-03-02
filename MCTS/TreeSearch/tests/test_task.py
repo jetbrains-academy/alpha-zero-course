@@ -1,9 +1,26 @@
 import unittest
 
-from task import sum
+from MCTS.TreeSearch.task import MCTS
+from TicTacToe.GameImplementation.Game import TicTacToe
 
 
-# todo: replace this with an actual test
 class TestCase(unittest.TestCase):
-    def test_add(self):
-        self.assertEqual(sum(1, 2), 3, msg="adds 1 + 2 to equal 3")
+    def test_search(self):
+        game = TicTacToe(size=2)
+        board = game.get_init_board()
+        board = game.get_next_state(board, 1, 0)
+        mcts = MCTS(game, {'C': 1.41, 'num_searches': 1})
+        probs = mcts.search(board)
+        self.assertTrue(probs.max() - 1 < 0.01,
+                        msg=f"[Board size = 2] Expected max probability after one search: 1, actual: {probs.max()}")
+
+        mcts = MCTS(game, args={'C': 1.41, 'num_searches': 2})
+        probs = mcts.search(board)
+        self.assertTrue(probs.max() - 0.5 < 0.01,
+                        msg=f"[Board size = 2] Expected max probability after two searches: 0.5, actual: {probs.max()}")
+
+        mcts = MCTS(game, args={'C': 1.41, 'num_searches': 100})
+        probs = mcts.search(board)
+        self.assertTrue(probs.min() - 0 < 0.01,
+                        msg=f"[Board size = 2] Expected min probability after three searches: 0, actual: {probs.max()}")
+
