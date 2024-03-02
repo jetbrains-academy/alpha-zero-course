@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from TicTacToe.GameImplementation.Game import TicTacToe
+from TicTacToe.Game.Game import TicTacToe
 
 
 class TestCase(unittest.TestCase):

@@ -1,30 +1,35 @@
 import matplotlib.pyplot as plt
 import torch
 
-from TicTacToe.GameImplementation.Game import TicTacToe
+from TicTacToe.Round.task import Round
 from ResNetEstimator.Model.task import ResNet
 
-tictactoe = TicTacToe()
 
-state = tictactoe.get_init_board()
-state = tictactoe.get_next_state(state, 1, 2,)
-state = tictactoe.get_next_state(state, -1, 7)
+def init_and_apply_nn(round):
+    encoded_state = round.tictactoe.get_encoded_state(round.board)
+    tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+    model = ResNet(round.tictactoe, 4, 64)
+    policy, value = model(tensor_state)
 
-print(state)
+    value_item = value.item()
+    policy_probs = torch.softmax(policy, axis=1).squeeze(0).detach().cpu().numpy()
+    return value_item, policy_probs
 
-encoded_state = tictactoe.get_encoded_state(state)
 
-print(encoded_state)
+if __name__ == '__main__':
+    third_round = Round()
+    # player 1
+    third_round.play_game(2)
+    # player -1
+    third_round.play_game(7)
+    print("Current game board is:")
+    third_round.print_game_layout()
 
-tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+    encoded_state = third_round.tictactoe.get_encoded_state(third_round.board)
+    print(f"Encoded state = \n{encoded_state}")
 
-model = ResNet(tictactoe, 4, 64)
+    value, policy_probs = init_and_apply_nn(third_round)
+    print(f"Value = {value}, policy_probs = {policy_probs}")
 
-policy, value = model(tensor_state)
-value = value.item()
-policy = torch.softmax(policy, axis=1).squeeze(0).detach().cpu().numpy()
-
-print(value, policy)
-
-plt.bar(range(tictactoe.get_action_size()), policy)
-plt.show()
+    plt.bar(range(third_round.tictactoe.get_action_size()), policy_probs)
+    plt.show()

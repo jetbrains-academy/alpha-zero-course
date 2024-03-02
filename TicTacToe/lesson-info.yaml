@@ -1,4 +1,4 @@
 content:
   - Board
-  - GameImplementation
-  - FirstRound
+  - Game
+  - Round
