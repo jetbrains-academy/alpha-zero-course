@@ -56,8 +56,8 @@ class Node:
         return best_child
 
     def get_ucb(self, child):
-        # implement UBC formula
-        q_value = 1 - ((child.value_sum / child.visit_count) + 1) / 2 # we want to put the opponent in a bad position, so invert score
+        # we want to put the opponent in a bad position, so invert the score
+        q_value = 1 - ((child.value_sum / child.visit_count) + 1) / 2
         return q_value + self.args['C'] * math.sqrt(math.log(self.visit_count) / child.visit_count)
 
     def expand(self):

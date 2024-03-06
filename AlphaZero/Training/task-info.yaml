@@ -2,6 +2,13 @@ type: edu
 files:
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 720
+        length: 382
+        placeholder_text: "# TODO: add action choosing with temperature"
+      - offset: 1780
+        length: 857
+        placeholder_text: "# TODO: implement training loop"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py
@@ -15,4 +22,8 @@ files:
   - name: optimizer_1.pt
     visible: true
   - name: model_1.pt
+    visible: true
+  - name: model_2.pt
+    visible: true
+  - name: optimizer_2.pt
     visible: true
