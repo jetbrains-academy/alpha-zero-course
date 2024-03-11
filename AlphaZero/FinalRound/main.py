@@ -4,6 +4,9 @@ import torch
 from ResNetEstimator.Model.task import ResNet
 from TicTacToe.Round.task import Round
 
+from AlphaZero.Training.task import args
+
+
 if __name__ == "__main__":
     final_round = Round()
     # player 1
@@ -23,7 +26,8 @@ if __name__ == "__main__":
     tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
     model = ResNet(final_round.tictactoe, 4, 64)
-    model.load_state_dict(torch.load('../Training/model_2.pt'))
+    model_num = args['num_iterations'] - 1
+    model.load_state_dict(torch.load(f'../Training/model_{model_num}.pt'))
     model.eval()
 
     policy, value = model(tensor_state)

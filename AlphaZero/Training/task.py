@@ -25,7 +25,6 @@ class AlphaZeroTrainer(AlphaZero):
             memory.append((neutral_state, action_probs, player))
 
             temperature_action_probs = action_probs ** (1 / self.args['temperature'])
-            # print(action_probs, temperature_action_probs)
             temperature_action_probs /= np.sum(temperature_action_probs)
             action = np.random.choice(self.game.get_action_size(), p=temperature_action_probs)
             state = self.game.get_next_state(state, player, action)
@@ -71,6 +70,16 @@ class AlphaZeroTrainer(AlphaZero):
             loss.backward()
             self.optimizer.step()
 
+args = {
+    'C': 2,
+    'num_searches': 60,
+    'num_iterations': 2,
+    'num_self_play_iterations': 250,
+    'num_epochs': 4,
+    'temperature': 1.25,
+    'batch_size': 32,
+}
+
 
 if __name__ == '__main__':
     tictactoe = TicTacToe()
@@ -79,16 +88,6 @@ if __name__ == '__main__':
     optimizer = torch.optim.Adam(
         model.parameters(), lr=0.001, weight_decay=0.0001
     )
-
-    args = {
-        'C': 2,
-        'num_searches': 60,
-        'num_iterations': 3,
-        'num_self_play_iterations': 500,
-        'num_epochs': 4,
-        'temperature': 1.25,
-        'batch_size': 32,
-    }
 
     alphaZero = AlphaZeroTrainer(model, optimizer, tictactoe, args)
     alphaZero.learn()
