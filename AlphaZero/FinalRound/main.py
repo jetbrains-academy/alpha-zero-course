@@ -2,13 +2,14 @@ import matplotlib.pyplot as plt
 import torch
 
 from ResNetEstimator.Model.task import ResNet
+from TicTacToe.Game.Game import TicTacToe
 from TicTacToe.Round.task import Round
 
 from AlphaZero.Training.task import args
 
 
 if __name__ == "__main__":
-    final_round = Round()
+    final_round = Round(TicTacToe())
     # player 1
     final_round.play_game(2)
     # player -1
@@ -18,14 +19,14 @@ if __name__ == "__main__":
     print("Current game board is:")
     final_round.print_game_layout()
 
-    encoded_state = final_round.tictactoe.get_encoded_state(
+    encoded_state = final_round.instance_of_game.get_encoded_state(
         final_round.board
     )
     print(f"Encoded state = \n{encoded_state}")
 
     tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
-    model = ResNet(final_round.tictactoe, 4, 64)
+    model = ResNet(final_round.instance_of_game, 4, 64)
     model_num = args['num_iterations'] - 1
     model.load_state_dict(torch.load(f'../Training/model_{model_num}.pt'))
     model.eval()
@@ -39,5 +40,5 @@ if __name__ == "__main__":
 
     print(f"value ={value}")
 
-    plt.bar(range(final_round.tictactoe.get_action_size()), policy)
+    plt.bar(range(final_round.instance_of_game.get_action_size()), policy)
     plt.show()

@@ -64,7 +64,7 @@ class Node:
     def expand(self, policy):
         for action, prob in enumerate(policy):
             if prob > 0:
-                child_state = Board()
+                child_state = self.game.create_new_board()
                 child_state.pieces = self.state.pieces.copy()
                 child_state = self.game.get_next_state(child_state, 1, action)
                 child_state = self.game.change_perspective(child_state, player=-1)

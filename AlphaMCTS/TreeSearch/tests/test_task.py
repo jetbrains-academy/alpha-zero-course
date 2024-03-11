@@ -20,7 +20,7 @@ class TestMCTSSearch(unittest.TestCase):
         self.mock_game.get_valid_moves.return_value = np.ones(9)
         self.mock_game.get_game_ended.return_value = 0
         encoded_state = np.zeros((3, 3))
-        self.board = Board(size=3)
+        self.board = Board(3, 3)
         self.board.pieces = encoded_state
         self.mock_game.get_encoded_state.return_value = encoded_state
         self.mock_game.get_opponent_value.side_effect = lambda x: -x

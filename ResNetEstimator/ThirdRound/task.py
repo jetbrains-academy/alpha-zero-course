@@ -6,9 +6,9 @@ from ResNetEstimator.Model.task import ResNet
 
 
 def init_and_apply_nn(round):
-    encoded_state = round.tictactoe.get_encoded_state(round.board)
+    encoded_state = round.instance_of_game.get_encoded_state(round.board)
     tensor_state = torch.tensor(encoded_state).unsqueeze(0)
-    model = ResNet(round.tictactoe, 4, 64)
+    model = ResNet(round.instance_of_game, 4, 64)
     policy, value = model(tensor_state)
 
     value_item = value.item()
@@ -25,11 +25,11 @@ if __name__ == '__main__':
     print("Current game board is:")
     third_round.print_game_layout()
 
-    encoded_state = third_round.tictactoe.get_encoded_state(third_round.board)
+    encoded_state = third_round.instance_of_game.get_encoded_state(third_round.board)
     print(f"Encoded state = \n{encoded_state}")
 
     value, policy_probs = init_and_apply_nn(third_round)
     print(f"Value = {value}, policy_probs = {policy_probs}")
 
-    plt.bar(range(third_round.tictactoe.get_action_size()), policy_probs)
+    plt.bar(range(third_round.instance_of_game.get_action_size()), policy_probs)
     plt.show()

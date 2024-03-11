@@ -18,11 +18,13 @@ class Board:
 
     Based on the board for the game of TicTacToe by Evgeny Tyurin, github.com/evg-tyurin
     """
-    def __init__(self, size: int = 3):
+    def __init__(self, num_rows: int = 3, num_cols: int = 3):
         """Set up initial board configuration"""
-        self._size = size
+        self._size = num_cols
+        self._num_rows = num_rows
+        self._num_cols = num_cols
         # Create an empty board (numpy 2-dimensional array)
-        self._pieces = np.array([[EMPTY] * size for _ in range(size)])
+        self._pieces = np.array([[EMPTY] * num_cols for _ in range(num_rows)])
 
     def __getitem__(self, index):
         i, j = index
@@ -44,10 +46,6 @@ class Board:
     def size(self):
         return self._size
 
-    @size.setter
-    def size(self, value):
-        self._size = value
-
     def has_legal_moves(self) -> bool:
         return any(self[x, y] == EMPTY for y in range(self.size) for x in range(self.size))
 
@@ -65,11 +63,10 @@ class Board:
         self[x, y] = player
 
     def __str__(self):
-        n = self.size
         board_str = []
-        for y in range(n):
-            for x in range(n):
-                piece = self[y, x]
+        for x in range(self._num_rows):
+            for y in range(self._num_cols):
+                piece = self[x, y]
                 if piece == 1:
                     board_str.append("X")
                 elif piece == -1:

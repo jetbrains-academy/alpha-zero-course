@@ -1,6 +1,8 @@
 import unittest
 import sys
 import io
+
+from TicTacToe.Game.Game import TicTacToe
 from TicTacToe.Round.task import Round
 
 
@@ -10,7 +12,7 @@ class TestCase(unittest.TestCase):
         fake_stdout = io.StringIO()
         sys.stdout = fake_stdout
         try:
-            first_round = Round()
+            first_round = Round(TicTacToe())
             first_round.print_game_layout()
         finally:
             sys.stdout = original_stdout
@@ -28,7 +30,7 @@ class TestCase(unittest.TestCase):
         try:
             inputs = [0, 1, 4, 5, 8]
             inputs.reverse()
-            first_round = Round()
+            first_round = Round(TicTacToe())
             is_playing = True
             while is_playing:
                 first_round.print_game_layout()
@@ -46,7 +48,7 @@ class TestCase(unittest.TestCase):
         try:
             inputs = [6, 2, 3, 5, 4, 8]
             inputs.reverse()
-            first_round = Round()
+            first_round = Round(TicTacToe())
             is_playing = True
             while is_playing:
                 first_round.print_game_layout()
@@ -64,7 +66,7 @@ class TestCase(unittest.TestCase):
         try:
             inputs = [0, 1, 2, 3, 5, 4, 6, 8, 7]
             inputs.reverse()
-            first_round = Round()
+            first_round = Round(TicTacToe())
             is_playing = True
             while is_playing:
                 first_round.print_game_layout()
@@ -80,7 +82,7 @@ class TestCase(unittest.TestCase):
         fake_stdout = io.StringIO()
         sys.stdout = fake_stdout
         try:
-            first_round = Round()
+            first_round = Round(TicTacToe())
             first_round.print_game_layout()
             first_round.play_game(0)
             first_round.print_game_layout()

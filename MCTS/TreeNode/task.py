@@ -65,7 +65,7 @@ class Node:
         action = np.random.choice(np.where(self.expandable_moves == 1)[0])
         self.expandable_moves[action] = 0
 
-        child_state = Board(self.state.size)
+        child_state = self.game.create_new_board()
         child_state.pieces = self.state.pieces.copy()
         # instead of changing the player, it's easier to change node.game.change_perspective
         child_state = self.game.get_next_state(child_state, 1, action)

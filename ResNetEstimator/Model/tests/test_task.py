@@ -5,16 +5,17 @@ from task import ResNet
 
 
 class MockGame:
-    def __init__(self, size):
-        self.size = size
+    def __init__(self, num_rows, num_cols):
+        self.num_rows = num_rows
+        self.num_cols = num_cols
 
     def get_action_size(self):
-        return self.size ** 2
+        return self.num_rows * self.num_cols
 
 
 class TestResNet(unittest.TestCase):
     def setUp(self):
-        self.game = MockGame(size=3)  # Assuming a 3x3 game board
+        self.game = MockGame(3, 3)  # Assuming a 3x3 game board
         self.num_res_blocks = 5
         self.num_hidden = 32
         self.model = ResNet(self.game, self.num_res_blocks, self.num_hidden)

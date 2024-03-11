@@ -16,7 +16,7 @@ class AlphaZeroTrainer(AlphaZero):
     def self_play(self):
         memory = []
         player = 1
-        state = Board(self.game.size)
+        state = self.game.create_new_board()
 
         while True:
             neutral_state = self.game.change_perspective(state, player)

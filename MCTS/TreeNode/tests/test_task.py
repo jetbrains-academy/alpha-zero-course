@@ -2,11 +2,11 @@ import unittest
 from copy import deepcopy
 
 from MCTS.TreeNode.task import Node
-from TicTacToe.GameImplementation.Game import TicTacToe
+from TicTacToe.Game.Game import TicTacToe
 
 
 def _init_root():
-    game = TicTacToe(size=2)
+    game = TicTacToe(2, 2)
     args = {'C': 1.41, 'num_searches': 1}
     board = game.get_board()
     tree_node = Node(game, args, board)

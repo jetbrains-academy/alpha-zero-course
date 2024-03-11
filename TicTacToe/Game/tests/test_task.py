@@ -5,7 +5,7 @@ from TicTacToe.Game.Game import TicTacToe
 
 class TestCase(unittest.TestCase):
     def test_init(self):
-        tictactoe = TicTacToe(4)
+        tictactoe = TicTacToe(4, 4)
         board = tictactoe.get_board()
         self.assertEqual(16, board.pieces.size, msg="Board in TicTacToe(4) should have 16 cells")
 

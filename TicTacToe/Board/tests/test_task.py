@@ -6,7 +6,7 @@ from TicTacToe.Board.task import Board
 class TestCase(unittest.TestCase):
 
     def test_board_init(self):
-        board = Board(2)
+        board = Board(2, 2)
         actual_board = str(board)
         expected_board = '--\n' * 2
         self.assertEqual(expected_board, actual_board, msg="Board with size 2 does not match")

@@ -4,7 +4,7 @@ files:
     visible: true
     placeholders:
       - offset: 167
-        length: 355
+        length: 369
         placeholder_text: "# Implement model initialization with parameters `num_res_blocks\
       \ = 4, num_hidden = 64` and apply it to get the value_item and policy_probs"
   - name: tests/test_task.py

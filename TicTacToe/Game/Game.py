@@ -1,26 +1,32 @@
 import math
 from abc import ABC
 import numpy as np
+
+from ConnectFour.Board.task import BoardC4
 from GameInterface import Game
 from TicTacToe.Board.task import Board
 
 
 class TicTacToe(Game, ABC):
-    def __init__(self, size=3):
-        self.size = size
-        self.board = Board(self.size)
+    def __init__(self, num_rows=3, num_cols=3):
+        self.num_rows = num_rows
+        self.num_cols = num_cols
+        self.board = Board(num_rows, num_cols)
 
     def get_board(self):
         return self.board
 
+    def create_new_board(self):
+        return Board(self.num_rows, self.num_cols)
+
     def get_board_size(self):
-        return self.size, self.size
+        return self.num_rows, self.num_cols
 
     def get_action_size(self):
-        return self.size ** 2
+        return self.num_rows * self.num_cols
 
     def get_next_state(self, board, player, action):
-        move = action // self.size, action % self.size
+        move = action // self.num_rows, action % self.num_cols
         board.execute_move(move, player)
         return board
 
@@ -52,7 +58,7 @@ class TicTacToe(Game, ABC):
         return value if math.isclose(value, 1e-4) else -value
 
     def change_perspective(self, board, player):
-        board_changed = Board(self.size)
+        board_changed = Board(self.num_rows, self.num_cols)
         board_changed.pieces = board.pieces * player
         return board_changed
 
