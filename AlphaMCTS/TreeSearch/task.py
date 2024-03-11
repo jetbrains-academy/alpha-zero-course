@@ -4,7 +4,7 @@ import torch
 from AlphaMCTS.TreeNode.task import Node
 
 
-class MCTS:
+class AlphaMCTS:
     def __init__(self, game, args, model):
         self.game = game
         self.args = args
@@ -33,8 +33,7 @@ class MCTS:
                 policy = torch.softmax(policy, axis=1).squeeze(0).cpu().numpy()
                 valid_moves = self.game.get_valid_moves(node.state)
                 policy *= valid_moves
-                if np.sum(policy) > 0:
-                    policy /= np.sum(policy)
+                policy /= np.sum(policy)
 
                 value = value.item()
                 node.expand(policy)
@@ -45,6 +44,5 @@ class MCTS:
         action_probs = np.zeros(self.game.get_action_size())
         for child in root.children:
             action_probs[child.action_taken] = child.visit_count
-        if np.sum(action_probs) > 0:
-            action_probs /= np.sum(action_probs)
+        action_probs /= np.sum(action_probs)
         return action_probs

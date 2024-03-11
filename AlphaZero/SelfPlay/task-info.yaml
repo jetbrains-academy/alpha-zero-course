@@ -8,3 +8,16 @@ files:
     visible: false
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 1146
+        length: 428
+        placeholder_text: "# TODO: calculation of outcomes to form replay memory for training"
+      - offset: 1847
+        length: 451
+        placeholder_text: "# TODO: implement learning iterations, where you need firstly\
+      \ to accumulate self-playing results in replay memory and secondly use them\
+      \ for training of next version model"
+  - name: model_0.pt
+    visible: true
+  - name: optimizer_0.pt
+    visible: true

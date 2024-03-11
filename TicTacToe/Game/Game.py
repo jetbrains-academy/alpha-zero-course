@@ -1,3 +1,4 @@
+import math
 from abc import ABC
 import numpy as np
 from GameInterface import Game
@@ -9,7 +10,7 @@ class TicTacToe(Game, ABC):
         self.size = size
         self.board = Board(self.size)
 
-    def get_init_board(self):
+    def get_board(self):
         return self.board
 
     def get_board_size(self):
@@ -48,7 +49,7 @@ class TicTacToe(Game, ABC):
         return -player
 
     def get_opponent_value(self, value):
-        return -value
+        return value if math.isclose(value, 1e-4) else -value
 
     def change_perspective(self, board, player):
         board_changed = Board(self.size)

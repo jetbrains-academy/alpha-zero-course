@@ -17,11 +17,10 @@ class Game:
         raise NotImplementedError
 
     @abstractmethod
-    def get_init_board(self):
+    def get_board(self):
         """
         Returns:
-            start_board: a representation of the board (ideally, this is the form
-                        that will be the input to your neural network)
+            board: a representation of the current board
         """
         raise NotImplementedError
 

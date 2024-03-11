@@ -3,15 +3,12 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 413
-        length: 24
-        placeholder_text: '# Initialize ResNet'
-      - offset: 455
-        length: 67
-        placeholder_text: '# Initialize Adam optimizer'
-      - offset: 539
-        length: 44
-        placeholder_text: '# Initialize AlphaZero'
+      - offset: 732
+        length: 309
+        placeholder_text: "# TODO: add action choosing with temperature"
+      - offset: 1728
+        length: 848
+        placeholder_text: "# TODO: implement training loop"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

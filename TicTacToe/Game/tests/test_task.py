@@ -6,19 +6,19 @@ from TicTacToe.Game.Game import TicTacToe
 class TestCase(unittest.TestCase):
     def test_init(self):
         tictactoe = TicTacToe(4)
-        board = tictactoe.get_init_board()
+        board = tictactoe.get_board()
         self.assertEqual(16, board.pieces.size, msg="Board in TicTacToe(4) should have 16 cells")
 
     def test_next_state(self):
         tictactoe = TicTacToe()
-        board = tictactoe.get_init_board()
+        board = tictactoe.get_board()
         board = tictactoe.get_next_state(board, 1, 4)
         self.assertEqual(1, board[1, 1],
                          msg="get_next_state() after action 4 for player 1 should return board where [1,1] element == 1")
 
     def test_get_valid_moves(self):
         tictactoe = TicTacToe()
-        board = tictactoe.get_init_board()
+        board = tictactoe.get_board()
         board = tictactoe.get_next_state(board, 1, 0)
         board = tictactoe.get_next_state(board, -1, 1)
         board = tictactoe.get_next_state(board, 1, 2)
@@ -30,7 +30,7 @@ class TestCase(unittest.TestCase):
 
     def test_get_game_ended(self):
         tictactoe = TicTacToe()
-        board = tictactoe.get_init_board()
+        board = tictactoe.get_board()
         board.pieces = np.array([[0, 0, 0],
                                  [0, 0, 0],
                                  [0, 0, 0]])
@@ -58,7 +58,7 @@ class TestCase(unittest.TestCase):
 
     def test_change_perspective(self):
         tictactoe = TicTacToe()
-        board = tictactoe.get_init_board()
+        board = tictactoe.get_board()
         board.pieces = np.array([[1, 0, 1],
                                  [0, 0, 0],
                                  [-1, 0, -1]])
@@ -71,7 +71,7 @@ class TestCase(unittest.TestCase):
 
     def test_get_encoded_state(self):
         tictactoe = TicTacToe()
-        board = tictactoe.get_init_board()
+        board = tictactoe.get_board()
         board.pieces = np.array([[1, 0, 1],
                                  [0, 0, 0],
                                  [-1, 0, -1]])

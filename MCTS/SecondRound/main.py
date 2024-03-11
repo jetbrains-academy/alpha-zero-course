@@ -1,55 +1,33 @@
 import numpy as np
 
-from TicTacToe.GameImplementation.Game import TicTacToe
 from MCTS.TreeSearch.task import MCTS
+from TicTacToe.Round.task import Round
 
 
-def main():
-    tictactoe = TicTacToe(size=3)
-    player = 1
-
+def mcts_init(round):
     args = {
         'C': 1.41,
         'num_searches': 2000
     }
-
-    mcts = MCTS(tictactoe, args)
-
-    board = tictactoe.get_init_board()
-
-    while True:
-        print(board)
-
-        if player == 1:
-            valid_moves = tictactoe.get_valid_moves(board)
-            print("valid_moves", [i for i in range(tictactoe.get_action_size()) if valid_moves[i] == 1])
-            action = int(input(f"{player}:"))
-
-            if valid_moves[action] == 0:
-                print("action not valid")
-                continue
-
-        else:
-            neutral_state = tictactoe.change_perspective(board, player)
-            mcts_probs = mcts.search(neutral_state)
-            action = np.argmax(mcts_probs)
-
-        board = tictactoe.get_next_state(board, player, action)
-
-        value = tictactoe.get_game_ended(board, player)
-
-        if value:
-            print(board)
-            if value == 1:
-                print(player, "won")
-            elif value == -1:
-                print(-player, "won")
-            else:
-                print("draw")
-            break
-
-        player = tictactoe.get_opponent(player)
+    return MCTS(round.tictactoe, args)
 
 
 if __name__ == "__main__":
-    main()
+    second_round = Round()
+    mcts = mcts_init(second_round)
+
+    player = second_round.player
+    board = second_round.tictactoe.get_board()
+
+    is_playing = True
+    while is_playing:
+        if player == 1:
+            second_round.print_game_layout()
+            action = int(input())
+        else:
+            neutral_state = second_round.tictactoe.change_perspective(board, player)
+            mcts_probs = mcts.search(neutral_state)
+            action = np.argmax(mcts_probs)
+
+        is_playing = second_round.play_game(action)
+        player = second_round.tictactoe.get_opponent(player)

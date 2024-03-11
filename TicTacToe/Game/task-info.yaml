@@ -3,24 +3,24 @@ files:
   - name: Game.py
     visible: true
     placeholders:
-      - offset: 217
+      - offset: 264
         length: 16
         placeholder_text: '# Init with Board instance'
-      - offset: 489
+      - offset: 536
         length: 39
         placeholder_text: '# Convert number to indexes'
-      - offset: 655
+      - offset: 702
         length: 48
         placeholder_text: '# Flat array indicating valid moves'
-      - offset: 758
+      - offset: 805
         length: 158
         placeholder_text: "# Return 1 if player is win, -1 if -player is win (that means\
       \ player is loose), 0 if where are legal moves"
-      - offset: 1464
+      - offset: 1511
         length: 44
         placeholder_text: '# Change 1 to -1 and vice versa for -1 player and save it in
       changed_board'
-      - offset: 1603
+      - offset: 1650
         length: 109
         placeholder_text: '# numpy stack of boards'
   - name: tests/test_task.py

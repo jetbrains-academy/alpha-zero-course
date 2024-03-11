@@ -1,48 +1,27 @@
+## Implementing Self-Play and Learning in AlphaZero
+Your task is to enhance the AlphaZero class by implementing two critical methods: `self_play_random` and `learn`. These methods are pivotal for training the AlphaZero algorithm on the game of TicTacToe, leveraging Monte Carlo Tree Search (MCTS) and deep learning.
 
-This is a task description file.
-Its content will be displayed to a learner
-in the **Task Description** window.
+### 1. `self_play_random` method
+- **Goal:** Simulate self-play sessions where two instances of the AlphaZero algorithm play against each other. Each move is chosen based on action probabilities derived from MCTS, followed by a random selection weighted by these probabilities.
+- **Output:** Generate and return a `memory` list containing the states, action probabilities, and outcomes of each move until the game ends. This data will be used for training the neural network model.
 
-It supports both Markdown and HTML.
-To toggle the format, you can rename **task.md**
-to **task.html**, or vice versa.
-The default task description format can be changed
-in **Preferences | Tools | Education**,
-but this will not affect any existing task description files.
+### 2. `learn` method
+- **Goal:** Use the data collected from multiple self-play sessions to train the neural network model. This involves running a specified number of self-play iterations to gather training data, followed by training epochs where the model's weights are updated.
+- **Steps:**
+  1. Collect training data by running self-play sessions.
+  2. You will implement `train` in the following task.
+  3. Save the model and optimizer state after each training iteration.
 
-The following features are available in
-**task.md/task.html** which are specific to the JetBrains Academy plugin:
+### Requirements:
+- For `self_play_random`, ensure that the game's current state is correctly converted to a neutral perspective before searching for action probabilities with MCTS. After selecting an action, update the game state and switch the player.
+- The `learn` method must iterate over the specified number of iterations and epochs, properly handling model evaluation and training modes. Additionally, ensure to save the model's and optimizer's state at the end of each iteration.
 
-- Hints can be added anywhere in the task text.
-  Type "hint" and press Tab.
-  Hints should be added to an empty line in the task text.
-  In hints you can use both HTML and Markdown.
 <div class="hint">
-
-Text of your hint
-
+Utilize the `np.random.choice` function to select actions based on the calculated probabilities.
 </div>
-
-- You may need to refer your learners to a particular lesson,
-task, or file. To achieve this, you can use the in-course links.
-Specify the path using the `[link_text](course://lesson1/task1/file1)` format.
-
-- You can insert shortcuts in the task description.
-While **task.html/task.md** is open, right-click anywhere
-on the **Editor** tab and choose the **Insert shortcut** option
-from the context menu.
-For example: &shortcut:FileStructurePopup;.
-
-- Insert the &percnt;`IDE_NAME`&percnt; macro,
-which will be replaced by the actual IDE name.
-For example, **%IDE_NAME%**.
-
-- Insert PSI elements, by using links like
-`[element_description](psi_element://link.to.element)`.
-To get such a link, right-click the class or method
-and select **Copy Reference**.
-Then press &shortcut:EditorPaste; to insert the link where appropriate.
-For example, a [link to the "contains" method](psi_element://java.lang.String#contains).
-
-- You can add link to file using **full path** like this:
-  `[file_link](file://lesson1/task1/file.txt)`.
+<div class="hint">
+Pay attention to the handling of the game's outcome (`value`) and how it affects the memory data structure.
+</div>
+<div class="hint">
+Make sure to switch the model between evaluation and training modes appropriately in the `learn` method.
+</div>

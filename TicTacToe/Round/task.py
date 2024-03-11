@@ -5,7 +5,7 @@ class Round:
     def __init__(self):
         self.tictactoe = TicTacToe()
         self.player = 1
-        self.board = self.tictactoe.get_init_board()
+        self.board = self.tictactoe.get_board()
 
     def print_game_layout(self):
         print(self.board)

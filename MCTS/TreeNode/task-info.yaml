@@ -15,13 +15,13 @@ files:
       - offset: 1459
         length: 269
         placeholder_text: '# return the best child using UCB formula'
-      - offset: 2083
+      - offset: 2073
         length: 636
         placeholder_text: "# implement expansion step, return new child for the node"
-      - offset: 2789
+      - offset: 2779
         length: 839
         placeholder_text: '# simulate random game from the current node'
-      - offset: 3784
+      - offset: 3774
         length: 187
         placeholder_text: '# implement backpropagation step'
   - name: tests/test_task.py
