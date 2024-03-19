@@ -1,7 +1,12 @@
 type: marketplace
-title: AlphaZero
+title: EDC-963
 language: English
-summary: '# TODO'
+summary: This is not an actual course. This is published to test the remote development
+  platform.
+vendor:
+  name: Educational Content
+  email: support@jetbrains.com
+  url: https://www.jetbrains.com/
 programming_language: Python
 environment: unittest
 content:
