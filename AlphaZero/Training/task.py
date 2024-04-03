@@ -4,7 +4,7 @@ import torch
 import torch.nn.functional as F
 
 from TicTacToe.Board.task import Board
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Game.task import TicTacToe
 from ResNetEstimator.Model.task import ResNet
 from AlphaZero.SelfPlay.task import AlphaZero
 
@@ -16,7 +16,7 @@ class AlphaZeroTrainer(AlphaZero):
     def self_play(self):
         memory = []
         player = 1
-        state = self.game.create_new_board()
+        state = self.game.get_board().create_new_board()
 
         while True:
             neutral_state = self.game.change_perspective(state, player)
@@ -26,7 +26,8 @@ class AlphaZeroTrainer(AlphaZero):
 
             temperature_action_probs = action_probs ** (1 / self.args['temperature'])
             temperature_action_probs /= np.sum(temperature_action_probs)
-            action = np.random.choice(self.game.get_action_size(), p=temperature_action_probs)
+            action = np.random.choice(self.game.get_board().get_action_size(),
+                                      p=temperature_action_probs)
             state = self.game.get_next_state(state, player, action)
 
             value = self.game.get_game_ended(state, player)
@@ -36,7 +37,7 @@ class AlphaZeroTrainer(AlphaZero):
                 for hist_neutral_state, hist_action_probs, hist_player in memory:
                     hist_outcome = value if hist_player == player else self.game.get_opponent_value(value)
                     return_memory.append((
-                        self.game.get_encoded_state(hist_neutral_state),
+                        hist_neutral_state.get_encoded_state(),
                         hist_action_probs,
                         hist_outcome
                     ))

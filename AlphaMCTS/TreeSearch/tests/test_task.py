@@ -21,9 +21,10 @@ class TestMCTSSearch(unittest.TestCase):
         self.mock_game.get_game_ended.return_value = 0
         encoded_state = np.zeros((3, 3))
         self.board = Board(3, 3)
-        self.board.pieces = encoded_state
-        self.mock_game.get_encoded_state.return_value = encoded_state
+        self.board._pieces = encoded_state
+        self.mock_game.get_board.return_value = self.board
         self.mock_game.get_opponent_value.side_effect = lambda x: -x
+        self.mock_game.change_perspective.return_value = self.board
 
         # Configure the mock model to return a fixed policy and value
         policy = torch.rand(1, 9)

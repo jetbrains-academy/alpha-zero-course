@@ -7,10 +7,10 @@ files:
         length: 150
         placeholder_text: "pass # TODO"
       - offset: 1021
-        length: 252
+        length: 312
         placeholder_text: "pass # TODO"
-      - offset: 1300
-        length: 251
+      - offset: 1360
+        length: 277
         placeholder_text: "pass # TODO"
   - name: tests/test_task.py
     visible: false

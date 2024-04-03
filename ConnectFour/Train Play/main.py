@@ -41,9 +41,7 @@ def play(round, model):
             round.print_game_layout()
             action = int(input())
         else:
-            encoded_state = round.instance_of_game.get_encoded_state(
-                round.board
-            )
+            encoded_state = round.instance_of_game.get_board().get_encoded_state()
             tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
             policy, value = model(tensor_state)

@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
 from task import init_and_apply_nn
@@ -22,7 +22,7 @@ class TestInitAndApplyNN(unittest.TestCase):
         self.assertIsInstance(policy_probs, np.ndarray,
                               msg="Type of policy_probs is not a numpy array.")
 
-        expected_shape = self.round.instance_of_game.get_action_size()
+        expected_shape = self.round.instance_of_game.get_board().get_action_size()
         self.assertEqual(policy_probs.shape[0], expected_shape,
                          msg="The shape of policy_probs is unexpected.")
 

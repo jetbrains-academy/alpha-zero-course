@@ -1,4 +1,4 @@
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Game.task import TicTacToe
 
 
 class Round:
@@ -9,12 +9,14 @@ class Round:
 
     def print_game_layout(self):
         print(self.board)
-        valid_moves = self.instance_of_game.get_valid_moves(self.board)
-        print("valid_moves", [i for i in range(self.instance_of_game.get_action_size()) if valid_moves[i] == 1])
+        valid_moves = self.instance_of_game.get_valid_moves()
+        print("valid_moves",
+              [i for i in range(self.instance_of_game.get_board().get_action_size())
+               if valid_moves[i] == 1])
         print(f"{self.player}:")
 
     def play_game(self, action):
-        valid_moves = self.instance_of_game.get_valid_moves(self.board)
+        valid_moves = self.instance_of_game.get_valid_moves()
         if valid_moves[action] == 0:
             print("action not valid")
             return True

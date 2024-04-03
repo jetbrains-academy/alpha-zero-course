@@ -2,7 +2,7 @@ import numpy as np
 
 from AlphaMCTS.TreeSearch.task import AlphaMCTS
 from ResNetEstimator.Model.task import ResNet
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
 

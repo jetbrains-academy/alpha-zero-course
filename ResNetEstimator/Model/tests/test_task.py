@@ -3,14 +3,18 @@ import torch
 
 from task import ResNet
 
+from TicTacToe.Board.task import Board
+
 
 class MockGame:
     def __init__(self, num_rows, num_cols):
-        self.num_rows = num_rows
-        self.num_cols = num_cols
+        self._board = Board(num_rows, num_cols)
 
     def get_action_size(self):
-        return self.num_rows * self.num_cols
+        return self._board.get_action_size()
+
+    def get_board(self):
+        return self._board
 
 
 class TestResNet(unittest.TestCase):

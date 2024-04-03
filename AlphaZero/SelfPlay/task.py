@@ -6,7 +6,7 @@ import torch
 from tqdm import trange
 
 from TicTacToe.Board.task import Board
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Game.task import TicTacToe
 from ResNetEstimator.Model.task import ResNet
 from AlphaMCTS.TreeSearch.task import AlphaMCTS
 
@@ -41,7 +41,7 @@ class AlphaZero:
                 for hist_neutral_state, hist_action_probs, hist_player in memory:
                     hist_outcome = value if hist_player == player else self.game.get_opponent_value(value)
                     return_memory.append((
-                        self.game.get_encoded_state(hist_neutral_state),
+                        hist_neutral_state.get_encoded_state(),
                         hist_action_probs,
                         hist_outcome
                     ))
@@ -70,21 +70,21 @@ class AlphaZero:
             torch.save(self.model.state_dict(), f"model_{iteration}.pt")
             torch.save(self.optimizer.state_dict(), f"optimizer_{iteration}.pt")
 
+args = {
+    'C': 2,
+    'num_searches': 60,
+    'num_iterations': 1,
+    'num_self_play_iterations': 10,
+    'num_epochs': 0,
+    'temperature': 1.25,
+}
+
 
 if __name__ == '__main__':
     tictactoe = TicTacToe()
     model = ResNet(tictactoe, 4, 64)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-
-    args = {
-        'C': 2,
-        'num_searches': 60,
-        'num_iterations': 1,
-        'num_self_play_iterations': 10,
-        'num_epochs': 0,
-        'temperature': 1.25,
-    }
 
     alphaZero = AlphaZero(model, optimizer, tictactoe, args)
     alphaZero.learn()

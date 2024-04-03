@@ -4,7 +4,7 @@ files:
     visible: true
     placeholders:
       - offset: 712
-        length: 532
+        length: 514
         placeholder_text: "# TODO: given self.model perform expansion with the policy\
       \ and backpropagate with value from it"
   - name: tests/test_task.py

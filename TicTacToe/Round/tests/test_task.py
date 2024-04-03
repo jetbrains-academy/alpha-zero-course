@@ -2,7 +2,7 @@ import unittest
 import sys
 import io
 
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
 

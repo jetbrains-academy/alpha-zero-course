@@ -2,7 +2,7 @@ import unittest
 from copy import deepcopy
 
 from MCTS.TreeNode.task import Node
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Game.task import TicTacToe
 
 
 def _init_root():

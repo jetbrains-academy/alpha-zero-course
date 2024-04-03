@@ -3,10 +3,10 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 739
-        length: 309
+      - offset: 751
+        length: 359
         placeholder_text: "# TODO: add action choosing with temperature"
-      - offset: 1735
+      - offset: 1788
         length: 848
         placeholder_text: "# TODO: implement training loop"
   - name: tests/test_task.py
