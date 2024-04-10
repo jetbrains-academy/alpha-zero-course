@@ -5,10 +5,9 @@ class Round:
     def __init__(self, instance_of_game):
         self.instance_of_game = instance_of_game
         self.player = 1
-        self.board = self.instance_of_game.get_board()
 
     def print_game_layout(self):
-        print(self.board)
+        print(self.instance_of_game.get_board())
         valid_moves = self.instance_of_game.get_valid_moves()
         print("valid_moves",
               [i for i in range(self.instance_of_game.get_board().get_action_size())
@@ -21,12 +20,16 @@ class Round:
             print("action not valid")
             return True
 
-        self.board = self.instance_of_game.get_next_state(self.board, self.player, action)
+        self.instance_of_game._board = self.instance_of_game.get_next_state(
+            self.instance_of_game.get_board(), self.player, action
+        )
 
-        value = self.instance_of_game.get_game_ended(self.board, self.player)
+        value = self.instance_of_game.get_game_ended(
+            self.instance_of_game.get_board(), self.player
+        )
 
         if value:
-            print(self.board)
+            print(self.instance_of_game.get_board())
             if value == 1:
                 print(self.player, "won")
             elif value == -1:

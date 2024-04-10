@@ -19,7 +19,7 @@ if __name__ == "__main__":
     print("Current game board is:")
     final_round.print_game_layout()
 
-    encoded_state = final_round.board.get_encoded_state()
+    encoded_state = final_round.instance_of_game.get_board().get_encoded_state()
     print(f"Encoded state = \n{encoded_state}")
 
     tensor_state = torch.tensor(encoded_state).unsqueeze(0)

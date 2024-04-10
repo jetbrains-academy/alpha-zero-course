@@ -18,7 +18,7 @@ class ConnectFour(Game, ABC):
         return board
 
     def get_valid_moves(self, player=1):
-        return self._board.get_valid_moves(player)
+        return self._board.get_valid_moves()
 
     def get_game_ended(self, board, player):
         if board.is_win(player):

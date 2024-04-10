@@ -10,9 +10,9 @@ files:
     visible: true
     placeholders:
       - offset: 1146
-        length: 428
+        length: 419
         placeholder_text: "# TODO: calculation of outcomes to form replay memory for training"
-      - offset: 1847
+      - offset: 1838
         length: 451
         placeholder_text: "# TODO: implement learning iterations, where you need firstly\
       \ to accumulate self-playing results in replay memory and secondly use them\

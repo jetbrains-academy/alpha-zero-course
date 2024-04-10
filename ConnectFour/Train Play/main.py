@@ -49,6 +49,9 @@ def play(round, model):
                 torch.softmax(policy, axis=1)
                 .squeeze(0).detach().cpu().numpy()
             )
+            valid_moves = round.instance_of_game.get_board().get_valid_moves()
+            policy *= valid_moves
+            policy /= np.sum(policy)
             action = np.argmax(policy)
 
         is_playing = round.play_game(action)

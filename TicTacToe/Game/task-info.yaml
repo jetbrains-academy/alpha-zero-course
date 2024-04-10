@@ -7,13 +7,13 @@ files:
         length: 25
         placeholder_text: '# Init with Board instance'
       - offset: 476
-        length: 35
+        length: 29
         placeholder_text: '# Flat array indicating valid moves'
-      - offset: 566
+      - offset: 560
         length: 158
         placeholder_text: "# Return 1 if player is win, -1 if -player is win (that means\
       \ player is loose), 0 if where are legal moves"
-      - offset: 1218
+      - offset: 1212
         length: 90
         placeholder_text: '# Change 1 to -1 and vice versa for -1 player and save it in
       changed_board'

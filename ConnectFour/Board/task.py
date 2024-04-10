@@ -24,6 +24,9 @@ class BoardC4(Board):
         super().__init__(num_rows, num_cols)
         self._in_a_row = 4
 
+    def get_board_size(self):
+        return self._num_rows * self._num_cols
+
     def get_action_size(self):
         return self._num_cols
 
@@ -39,7 +42,7 @@ class BoardC4(Board):
     def has_valid_moves(self) -> bool:
         return any(self[0, y] == EMPTY for y in range(self._num_cols))
 
-    def get_valid_moves(self, player=1):
+    def get_valid_moves(self):
         return (self.pieces[0] == 0).astype(np.uint8)
 
     def is_win(self, player: int) -> bool:

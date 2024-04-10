@@ -31,10 +31,7 @@ class Node:
         # use state to get the current player. If no action was taken, then player should be None
         if self.action_taken is None:
             return None
-        size = self.state.size
-        row = self.action_taken // size
-        column = self.action_taken % size
-        return self.state[row, column]
+        return self.state.get_player(self.action_taken)
 
     def is_fully_expanded(self):
         return len(self.children) > 0

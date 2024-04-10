@@ -37,7 +37,7 @@ class ResNet(nn.Module):
             nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(32 * game.get_board()._num_rows * game.get_board()._num_cols,
+            nn.Linear(32 * game.get_board().get_board_size(),
                       game.get_board().get_action_size())
         )
 
@@ -46,7 +46,7 @@ class ResNet(nn.Module):
             nn.BatchNorm2d(3),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(3 * game.get_board()._num_rows * game.get_board()._num_cols, 1),
+            nn.Linear(3 * game.get_board().get_board_size(), 1),
             nn.Tanh()
         )
 

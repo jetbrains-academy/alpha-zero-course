@@ -25,8 +25,8 @@ class Board:
         # Create an empty board (numpy 2-dimensional array)
         self._pieces = np.array([[EMPTY] * num_cols for _ in range(num_rows)])
 
-    def get_size(self):
-        return self._num_rows, self._num_cols
+    def get_board_size(self):
+        return self._num_rows * self._num_cols
 
     def get_action_size(self):
         return self._num_rows * self._num_cols
@@ -63,7 +63,7 @@ class Board:
     def has_valid_moves(self) -> bool:
         return any(self[x, y] == EMPTY for y in range(self.size) for x in range(self.size))
 
-    def get_valid_moves(self, player=1):
+    def get_valid_moves(self):
         return (self.pieces.reshape(-1) == 0).astype(np.uint8)
 
     def is_win(self, player: int) -> bool:
@@ -100,3 +100,8 @@ class Board:
              self.pieces == 1)
         ).astype(np.float32)
         return encoded_state
+
+    def get_player(self, action):
+        row = action // self.size
+        column = action % self.size
+        return self[row, column]
