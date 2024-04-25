@@ -1,5 +1,7 @@
 import numpy as np
 import unittest
+
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 
 from task import Node
@@ -13,7 +15,7 @@ board_for_test = np.array([
 
 class TestNode(unittest.TestCase):
     def setUp(self):
-        self.game = TicTacToe()
+        self.game = TicTacToe(Board())
         self.game.get_board().pieces = board_for_test
         self.mock_board_state = self.game.get_board()
         self.args = {'C': 1.4}  # Example hyperparameter for UCB calculation

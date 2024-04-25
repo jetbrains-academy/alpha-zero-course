@@ -1,13 +1,14 @@
 import unittest
 
 from MCTS.TreeSearch.task import MCTS
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 
 
 class TestCase(unittest.TestCase):
     def test_search(self):
-        game = TicTacToe(2, 2)
-        board = game.get_board()
+        board = Board(2, 2)
+        game = TicTacToe(board)
         board = game.get_next_state(board, 1, 0)
         mcts = MCTS(game, {'C': 1.41, 'num_searches': 1})
         probs = mcts.search(board.copy())

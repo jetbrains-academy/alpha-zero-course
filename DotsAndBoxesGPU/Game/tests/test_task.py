@@ -1,7 +1,6 @@
-import numpy as np
 import unittest
 
-from unittest.mock import MagicMock, patch
+from TicTacToe.Game.task import TicTacToe
 from DotsAndBoxesGPU.Board.task import BoardDandB
 
 from task import DotsAndBoxes
@@ -9,26 +8,38 @@ from task import DotsAndBoxes
 
 class TestDotsAndBoxes(unittest.TestCase):
     def setUp(self):
-        self.game = DotsAndBoxes(3, 3)
+        self.board = BoardDandB()
+        self.game = DotsAndBoxes(self.board)
 
-    def test_get_valid_moves(self):
-        """Test getting valid moves"""
-        board_instance = BoardDandB(3, 3)
-        expected = board_instance.get_valid_moves()
+    def test_get_next_state(self):
+        # Test regular move
+        returned_board = self.game.get_next_state(self.board, 1, 5)
+        self.assertEqual(returned_board[1, 2], 1,
+                         msg="The move should be executed correctly")
 
-        valid_moves = self.game.get_valid_moves(1)
-        self.assertTrue(np.all(valid_moves == expected))
+        # Test another move
+        returned_board = self.game.get_next_state(returned_board, -1, 9)
+        self.assertEqual(returned_board[3, 0], 1,
+                         msg="The move of second player should be executed correctly")
 
-    @patch('DotsAndBoxesGPU.Board.task.BoardDandB')
-    def test_game_ended(self, mock_board):
-        """Test game ended conditions"""
-        mock_board_instance = mock_board.return_value
-        mock_board_instance.has_valid_moves.return_value = False
-        mock_board_instance.pieces = np.array([[0, 0], [0, 0], [0, 1]])
+    def test_change_perspective(self):
+        # Mock the indices for simplicity in this test
+        self.game._board[0, -1] = 1
+        self.game._board[1, -1] = 2
 
-        # Simulate a draw
-        game_ended = self.game.get_game_ended(mock_board_instance, 1)
-        self.assertEqual(game_ended, 0)  # Assuming the game ends in a draw under certain conditions
+        # Test perspective change for player -1
+        changed_board = self.game.change_perspective(self.game._board, -1)
+        self.assertEqual(changed_board[0, -1], 2,
+                         msg="The score of player 1 should be 2 after perspective change")
+        self.assertEqual(changed_board[1, -1], 1,
+                         msg="The score of player 2 should be 1 after perspective change")
+
+        # Ensure it returns the original when player is 1
+        changed_board = self.game.change_perspective(self.game._board, 1)
+        self.assertEqual(changed_board[0, -1], 1,
+                         msg="The score of player 1 should be 1 after perspective change")
+        self.assertEqual(changed_board[1, -1], 2,
+                         msg="The score of player 2 should be 2 after perspective change")
 
 
 if __name__ == '__main__':

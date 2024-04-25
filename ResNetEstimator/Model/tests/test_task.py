@@ -22,7 +22,8 @@ class TestResNet(unittest.TestCase):
         self.game = MockGame(3, 3)  # Assuming a 3x3 game board
         self.num_res_blocks = 5
         self.num_hidden = 32
-        self.model = ResNet(self.game, self.num_res_blocks, self.num_hidden)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = ResNet(self.game, self.num_res_blocks, self.num_hidden, self.device)
 
     def test_startBlock(self):
         # Create a mock input tensor

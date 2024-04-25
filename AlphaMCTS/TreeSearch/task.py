@@ -28,7 +28,9 @@ class AlphaMCTS:
 
             if not value:
                 policy, value = self.model(
-                    torch.tensor(node.state.get_encoded_state()).unsqueeze(0)
+                    torch.tensor(node.state.get_encoded_state(),
+                                 device=self.model.device
+                                 ).unsqueeze(0)
                 )
                 policy = torch.softmax(policy, axis=1).squeeze(0).cpu().numpy()
                 valid_moves = node.state.get_valid_moves()

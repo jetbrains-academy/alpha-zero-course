@@ -7,7 +7,7 @@ files:
         length: 359
         placeholder_text: "# TODO: add action choosing with temperature"
       - offset: 1788
-        length: 848
+        length: 926
         placeholder_text: "# TODO: implement training loop"
   - name: tests/test_task.py
     visible: false

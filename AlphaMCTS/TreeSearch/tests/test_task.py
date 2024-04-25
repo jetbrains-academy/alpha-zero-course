@@ -12,12 +12,14 @@ from TicTacToe.Game.task import TicTacToe
 
 class TestMCTSSearch(unittest.TestCase):
     def setUp(self):
-        self.game = TicTacToe()
+        self.game = TicTacToe(Board())
         self.args = {'num_searches': 10, 'C': 1.4}
         self.board = self.game.get_board()
 
         # Configure the mock model to return a fixed policy and value
-        self.mock_model = MagicMock()
+        self.mock_model = MagicMock(
+            device=torch.device('cpu')
+        )
         policy = torch.rand(1, 9)
         value = torch.tensor([[0.5]])
         self.mock_model.return_value = (policy, value)

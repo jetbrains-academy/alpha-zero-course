@@ -2,6 +2,7 @@ import numpy as np
 
 from AlphaMCTS.TreeSearch.task import AlphaMCTS
 from ResNetEstimator.Model.task import ResNet
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
@@ -11,14 +12,15 @@ def mcts_init(round):
         'C': 2,
         'num_searches': 1000
     }
-    model = ResNet(round.instance_of_game, 4, 64)
+    device = 'cpu'
+    model = ResNet(round.instance_of_game, 4, 64, device)
     model.eval()
 
     return AlphaMCTS(round.instance_of_game, args, model)
 
 
 if __name__ == "__main__":
-    fourth_round = Round(TicTacToe())
+    fourth_round = Round(TicTacToe(Board()))
     mcts = mcts_init(fourth_round)
 
     player = fourth_round.player

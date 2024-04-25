@@ -3,17 +3,17 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 222
-        length: 25
+      - offset: 147
+        length: 5
         placeholder_text: '# Init with Board instance'
-      - offset: 476
+      - offset: 381
         length: 29
         placeholder_text: '# Flat array indicating valid moves'
-      - offset: 560
+      - offset: 465
         length: 158
         placeholder_text: "# Return 1 if player is win, -1 if -player is win (that means\
       \ player is loose), 0 if where are legal moves"
-      - offset: 1212
+      - offset: 1117
         length: 90
         placeholder_text: '# Change 1 to -1 and vice versa for -1 player and save it in
       changed_board'

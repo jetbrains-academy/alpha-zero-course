@@ -4,10 +4,10 @@ files:
     visible: true
     placeholders:
       - offset: 1396
-        length: 303
+        length: 323
         placeholder_text: "# TODO: implement UCB score, accounting for child probability\
       \ from the model and the border case with child.visit_count = 0"
-      - offset: 1739
+      - offset: 1759
         length: 554
         placeholder_text: "# TODO: expansion step for all the children"
   - name: tests/test_task.py

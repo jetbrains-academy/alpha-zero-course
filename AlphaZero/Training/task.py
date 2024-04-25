@@ -57,9 +57,9 @@ class AlphaZeroTrainer(AlphaZero):
                 np.array(value_targets).reshape(-1, 1)
             )
 
-            state = torch.tensor(state, dtype=torch.float32)
-            policy_targets = torch.tensor(policy_targets, dtype=torch.float32)
-            value_targets = torch.tensor(value_targets, dtype=torch.float32)
+            state = torch.tensor(state, dtype=torch.float32, device=self.model.device)
+            policy_targets = torch.tensor(policy_targets, dtype=torch.float32, device=self.model.device)
+            value_targets = torch.tensor(value_targets, dtype=torch.float32, device=self.model.device)
 
             out_policy, out_value = self.model(state)
 
@@ -71,6 +71,7 @@ class AlphaZeroTrainer(AlphaZero):
             loss.backward()
             self.optimizer.step()
 
+
 args = {
     'C': 2,
     'num_searches': 60,
@@ -81,10 +82,10 @@ args = {
     'batch_size': 32,
 }
 
-
 if __name__ == '__main__':
-    tictactoe = TicTacToe()
-    model = ResNet(tictactoe, 4, 64)
+    tictactoe = TicTacToe(Board())
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model = ResNet(tictactoe, 4, 64, device=device)
 
     optimizer = torch.optim.Adam(
         model.parameters(), lr=0.001, weight_decay=0.0001

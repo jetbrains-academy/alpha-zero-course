@@ -10,9 +10,12 @@ class TestBoard(unittest.TestCase):
 
     def test_init(self):
         """Test board initialization"""
-        self.assertEqual(self.board._num_rows, 6)
-        self.assertEqual(self.board._num_cols, 7)
-        self.assertTrue(np.all(self.board._pieces == EMPTY))
+        self.assertEqual(self.board._num_rows, 6,
+                         msg='By default num_rows should be 6')
+        self.assertEqual(self.board._num_cols, 7,
+                         msg='By default num_cols should be 7')
+        self.assertTrue(np.all(self.board._pieces == EMPTY),
+                        msg='All pieces should be EMPTY')
 
     def test_is_win_horizontal(self):
         """Test horizontal win"""
@@ -20,14 +23,16 @@ class TestBoard(unittest.TestCase):
             board = BoardC4()
             for col in range(4):
                 board.execute_move(WHITE, col)
-            self.assertTrue(board.is_win(WHITE))
+            self.assertTrue(board.is_win(WHITE),
+                            msg=f'WHITE player should win')
 
     def test_is_win_vertical(self):
         """Test vertical win"""
         board = BoardC4()
         for row in range(4):
             board.execute_move(BLACK, 0)
-        self.assertTrue(board.is_win(BLACK))
+        self.assertTrue(board.is_win(BLACK),
+                        msg=f'BLACK player should win')
 
     def test_is_win_positive_diagonal(self):
         """Test positive diagonal win"""
@@ -36,7 +41,8 @@ class TestBoard(unittest.TestCase):
             for j in range(i):
                 board.execute_move(WHITE, i)  # Fill columns to create diagonal setup
             board.execute_move(BLACK, i)
-        self.assertTrue(board.is_win(BLACK))
+        self.assertTrue(board.is_win(BLACK),
+                        msg=f'BLACK player should win')
 
     def test_is_win_negative_diagonal(self):
         """Test negative diagonal win"""
@@ -45,14 +51,17 @@ class TestBoard(unittest.TestCase):
             for j in range(3 - i):
                 board.execute_move(WHITE, 3 + i)  # Fill columns to create diagonal setup
             board.execute_move(BLACK, 3 + i)
-        self.assertTrue(board.is_win(BLACK))
+        self.assertTrue(board.is_win(BLACK),
+                        msg=f'BLACK player should win')
 
     def test_execute_move(self):
         """Test executing a move updates the board correctly"""
         self.board.execute_move(WHITE, 0)
-        self.assertEqual(WHITE, self.board[5, 0])  # Assuming 0-indexed bottom row
+        self.assertEqual(WHITE, self.board[5, 0],  # Assuming 0-indexed bottom row
+                         msg="Test executing a move updates the board correctly")
         self.board.execute_move(BLACK, 0)
-        self.assertEqual(BLACK, self.board[4, 0])
+        self.assertEqual(BLACK, self.board[4, 0],
+                         msg="Test executing a move updates the board correctly")
 
 
 if __name__ == '__main__':

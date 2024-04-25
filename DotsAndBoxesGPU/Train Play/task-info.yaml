@@ -1,13 +1,9 @@
-type: edu
+type: theory
 custom_name: Train&Play
 files:
-  - name: task.py
+  - name: main.py
     visible: true
-  - name: tests/test_task.py
-    visible: false
   - name: __init__.py
-    visible: false
-  - name: tests/__init__.py
     visible: false
   - name: model_0.pt
     visible: true

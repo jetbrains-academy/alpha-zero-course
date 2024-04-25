@@ -70,6 +70,7 @@ class AlphaZero:
             torch.save(self.model.state_dict(), f"model_{iteration}.pt")
             torch.save(self.optimizer.state_dict(), f"optimizer_{iteration}.pt")
 
+
 args = {
     'C': 2,
     'num_searches': 60,
@@ -79,12 +80,11 @@ args = {
     'temperature': 1.25,
 }
 
-
 if __name__ == '__main__':
-    tictactoe = TicTacToe()
+    tictactoe = TicTacToe(Board())
     model = ResNet(tictactoe, 4, 64)
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
 
     alphaZero = AlphaZero(model, optimizer, tictactoe, args)
     alphaZero.learn()

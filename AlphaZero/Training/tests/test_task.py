@@ -6,6 +6,7 @@ import torch
 from AlphaZero.Training.task import args
 
 from ResNetEstimator.Model.task import ResNet
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 
 from task import AlphaZeroTrainer
@@ -15,8 +16,9 @@ model_num = args['num_iterations'] - 1
 
 class TestAlphaZeroTrainer(unittest.TestCase):
     def setUp(self):
-        self.game = TicTacToe()
-        self.model = ResNet(self.game, 4, 64)
+        self.game = TicTacToe(Board())
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model = ResNet(self.game, 4, 64, device=device)
         self.optimizer = torch.optim.Adam(
             self.model.parameters(), lr=0.001
         )
@@ -72,7 +74,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
 
     def test_occupied(self):
         # Playing
-        tictactoe = TicTacToe()
+        tictactoe = TicTacToe(Board())
         state = tictactoe.get_board()
         state = tictactoe.get_next_state(state, 1, 2)
         state = tictactoe.get_next_state(state, -1, 7)
@@ -80,7 +82,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         encoded_state = state.get_encoded_state()
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
-        model = ResNet(tictactoe, 4, 64)
+        model = self.model
         model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
         model.eval()
 
@@ -93,7 +95,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         self.assertLess(policy[7], 0.05, "Model shouldn't consider for the move occupied cells")
 
     def test_win_move(self):
-        tictactoe = TicTacToe()
+        tictactoe = TicTacToe(Board())
         state = tictactoe.get_board()
         state = tictactoe.get_next_state(state, 1, 0)
         state = tictactoe.get_next_state(state,       -1, 1)
@@ -106,7 +108,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
 
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
-        model = ResNet(tictactoe, 4, 64)
+        model = self.model
         model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
         model.eval()
 
@@ -123,7 +125,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         self.assertGreater(win_move, 0.6, "Model should choose only one of the winning move with high confidence")
 
     def test_save_move(self):
-        tictactoe = TicTacToe()
+        tictactoe = TicTacToe(Board())
         state = tictactoe.get_board()
         state = tictactoe.get_next_state(state, 1, 0)
         state = tictactoe.get_next_state(state,       -1, 2)
@@ -134,7 +136,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
 
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
-        model = ResNet(tictactoe, 4, 64)
+        model = self.model
         model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
         model.eval()
 

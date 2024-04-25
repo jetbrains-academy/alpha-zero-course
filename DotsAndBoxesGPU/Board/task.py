@@ -9,15 +9,18 @@ BLACK = -1
 
 class BoardDandB(Board):
     """
-    Board data:
-      first dim is row, second is column:
-         pieces[0][0] is the top left square,
-         pieces[2][0] is the bottom left square,
-    Squares are stored and manipulated as (x,y) tuples.
-
-    Based on the board for the game of TicTacToe by Evgeny Tyurin, github.com/evg-tyurin
+    Board data: the representation of the board in Dots and Boxes
+    differs from the one in TicTacToe and Connect Four.
+    Here we have horizontal and vertical lines,
+    and their amount is determined by the number of row. For example,
+    a 3x3 board has 2 horizontal and 3 vertical lines in each row.
+    So the board is represented as a 2D array of size (2*num_rows + 1) x (num_cols + 1).
+    The first half of the rows represents the horizontal lines,
+    and the second half represents the vertical lines.
+    The last column in the first half is used to store three additional numbers:
+    the scores of each player and the pass state.
     """
-    def __init__(self, num_rows: int = 5, num_cols: int = 5):
+    def __init__(self, num_rows: int = 3, num_cols: int = 3):
         super().__init__(num_rows, num_cols)
         self.pieces = np.array([[EMPTY]*(num_cols + 1) for _ in range(2*num_rows + 1)])
 
@@ -154,6 +157,6 @@ class BoardDandB(Board):
                     board_str.append(s)
             board_str.append("\n")
 
-        # print("Pass: {}".format(self.pieces[2, -1]))
-        # print("Score {} x {}".format(self.pieces[0, -1], self.pieces[1, -1]))
+        board_str.extend(f"Pass: {self.pieces[2, -1]}\n")
+        board_str.extend(f"Score {self.pieces[0, -1]} x {self.pieces[1, -1]}\n")
         return "".join(board_str)

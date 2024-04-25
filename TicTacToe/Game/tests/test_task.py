@@ -1,24 +1,26 @@
 import unittest
 import numpy as np
+
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 
 
 class TestCase(unittest.TestCase):
     def test_init(self):
-        tictactoe = TicTacToe(4, 4)
-        board = tictactoe.get_board()
-        self.assertEqual(16, board._pieces.size, msg="Board in TicTacToe(4) should have 16 cells")
+        board = Board(4, 4)
+        tictactoe = TicTacToe(board)
+        self.assertEqual(16, tictactoe.get_board()._pieces.size, msg="Board(4,4) should have 16 cells")
 
     def test_next_state(self):
-        tictactoe = TicTacToe()
-        board = tictactoe.get_board()
+        board = Board()
+        tictactoe = TicTacToe(board)
         board = tictactoe.get_next_state(board, 1, 4)
         self.assertEqual(1, board[1, 1],
                          msg="get_next_state() after action 4 for player 1 should return board where [1,1] element == 1")
 
     def test_get_valid_moves(self):
-        tictactoe = TicTacToe()
-        board = tictactoe.get_board()
+        board = Board()
+        tictactoe = TicTacToe(board)
         tictactoe.get_next_state(board, 1, 0)
         tictactoe.get_next_state(board, -1, 1)
         tictactoe.get_next_state(board, 1, 2)
@@ -29,8 +31,8 @@ class TestCase(unittest.TestCase):
                          msg="get_valid_moves() returns wrong list after players made their actions to 1st row")
 
     def test_get_game_ended(self):
-        tictactoe = TicTacToe()
-        board = tictactoe.get_board()
+        board = Board()
+        tictactoe = TicTacToe(board)
         board._pieces = np.array([[0, 0, 0],
                                   [0, 0, 0],
                                   [0, 0, 0]])
@@ -57,8 +59,8 @@ class TestCase(unittest.TestCase):
                          msg="get_game_ended() not detected draw")
 
     def test_change_perspective(self):
-        tictactoe = TicTacToe()
-        board = tictactoe.get_board()
+        board = Board()
+        tictactoe = TicTacToe(board)
         board._pieces = np.array([[1, 0, 1],
                                   [0, 0, 0],
                                   [-1, 0, -1]])

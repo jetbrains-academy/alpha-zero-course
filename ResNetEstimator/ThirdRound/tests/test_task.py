@@ -1,6 +1,7 @@
 import unittest
 import numpy as np
 
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
@@ -9,7 +10,7 @@ from task import init_and_apply_nn
 
 class TestInitAndApplyNN(unittest.TestCase):
     def setUp(self):
-        self.round = Round(TicTacToe())
+        self.round = Round(TicTacToe(Board()))
         self.round.play_game(2)
         self.round.play_game(7)
 

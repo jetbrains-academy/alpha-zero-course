@@ -1,14 +1,12 @@
 import math
 from abc import ABC
-import numpy as np
 
 from GameInterface import Game
-from TicTacToe.Board.task import Board
 
 
 class TicTacToe(Game, ABC):
-    def __init__(self, num_rows=3, num_cols=3):
-        self._board = Board(num_rows, num_cols)
+    def __init__(self, board):
+        self._board = board
 
     def get_board(self):
         return self._board

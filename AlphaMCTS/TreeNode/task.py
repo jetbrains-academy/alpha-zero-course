@@ -54,9 +54,10 @@ class Node:
         else:
             q_value = 1 - ((child.value_sum / child.visit_count) + 1) / 2
         return (q_value +
-                self.args['C']
-                * (math.sqrt(self.visit_count)
-                   / (child.visit_count + 1)) * child.prior)
+                self.args['C'] * (
+                  math.sqrt(self.visit_count) / (child.visit_count + 1)
+                  ) * child.prior
+                )
 
     def expand(self, policy):
         for action, prob in enumerate(policy):

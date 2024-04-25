@@ -3,6 +3,7 @@ import os
 import numpy as np
 import torch
 
+from DotsAndBoxesGPU.Board.task import BoardDandB
 from ResNetEstimator.Model.task import ResNet
 from AlphaZero.Training.task import AlphaZeroTrainer
 from DotsAndBoxesGPU.Game.task import DotsAndBoxes
@@ -20,8 +21,9 @@ args = {
 
 
 def train():
-    dots_boxes = DotsAndBoxes()
-    model = ResNet(dots_boxes, 4, 64)
+    dots_boxes = DotsAndBoxes(BoardDandB())
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = ResNet(dots_boxes, 4, 64, device=device)
 
     optimizer = torch.optim.Adam(
         model.parameters(), lr=0.001, weight_decay=0.0001
@@ -59,8 +61,9 @@ def play(round, model):
 
 
 if __name__ == '__main__':
-    round = Round(DotsAndBoxes())
-    model = ResNet(round.instance_of_game, 4, 64)
+    round = Round(DotsAndBoxes(BoardDandB()))
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = ResNet(round.instance_of_game, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
     filename = f'model_{model_num}.pt'
 

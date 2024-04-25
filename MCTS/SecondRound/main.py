@@ -1,6 +1,7 @@
 import numpy as np
 
 from MCTS.TreeSearch.task import MCTS
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
@@ -14,7 +15,7 @@ def mcts_init(round):
 
 
 if __name__ == "__main__":
-    second_round = Round(TicTacToe())
+    second_round = Round(TicTacToe(Board()))
     mcts = mcts_init(second_round)
 
     player = second_round.player

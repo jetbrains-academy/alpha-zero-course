@@ -3,9 +3,10 @@ import os
 import numpy as np
 import torch
 
+from ConnectFour.Board.task import BoardC4
 from ResNetEstimator.Model.task import ResNet
 from AlphaZero.Training.task import AlphaZeroTrainer
-from ConnectFour.Game.task import ConnectFour
+from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
 args = {
@@ -20,8 +21,9 @@ args = {
 
 
 def train():
-    connect4 = ConnectFour()
-    model = ResNet(connect4, 4, 64)
+    connect4 = TicTacToe(BoardC4())
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = ResNet(connect4, 4, 64, device=device)
 
     optimizer = torch.optim.Adam(
         model.parameters(), lr=0.001, weight_decay=0.0001
@@ -59,8 +61,10 @@ def play(round, model):
 
 
 if __name__ == '__main__':
-    round = Round(ConnectFour())
-    model = ResNet(round.instance_of_game, 4, 64)
+    connect4 = TicTacToe(BoardC4())
+    round = Round(connect4)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = ResNet(round.instance_of_game, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
     filename = f'model_{model_num}.pt'
 

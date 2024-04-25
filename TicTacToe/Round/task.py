@@ -12,7 +12,7 @@ class Round:
         print("valid_moves",
               [i for i in range(self.instance_of_game.get_board().get_action_size())
                if valid_moves[i] == 1])
-        print(f"{self.player}:")
+        print(f"{self.player}:", end="")
 
     def play_game(self, action):
         valid_moves = self.instance_of_game.get_valid_moves()
