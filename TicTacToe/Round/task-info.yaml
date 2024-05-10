@@ -13,8 +13,8 @@ files:
       - offset: 747
         length: 114
         placeholder_text: '# Update the board according to user''s action'
-      - offset: 987
-        length: 285
+      - offset: 995
+        length: 277
         placeholder_text: '# Check the status of the game. Print the result and exit the
       function if game ends'
       - offset: 1296

@@ -57,7 +57,7 @@ class TestBoard(unittest.TestCase):
     def test_execute_move(self):
         """Test executing a move updates the board correctly"""
         self.board.execute_move(WHITE, 0)
-        self.assertEqual(WHITE, self.board[5, 0],  # Assuming 0-indexed bottom row
+        self.assertEqual(WHITE, self.board[5, 0],  # Assuming 0-indexed top row
                          msg="Test executing a move updates the board correctly")
         self.board.execute_move(BLACK, 0)
         self.assertEqual(BLACK, self.board[4, 0],

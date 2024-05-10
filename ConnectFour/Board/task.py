@@ -11,9 +11,9 @@ class BoardC4(Board):
     """
     Board data:
       1=white(O), -1=black(X), 0=empty
-      first dim is column, second is row:
+      first dim is column, second is row, so by default:
          pieces[0][0] is the top left square,
-         pieces[2][0] is the bottom left square,
+         pieces[5][0] is the bottom left square,
     Squares are stored and manipulated as (x,y) tuples.
 
     Based on the board for the game of TicTacToe by Evgeny Tyurin, github.com/evg-tyurin

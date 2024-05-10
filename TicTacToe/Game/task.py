@@ -15,7 +15,7 @@ class TicTacToe(Game, ABC):
         board.execute_move(player, action)
         return board
 
-    def get_valid_moves(self, player=1):
+    def get_valid_moves(self):
         return self._board.get_valid_moves()
 
     def get_game_ended(self, board, player):

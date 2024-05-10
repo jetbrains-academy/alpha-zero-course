@@ -22,16 +22,18 @@ class AlphaZero:
     def self_play_random(self):
         memory = []
         player = 1
-        state = Board(self.game.size)
+        state = self.game.get_board().create_new_board()
 
         while True:
             neutral_state = self.game.change_perspective(state, player)
             action_probs = self.mcts.search(neutral_state)
+            valid_moves = neutral_state.get_valid_moves()
+            action_probs *= valid_moves
+            action_probs /= np.sum(action_probs)
 
             memory.append((neutral_state, action_probs, player))
 
-            action_probs /= np.sum(action_probs)
-            action = np.random.choice(self.game.get_action_size(), p=action_probs)
+            action = np.random.choice(self.game.get_board().get_action_size(), p=action_probs)
             state = self.game.get_next_state(state, player, action)
 
             value = self.game.get_game_ended(state, player)
@@ -82,7 +84,8 @@ args = {
 
 if __name__ == '__main__':
     tictactoe = TicTacToe(Board())
-    model = ResNet(tictactoe, 4, 64)
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model = ResNet(tictactoe, 4, 64, device=device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
 

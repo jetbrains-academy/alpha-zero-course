@@ -5,11 +5,3 @@ files:
     visible: true
   - name: __init__.py
     visible: false
-  - name: model_0.pt
-    visible: true
-  - name: optimizer_0.pt
-    visible: true
-  - name: optimizer_1.pt
-    visible: true
-  - name: model_1.pt
-    visible: true

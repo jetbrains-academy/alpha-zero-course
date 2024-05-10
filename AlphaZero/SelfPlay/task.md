@@ -17,11 +17,12 @@ Your next task is to enhance the AlphaZero class by implementing two critical me
 - The `learn` method must iterate over the specified number of iterations and epochs, properly handling model evaluation and training modes. Additionally, ensure to save the model's and optimizer's state at the end of each iteration.
 
 <div class="hint">
-Utilize the `np.random.choice` function to select actions based on the calculated probabilities.
+Utilize the <code>np.random.choice</code> function to select actions based on the calculated probabilities.
 </div>
 <div class="hint">
-Pay attention to the handling of the game's outcome (`value`) and how it affects the memory data structure.
+Pay attention to the handling of the game's outcome (<code>value</code>) 
+and how it affects the memory data structure.
 </div>
 <div class="hint">
-Make sure to switch the model between evaluation and training modes appropriately in the `learn` method.
+Make sure to switch the model between evaluation and training modes appropriately in the <code>learn</code> method.
 </div>

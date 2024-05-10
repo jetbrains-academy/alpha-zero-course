@@ -38,10 +38,9 @@ class Game:
         raise NotImplementedError
 
     @abstractmethod
-    def get_valid_moves(self, player):
+    def get_valid_moves(self):
         """
         Input:
-            player: current player
             self._board: current board
 
         Returns:

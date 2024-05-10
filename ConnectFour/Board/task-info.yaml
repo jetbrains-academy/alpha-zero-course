@@ -9,12 +9,12 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 1117
+      - offset: 1132
         length: 62
         placeholder_text: "# TODO: implement has_valid_moves method"
-      - offset: 1220
+      - offset: 1235
         length: 45
         placeholder_text: "# TODO: implement get_valid_moves method"
-      - offset: 2507
+      - offset: 2522
         length: 121
         placeholder_text: '# TODO:implement execute_move method'

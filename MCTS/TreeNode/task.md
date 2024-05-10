@@ -14,8 +14,7 @@ In this task you need to implement some missing functionality of `Node` class:
 * In `backpropagate` implement backpropagation step
 
 <div class="hint">
-To implement `expandable_moves` use `game`. 
-In `is_fully_expandable` remember about terminal nodes, they are not expandable.
-In `backpropagate` step remember to switch value when passing it from child to the parent.
+To implement <code>expandable_moves</code> use <code>game</code>. 
+In <code>is_fully_expandable</code> remember about terminal nodes, they are not expandable.
+In <code>backpropagate</code> step remember to switch value when passing it from child to the parent.
 </div>
-
