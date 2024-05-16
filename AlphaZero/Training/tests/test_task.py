@@ -6,7 +6,8 @@ import torch
 from AlphaZero.Training.task import args
 
 from ResNetEstimator.Model.task import ResNet
-from TicTacToe.Game.Game import TicTacToe
+from TicTacToe.Board.task import Board
+from TicTacToe.Game.task import TicTacToe
 
 from task import AlphaZeroTrainer
 
@@ -15,8 +16,9 @@ model_num = args['num_iterations'] - 1
 
 class TestAlphaZeroTrainer(unittest.TestCase):
     def setUp(self):
-        self.game = TicTacToe()
-        self.model = ResNet(self.game, 4, 64)
+        self.game = TicTacToe(Board())
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model = ResNet(self.game, 4, 64, device=device)
         self.optimizer = torch.optim.Adam(
             self.model.parameters(), lr=0.001
         )
@@ -35,11 +37,10 @@ class TestAlphaZeroTrainer(unittest.TestCase):
 
         # Mocking the MCTS and game methods for self_play
         self.alphaZero.mcts.search = MagicMock(
-            return_value=np.ones(self.game.get_action_size()) /
-                                 self.game.get_action_size()
+            return_value=np.ones(self.game.get_board().get_action_size()) /
+                                 self.game.get_board().get_action_size()
         )
-        self.game.change_perspective = MagicMock()
-        self.game.get_next_state = MagicMock()
+        self.game.change_perspective = lambda board, player: board
         self.game.get_game_ended = MagicMock(side_effect=[0, 0, 1])
 
     def test_self_play_returns_memory(self):
@@ -62,7 +63,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
             k: v.clone() for k, v in self.model.state_dict().items()
         }
         memory = [
-            (np.ones((3, 3, 3)), np.ones(self.game.get_action_size()), 1)
+            (np.ones((3, 3, 3)), np.ones(self.game.get_board().get_action_size()), 1)
         ]
         self.alphaZero.train(memory)
         for name, param in self.model.named_parameters():
@@ -73,15 +74,15 @@ class TestAlphaZeroTrainer(unittest.TestCase):
 
     def test_occupied(self):
         # Playing
-        tictactoe = TicTacToe()
+        tictactoe = TicTacToe(Board())
         state = tictactoe.get_board()
         state = tictactoe.get_next_state(state, 1, 2)
         state = tictactoe.get_next_state(state, -1, 7)
 
-        encoded_state = tictactoe.get_encoded_state(state)
+        encoded_state = state.get_encoded_state()
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
-        model = ResNet(tictactoe, 4, 64)
+        model = self.model
         model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
         model.eval()
 
@@ -94,7 +95,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         self.assertLess(policy[7], 0.05, "Model shouldn't consider for the move occupied cells")
 
     def test_win_move(self):
-        tictactoe = TicTacToe()
+        tictactoe = TicTacToe(Board())
         state = tictactoe.get_board()
         state = tictactoe.get_next_state(state, 1, 0)
         state = tictactoe.get_next_state(state,       -1, 1)
@@ -103,11 +104,11 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         state = tictactoe.get_next_state(state, 1, 4)
         state = tictactoe.get_next_state(state,       -1, 5)
 
-        encoded_state = tictactoe.get_encoded_state(state)
+        encoded_state = state.get_encoded_state()
 
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
-        model = ResNet(tictactoe, 4, 64)
+        model = self.model
         model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
         model.eval()
 
@@ -124,18 +125,18 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         self.assertGreater(win_move, 0.6, "Model should choose only one of the winning move with high confidence")
 
     def test_save_move(self):
-        tictactoe = TicTacToe()
+        tictactoe = TicTacToe(Board())
         state = tictactoe.get_board()
         state = tictactoe.get_next_state(state, 1, 0)
         state = tictactoe.get_next_state(state,       -1, 2)
         state = tictactoe.get_next_state(state, 1, 1)
         state = tictactoe.get_next_state(state,       -1, 5)
 
-        encoded_state = tictactoe.get_encoded_state(state)
+        encoded_state = state.get_encoded_state()
 
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
-        model = ResNet(tictactoe, 4, 64)
+        model = self.model
         model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
         model.eval()
 

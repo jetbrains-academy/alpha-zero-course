@@ -3,21 +3,27 @@ import torch
 
 from task import ResNet
 
+from TicTacToe.Board.task import Board
+
 
 class MockGame:
-    def __init__(self, size):
-        self.size = size
+    def __init__(self, num_rows, num_cols):
+        self._board = Board(num_rows, num_cols)
 
     def get_action_size(self):
-        return self.size ** 2
+        return self._board.get_action_size()
+
+    def get_board(self):
+        return self._board
 
 
 class TestResNet(unittest.TestCase):
     def setUp(self):
-        self.game = MockGame(size=3)  # Assuming a 3x3 game board
+        self.game = MockGame(3, 3)  # Assuming a 3x3 game board
         self.num_res_blocks = 5
         self.num_hidden = 32
-        self.model = ResNet(self.game, self.num_res_blocks, self.num_hidden)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = ResNet(self.game, self.num_res_blocks, self.num_hidden, self.device)
 
     def test_startBlock(self):
         # Create a mock input tensor

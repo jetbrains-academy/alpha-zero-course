@@ -22,7 +22,7 @@ class Node:
             assert parent is None
 
         self.children = []
-        self.expandable_moves = game.get_valid_moves(board_state)
+        self.expandable_moves = board_state.get_valid_moves()
 
         self.visit_count = 0
         self.value_sum = 0
@@ -31,10 +31,7 @@ class Node:
         # use state to get the current player. If no action was taken, then player should be None
         if self.action_taken is None:
             return None
-        size = self.state.size
-        row = self.action_taken // size
-        column = self.action_taken % size
-        return self.state[row, column]
+        return self.state.get_player(self.action_taken)
 
     def is_fully_expanded(self):
         return len(self.children) > 0
@@ -57,14 +54,15 @@ class Node:
         else:
             q_value = 1 - ((child.value_sum / child.visit_count) + 1) / 2
         return (q_value +
-                self.args['C']
-                * (math.sqrt(self.visit_count)
-                   / (child.visit_count + 1)) * child.prior)
+                self.args['C'] * (
+                  math.sqrt(self.visit_count) / (child.visit_count + 1)
+                  ) * child.prior
+                )
 
     def expand(self, policy):
         for action, prob in enumerate(policy):
             if prob > 0:
-                child_state = Board()
+                child_state = self.game.get_board().create_new_board()
                 child_state.pieces = self.state.pieces.copy()
                 child_state = self.game.get_next_state(child_state, 1, action)
                 child_state = self.game.change_perspective(child_state, player=-1)

@@ -20,8 +20,9 @@ class ResBlock(nn.Module):
 
 
 class ResNet(nn.Module):
-    def __init__(self, game, num_res_blocks, num_hidden):
+    def __init__(self, game, num_res_blocks, num_hidden, device):
         super().__init__()
+        self.device = device
         self.startBlock = nn.Sequential(
             nn.Conv2d(3, num_hidden, kernel_size=3, padding=1),
             nn.BatchNorm2d(num_hidden),
@@ -37,7 +38,8 @@ class ResNet(nn.Module):
             nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(32 * game.size ** 2, game.get_action_size())
+            nn.Linear(32 * game.get_board().get_board_size(),
+                      game.get_board().get_action_size())
         )
 
         self.valueHead = nn.Sequential(
@@ -45,9 +47,10 @@ class ResNet(nn.Module):
             nn.BatchNorm2d(3),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(3 * game.size ** 2, 1),
+            nn.Linear(3 * game.get_board().get_board_size(), 1),
             nn.Tanh()
         )
+        self.to(device)
 
     def forward(self, x):
         x = self.startBlock(x)

@@ -9,7 +9,7 @@ class Game:
 
     Use 1 for player1 and -1 for player2.
 
-    See 'TicTacToe/Game/Game.py' for an example implementation.
+    See 'TicTacToe/Game/task.py' for an example implementation.
     """
 
     @abstractmethod
@@ -21,22 +21,6 @@ class Game:
         """
         Returns:
             board: a representation of the current board
-        """
-        raise NotImplementedError
-
-    @abstractmethod
-    def get_board_size(self):
-        """
-        Returns:
-            (x,y): a tuple of board dimensions
-        """
-        raise NotImplementedError
-
-    @abstractmethod
-    def get_action_size(self):
-        """
-        Returns:
-            action_size: number of all possible actions
         """
         raise NotImplementedError
 
@@ -54,14 +38,13 @@ class Game:
         raise NotImplementedError
 
     @abstractmethod
-    def get_valid_moves(self, board, player):
+    def get_valid_moves(self):
         """
         Input:
-            board: current board
-            player: current player
+            self._board: current board
 
         Returns:
-            valid_moves: a binary vector of length self.get_action_size(),
+            valid_moves: a binary vector of length self._board.get_action_size(),
                     1 for moves that are valid from the current board and player,
                     0 for invalid moves
         """
@@ -82,11 +65,11 @@ class Game:
         raise NotImplementedError
 
     @abstractmethod
-    def get_canonical_form(self, board, player):
+    def get_canonical_form(self, player):
         """
         Input:
-            board: current board
             player: current player (1 or -1)
+            self._board: current board
 
         Returns:
             canonical_board: returns a canonical form of board. The canonical form
@@ -99,27 +82,15 @@ class Game:
         raise NotImplementedError
 
     @abstractmethod
-    def get_symmetries(self, board, policy):
+    def get_symmetries(self, policy):
         """
         Input:
-            board: current board
             pi: policy vector of size self.get_action_size()
+            self._board: current board
 
         Returns:
             symm_forms: a list of [(board, pi)] where each tuple is a symmetrical
                        form of the board and the corresponding policy vector. This
                        is used when training the neural network from examples.
-        """
-        raise NotImplementedError
-
-    @abstractmethod
-    def string_representation(self, board):
-        """
-        Input:
-            board: current board
-
-        Returns:
-            board_string: a quick conversion of board to a string format.
-                         Required by MCTS for hashing.
         """
         raise NotImplementedError

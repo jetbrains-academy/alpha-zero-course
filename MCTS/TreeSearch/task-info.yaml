@@ -3,9 +3,18 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 304
-        length: 594
-        placeholder_text: '# implement mcts 4-step algorithm'
+      - offset: 352
+        length: 69
+        placeholder_text: "# TODO: call select method while node.is_fully_expanded()"
+      - offset: 741
+        length: 20
+        placeholder_text: "# TODO: expand node"
+      - offset: 807
+        length: 23
+        placeholder_text: "# TODO: get value from simulation"
+      - offset: 873
+        length: 25
+        placeholder_text: "# TODO: backpropagate value"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py
