@@ -23,3 +23,5 @@ files:
     visible: true
   - name: model_1.pt
     visible: true
+  - name: tests/test_public.py
+    visible: true
