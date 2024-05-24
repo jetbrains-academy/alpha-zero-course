@@ -161,3 +161,4 @@ cython_debug/
 
 # Course files that shouldn't be committed
 .coursecreator/
+.cadence

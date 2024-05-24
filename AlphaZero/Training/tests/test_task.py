@@ -111,8 +111,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
         model.eval()
 
-        policy, value = model(tensor_state)
-        value = value.item()
+        policy, _ = model(tensor_state)
         policy = torch.softmax(policy, axis=1).squeeze(0).detach().cpu().numpy()
         print('Field:')
         print(state)
