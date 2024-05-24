@@ -100,7 +100,8 @@ class Node:
             rollout_player = self.game.get_opponent(rollout_player)
 
     def backpropagate(self, value):
-        # implement a backpropagation step. Hint: do not forget to switch value when passing it to the parent
+        # implement a backpropagation step.
+        # Hint: do not forget to switch value when passing it to the parent
         self.value_sum += value
         self.visit_count += 1
 

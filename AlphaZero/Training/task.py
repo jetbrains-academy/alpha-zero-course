@@ -24,6 +24,10 @@ class AlphaZeroTrainer(AlphaZero):
 
             memory.append((neutral_state, action_probs, player))
 
+            valid_moves = neutral_state.get_valid_moves()
+            action_probs *= valid_moves
+            action_probs /= np.sum(action_probs)
+
             temperature_action_probs = action_probs ** (1 / self.args['temperature'])
             temperature_action_probs /= np.sum(temperature_action_probs)
             action = np.random.choice(self.game.get_board().get_action_size(),
@@ -75,8 +79,8 @@ class AlphaZeroTrainer(AlphaZero):
 args = {
     'C': 2,
     'num_searches': 60,
-    'num_iterations': 2,
-    'num_self_play_iterations': 250,
+    'num_iterations': 3,
+    'num_self_play_iterations': 500,
     'num_epochs': 4,
     'temperature': 1.25,
     'batch_size': 32,

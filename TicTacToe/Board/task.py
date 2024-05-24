@@ -67,11 +67,34 @@ class Board:
         return (self.pieces.reshape(-1) == 0).astype(np.uint8)
 
     def is_win(self, player: int) -> bool:
-        """Check whether the given player has collected a triplet in any direction"""
-        return any(all(self[x, y] == player for x in range(self.size)) for y in range(self.size)) or \
-            any(all(self[x, y] == player for y in range(self.size)) for x in range(self.size)) or \
-            all(self[d, d] == player for d in range(self.size)) or \
-            all(self[d, self.size - d - 1] == player for d in range(self.size))
+        """Check whether the given player has collected a triplet in any direction on a rectangular board"""
+        num_rows, num_cols = self._num_rows, self._num_cols
+
+        # Check horizontal lines
+        for y in range(num_rows):
+            for x in range(num_cols - 2):  # Only go up to num_cols-3 to start the triplet
+                if all(self.pieces[y][x + i] == player for i in range(3)):
+                    return True
+
+        # Check vertical lines
+        for x in range(num_cols):
+            for y in range(num_rows - 2):  # Only go up to num_rows-3 to start the triplet
+                if all(self.pieces[y + i][x] == player for i in range(3)):
+                    return True
+
+        # Check \ diagonals
+        for y in range(num_rows - 2):
+            for x in range(num_cols - 2):
+                if all(self.pieces[y + i][x + i] == player for i in range(3)):
+                    return True
+
+        # Check / diagonals
+        for y in range(2, num_rows):  # Start from row 2 to have at least three rows upwards
+            for x in range(num_cols - 2):
+                if all(self.pieces[y - i][x + i] == player for i in range(3)):
+                    return True
+
+        return False
 
     def execute_move(self, player: int, action: int):
         """Perform the given action on the board"""

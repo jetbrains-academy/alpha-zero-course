@@ -33,7 +33,7 @@ if __name__ == '__main__':
     print(f"Encoded state = \n{encoded_state}")
 
     value, policy_probs = init_and_apply_nn(third_round)
-    print(f"Value = {value}, policy_probs = {policy_probs}")
+    print(f"Value = {value}, \npolicy_probs = {policy_probs}")
 
     plt.bar(range(third_round.instance_of_game.get_board().get_action_size()), policy_probs)
     plt.show()

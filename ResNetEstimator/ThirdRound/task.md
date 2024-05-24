@@ -4,4 +4,4 @@ That is, take an encoded state as input and return an estimate value of the curr
 and a vector of probabilities for the next move (which is random for now).
 
 ### Task
-1. Implement model initialization with parameters `num_res_blocks = 4, num_hidden = 64` and apply it to get the value and policy_probs.
+Implement model initialization with parameters `num_res_blocks = 4, num_hidden = 64` and apply it to get the value and policy_probs.

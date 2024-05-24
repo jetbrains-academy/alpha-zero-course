@@ -6,9 +6,6 @@ files:
       - offset: 147
         length: 5
         placeholder_text: '# Init with Board instance'
-      - offset: 371
-        length: 29
-        placeholder_text: '# Flat array indicating valid moves'
       - offset: 455
         length: 158
         placeholder_text: "# Return 1 if player is win, -1 if -player is win (that means\

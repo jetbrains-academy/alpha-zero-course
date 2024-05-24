@@ -1,3 +1,4 @@
+from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 
 
@@ -43,7 +44,7 @@ class Round:
 
 
 if __name__ == '__main__':
-    first_round = Round(TicTacToe())
+    first_round = Round(TicTacToe(Board()))
     is_playing = True
     while is_playing:
         first_round.print_game_layout()
