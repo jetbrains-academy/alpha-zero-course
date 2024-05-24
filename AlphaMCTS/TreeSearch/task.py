@@ -28,10 +28,12 @@ class AlphaMCTS:
 
             if not value:
                 policy, value = self.model(
-                    torch.tensor(self.game.get_encoded_state(node.state)).unsqueeze(0)
+                    torch.tensor(node.state.get_encoded_state(),
+                                 device=self.model.device
+                                 ).unsqueeze(0)
                 )
                 policy = torch.softmax(policy, axis=1).squeeze(0).cpu().numpy()
-                valid_moves = self.game.get_valid_moves(node.state)
+                valid_moves = node.state.get_valid_moves()
                 policy *= valid_moves
                 policy /= np.sum(policy)
 
@@ -41,7 +43,7 @@ class AlphaMCTS:
             # backpropagation
             node.backpropagate(value)
 
-        action_probs = np.zeros(self.game.get_action_size())
+        action_probs = np.zeros(self.game.get_board().get_action_size())
         for child in root.children:
             action_probs[child.action_taken] = child.visit_count
         action_probs /= np.sum(action_probs)

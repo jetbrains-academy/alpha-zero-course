@@ -1,28 +1,22 @@
 type: edu
 files:
-  - name: Game.py
+  - name: task.py
     visible: true
     placeholders:
-      - offset: 264
-        length: 16
+      - offset: 147
+        length: 5
         placeholder_text: '# Init with Board instance'
-      - offset: 536
-        length: 39
-        placeholder_text: '# Convert number to indexes'
-      - offset: 702
-        length: 48
+      - offset: 371
+        length: 29
         placeholder_text: '# Flat array indicating valid moves'
-      - offset: 805
+      - offset: 455
         length: 158
         placeholder_text: "# Return 1 if player is win, -1 if -player is win (that means\
       \ player is loose), 0 if where are legal moves"
-      - offset: 1511
-        length: 44
+      - offset: 1107
+        length: 90
         placeholder_text: '# Change 1 to -1 and vice versa for -1 player and save it in
       changed_board'
-      - offset: 1650
-        length: 109
-        placeholder_text: '# numpy stack of boards'
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

@@ -1,5 +1,5 @@
 ## Creating the game board
-In order for us to start implement the Tic-tac-toe game logic, we need to first take care of board storage. You don't have to implement everything from scratch — the interface and some methods are already provided. 
+To start implementing the Tic-tac-toe game logic, we need to first take care of board storage. You don't have to implement everything from scratch — the interface and some methods are already provided. 
 
 Take a good look at the `Board` class before you start the task.
 

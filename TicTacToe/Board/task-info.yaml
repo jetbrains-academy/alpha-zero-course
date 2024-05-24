@@ -3,24 +3,27 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 695
-        length: 47
-        placeholder_text: '# TODO'
-      - offset: 814
+      - offset: 760
+        length: 55
+        placeholder_text: '# Create numpy array with EMPTY elements'
+      - offset: 1316
         length: 18
         placeholder_text: "# Element with i,j index"
-      - offset: 904
+      - offset: 1406
         length: 26
         placeholder_text: "# Assign value to element with i,j index"
-      - offset: 1262
+      - offset: 1696
         length: 76
         placeholder_text: "# True, if at least one element is EMPTY. False otherwise"
-      - offset: 1477
+      - offset: 2006
         length: 343
         placeholder_text: '# TODO'
-      - offset: 1934
-        length: 74
+      - offset: 2465
+        length: 119
         placeholder_text: '# TODO'
+      - offset: 3091
+        length: 132
+        placeholder_text: '# numpy stack of boards'
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

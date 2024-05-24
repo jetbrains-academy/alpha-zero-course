@@ -22,7 +22,7 @@ class Node:
 
         self.children = []
         # add calculation for expandable moves
-        self.expandable_moves = game.get_valid_moves(board_state)
+        self.expandable_moves = board_state.get_valid_moves()
 
         # The number of times the node has been visited during the simulation phase of MCTS
         self.visit_count = 0
@@ -65,7 +65,7 @@ class Node:
         action = np.random.choice(np.where(self.expandable_moves == 1)[0])
         self.expandable_moves[action] = 0
 
-        child_state = Board(self.state.size)
+        child_state = self.game.get_board().create_new_board()
         child_state.pieces = self.state.pieces.copy()
         # instead of changing the player, it's easier to change node.game.change_perspective
         child_state = self.game.get_next_state(child_state, 1, action)
@@ -88,7 +88,7 @@ class Node:
         rollout_state.pieces = self.state.pieces.copy()
         rollout_player = 1
         while True:
-            valid_moves = self.game.get_valid_moves(rollout_state)
+            valid_moves = rollout_state.get_valid_moves()
             action = np.random.choice(np.where(valid_moves == 1)[0])
             rollout_state = self.game.get_next_state(rollout_state, rollout_player, action)
             value = self.game.get_game_ended(rollout_state, rollout_player)
