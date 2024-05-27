@@ -3,10 +3,10 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 751
+      - offset: 899
         length: 359
         placeholder_text: "# TODO: add action choosing with temperature"
-      - offset: 1788
+      - offset: 1936
         length: 926
         placeholder_text: "# TODO: implement training loop"
   - name: tests/test_task.py
@@ -15,13 +15,3 @@ files:
     visible: false
   - name: tests/__init__.py
     visible: false
-  - name: model_0.pt
-    visible: true
-  - name: optimizer_0.pt
-    visible: true
-  - name: optimizer_1.pt
-    visible: true
-  - name: model_1.pt
-    visible: true
-  - name: tests/test_public.py
-    visible: true

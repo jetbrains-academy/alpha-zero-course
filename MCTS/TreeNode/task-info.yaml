@@ -21,7 +21,7 @@ files:
       - offset: 2793
         length: 830
         placeholder_text: '# simulate random game from the current node'
-      - offset: 3779
+      - offset: 3789
         length: 187
         placeholder_text: '# implement backpropagation step'
   - name: tests/test_task.py

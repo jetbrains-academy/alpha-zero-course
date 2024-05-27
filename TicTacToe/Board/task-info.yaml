@@ -12,16 +12,19 @@ files:
       - offset: 1406
         length: 26
         placeholder_text: "# Assign value to element with i,j index"
-      - offset: 1696
-        length: 76
+      - offset: 1689
+        length: 83
         placeholder_text: "# True, if at least one element is EMPTY. False otherwise"
-      - offset: 2006
-        length: 343
-        placeholder_text: '# TODO'
-      - offset: 2465
+      - offset: 1813
+        length: 54
+        placeholder_text: '# Implement get_valid_moves function'
+      - offset: 2029
+        length: 1098
+        placeholder_text: '# Implement is_win function'
+      - offset: 3243
         length: 119
         placeholder_text: '# TODO'
-      - offset: 3091
+      - offset: 3869
         length: 132
         placeholder_text: '# numpy stack of boards'
   - name: tests/test_task.py

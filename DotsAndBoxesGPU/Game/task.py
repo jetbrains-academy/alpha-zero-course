@@ -8,7 +8,7 @@ class DotsAndBoxes(TicTacToe, ABC):
         super().__init__(board)
 
     def get_next_state(self, board, player, action):
-        # if player takes action on board, return next (board,player)
+        # if a player takes action on board, return next (board,player)
         # action must be a valid move
         b = board.copy()
 

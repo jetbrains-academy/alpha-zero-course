@@ -3,11 +3,11 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 334
+      - offset: 336
         length: 169
         placeholder_text: "# TODO: implement the get_next_state method, where the last\
       \ action stands for the pass"
-      - offset: 562
+      - offset: 564
         length: 336
         placeholder_text: "# TODO: implement change_perspective method"
   - name: tests/test_task.py

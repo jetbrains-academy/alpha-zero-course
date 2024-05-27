@@ -3,21 +3,21 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 325
+      - offset: 364
         length: 186
         placeholder_text: '# Print the list of valid moves'
-      - offset: 616
+      - offset: 655
         length: 90
         placeholder_text: "# If action is not valid, print \"action not valid\" and exit\
       \ the function with True return value"
-      - offset: 747
+      - offset: 786
         length: 114
         placeholder_text: '# Update the board according to user''s action'
-      - offset: 995
+      - offset: 1034
         length: 277
         placeholder_text: '# Check the status of the game. Print the result and exit the
       function if game ends'
-      - offset: 1296
+      - offset: 1335
         length: 67
         placeholder_text: '# Update player using get_opponent method and exit the function'
   - name: tests/test_task.py
