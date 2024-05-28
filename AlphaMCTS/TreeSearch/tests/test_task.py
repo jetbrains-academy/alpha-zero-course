@@ -3,7 +3,6 @@ from unittest.mock import MagicMock
 import numpy as np
 import torch
 
-# Assuming your MCTS and Node classes are in specific files
 from task import AlphaMCTS
 
 from TicTacToe.Board.task import Board
