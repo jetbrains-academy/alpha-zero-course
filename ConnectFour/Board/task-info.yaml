@@ -18,3 +18,5 @@ files:
       - offset: 2522
         length: 121
         placeholder_text: '# TODO:implement execute_move method'
+  - name: tests/test_public.py
+    visible: true

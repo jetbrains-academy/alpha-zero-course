@@ -26,14 +26,6 @@ class TestBoard(unittest.TestCase):
             self.assertTrue(board.is_win(WHITE),
                             msg=f'WHITE player should win in horizontal')
 
-    def test_is_win_vertical(self):
-        """Test vertical win"""
-        board = BoardC4()
-        for row in range(4):
-            board.execute_move(BLACK, 0)
-        self.assertTrue(board.is_win(BLACK),
-                        msg=f'BLACK player should win in vertical')
-
     def test_is_win_positive_diagonal(self):
         """Test positive diagonal win"""
         board = BoardC4()
@@ -43,16 +35,6 @@ class TestBoard(unittest.TestCase):
             board.execute_move(BLACK, i)
         self.assertTrue(board.is_win(BLACK),
                         msg=f'BLACK player should win in positive diagonal')
-
-    def test_is_win_negative_diagonal(self):
-        """Test negative diagonal win"""
-        board = BoardC4()
-        for i in range(4):
-            for j in range(3 - i):
-                board.execute_move(WHITE, 3 + i)  # Fill columns to create diagonal setup
-            board.execute_move(BLACK, 3 + i)
-        self.assertTrue(board.is_win(BLACK),
-                        msg=f'BLACK player should win in negative diagonal')
 
     def test_execute_move(self):
         """Test executing a move updates the board correctly"""

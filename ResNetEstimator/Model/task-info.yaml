@@ -20,3 +20,5 @@ files:
     visible: false
   - name: NNScheme.png
     visible: true
+  - name: tests/test_public.py
+    visible: true

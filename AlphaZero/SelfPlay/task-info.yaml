@@ -21,3 +21,5 @@ files:
     visible: true
   - name: optimizer_0.pt
     visible: true
+  - name: tests/test_public.py
+    visible: true
