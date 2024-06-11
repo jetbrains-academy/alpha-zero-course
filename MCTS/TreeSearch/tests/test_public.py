@@ -7,7 +7,7 @@ from TicTacToe.Game.task import TicTacToe
 
 class TestCase(unittest.TestCase):
     def test_search(self):
-        board = Board(2, 2)
+        board = Board(3, 3)
         game = TicTacToe(board)
         board = game.get_next_state(board, 1, 0)
         mcts = MCTS(game, {'C': 1.41, 'num_searches': 1})

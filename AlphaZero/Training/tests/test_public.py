@@ -9,7 +9,7 @@ from ResNetEstimator.Model.task import ResNet
 from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 
-from task import AlphaZeroTrainer
+from ..task import AlphaZeroTrainer
 
 model_num = args['num_iterations'] - 1
 
@@ -83,7 +83,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
         model = self.model
-        model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
+        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
         model.eval()
 
         policy, value = model(tensor_state)
@@ -109,7 +109,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
         model = self.model
-        model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
+        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
         model.eval()
 
         policy, _ = model(tensor_state)
@@ -136,7 +136,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
         model = self.model
-        model.load_state_dict(torch.load('model_{}.pt'.format(model_num)))
+        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
         model.eval()
 
         policy, value = model(tensor_state)
@@ -147,6 +147,28 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         for i in (0, 1, 2, 4):
             self.assertLess(policy[i], 0.05, "Model shouldn't consider for the move occupied cells")
         self.assertGreater(policy[6], 0.5, "Model should prevent opponent from winning on this turn.")
+
+    def test_hard_move(self):
+        tictactoe = TicTacToe(Board())
+        state = tictactoe.get_board()
+        state = tictactoe.get_next_state(state, 1, 0)
+        state = tictactoe.get_next_state(state,       -1, 2)
+        state = tictactoe.get_next_state(state, 1, 1)
+        state = tictactoe.get_next_state(state,       -1, 5)
+
+        encoded_state = state.get_encoded_state()
+
+        tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+
+        model = self.model
+        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
+        model.eval()
+
+        policy, value = model(tensor_state)
+        policy = torch.softmax(policy, axis=1).squeeze(0).detach().cpu().numpy()
+        print('Field:')
+        print(state)
+        print("Policy:", policy)
 
 
 if __name__ == '__main__':

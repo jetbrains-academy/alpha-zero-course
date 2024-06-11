@@ -13,3 +13,10 @@
   - Shuffle the collected game data to prepare for batch training
   - Process the data in batches, converting game states into tensors suitable for neural network input, along with corresponding action probability and outcome targets
   - Calculate loss for both action probabilities and game outcomes, backpropagate errors, and update the model using gradient descent
+
+### 3. Depth understanding
+If you would like to dive deeper into the intuition of training process, 
+consider exploring the `test_hard_move` from the `test_public.py` file.
+The model consistently makes the wrong move in a given state, because it tries to occupy the center cell.
+Indeed, the center cell is the best move at the beginning of the game, but not in this state.
+Since we are training the model only from the beginning, it simply hasn't seen such a state during the training process.
