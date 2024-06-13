@@ -1,0 +1,46 @@
+project_name: AdaptingS4
+working_dir: .
+cmd:
+- python tmp.py
+provisioning:
+  gpu_type: a10g
+  gpu_count: 1
+  cpu_count: 32
+  ram: 128
+teamcity:
+  url: https://mlops.staging.sandbox.teamcity.aws.intellij.net
+  build_conf_id: AdaptingS4_JetTrain
+env:
+  variables:
+    PYTHONUNBUFFERED: 1
+  python:
+    pip:
+      requirements_path: requirements.txt
+    version: 3.12.0
+  secrets:
+    variables: {}
+    ssh_keys: []
+  aws:
+    sync_config: false
+    sync_credentials: false
+    sync_cache: false
+project_sync:
+  local:
+    root: DotsAndBoxesGPU\Board
+    storage_name: jb-cadence-adaptings4
+    uri: s3://jb-cadence-adaptings4/
+    exclude:
+    - '*.idea'
+    - '*.git'
+    include: []
+    sync_back: false
+    snapshots: true
+inputs: []
+outputs: []
+storages:
+- name: jb-cadence-adaptings4
+  storage_type: s3
+  credentials:
+    access_key_id: AKIA4OM5VZEIIMAHZYEW
+    secret_access_key: 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
+description: ""
