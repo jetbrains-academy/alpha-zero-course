@@ -4,10 +4,10 @@ import numpy as np
 import torch
 
 from DotsAndBoxesGPU.Board.task import BoardDandB
+from DotsAndBoxesGPU.Visualization.task import DotsAndBoxesVisualization
 from ResNetEstimator.Model.task import ResNet
 from AlphaZero.Training.task import AlphaZeroTrainer
 from DotsAndBoxesGPU.Game.task import DotsAndBoxes
-from TicTacToe.Round.task import Round
 
 args = {
     'C': 2,
@@ -34,36 +34,11 @@ def train():
     return model
 
 
-def play(round, model):
-    player = round.player
-
-    is_playing = True
-    while is_playing:
-        if player == 1:
-            round.print_game_layout()
-            action = int(input())
-        else:
-            encoded_state = round.instance_of_game.get_board().get_encoded_state()
-            tensor_state = torch.tensor(encoded_state).unsqueeze(0)
-
-            policy, value = model(tensor_state)
-            policy = (
-                torch.softmax(policy, axis=1)
-                .squeeze(0).detach().cpu().numpy()
-            )
-            valid_moves = round.instance_of_game.get_board().get_valid_moves()
-            policy *= valid_moves
-            policy /= np.sum(policy)
-            action = np.argmax(policy)
-
-        is_playing = round.play_game(action)
-        player = round.instance_of_game.get_opponent(player)
-
-
 if __name__ == '__main__':
-    round = Round(DotsAndBoxes(BoardDandB()))
+    game_instance = DotsAndBoxesVisualization(BoardDandB())
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = ResNet(round.instance_of_game, 4, 64, device=device)
+    model = ResNet(game_instance, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
     filename = f'model_{model_num}.pt'
 
@@ -72,4 +47,8 @@ if __name__ == '__main__':
     else:
         model = train()
     model.eval()
-    play(round, model)
+
+    game_instance.agent = model
+    game_instance.agent_play = True
+    game_instance.player2 = "AlphaZero"
+    game_instance.run()

@@ -8,7 +8,7 @@ files:
         placeholder_text: "# TODO: implement the get_next_state method, where the last\
       \ action stands for the pass"
       - offset: 564
-        length: 336
+        length: 337
         placeholder_text: "# TODO: implement change_perspective method"
   - name: tests/test_task.py
     visible: false
