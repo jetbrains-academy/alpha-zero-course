@@ -11,7 +11,7 @@ class BoardDandB(Board):
     """
     Board data: the representation of the board in Dots and Boxes
     differs from the one in TicTacToe and Connect Four.
-    Here we have cells, abd aslo horizontal and vertical lines,
+    Here we have cells, and also horizontal and vertical lines,
     and their amount is different in one row.
     For example, a 3x3 cells board (that corresponds to 4x4 dots)
     has 3 horizontal and 4 vertical lines in each of three rows.

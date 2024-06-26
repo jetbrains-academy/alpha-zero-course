@@ -126,7 +126,7 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
                     color = PLAYER1_COLOR_LIGHT
                 else:
                     color = PLAYER2_COLOR_LIGHT
-                    self.cell_status[*box] = -4
+                    self.cell_status[box[0], box[1]] = -4
                 self.shade_box(box, color)
 
     def update_board(self, edge_type, logical_position):

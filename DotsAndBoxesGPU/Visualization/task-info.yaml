@@ -9,10 +9,10 @@ files:
       - offset: 2838
         length: 220
         placeholder_text: "# TODO: implement get_action_from"
-      - offset: 4748
+      - offset: 4758
         length: 366
         placeholder_text: "# TODO: implement gameplay updating"
-      - offset: 8297
+      - offset: 8307
         length: 351
         placeholder_text: "# TODO: implement calculation of start and end coordinates"
   - name: tests/test_task.py
