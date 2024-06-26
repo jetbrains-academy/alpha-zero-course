@@ -5,6 +5,7 @@ from time import sleep
 from tkinter import Tk, Canvas
 import numpy as np
 import torch
+import threading
 
 from DotsAndBoxesGPU.Board.task import BoardDandB
 from DotsAndBoxesGPU.Game.task import DotsAndBoxes
@@ -20,6 +21,10 @@ PLAYER2_COLOR = '#EE4035'  # Red
 PLAYER2_COLOR_LIGHT = '#EE7E77'  # Light Red
 GREEN_COLOR = '#7BC043'  # Green
 MAIN_BUTTON_NAME = '<Button-1>'
+
+
+def is_main_thread():
+    return threading.current_thread() == threading.main_thread()
 
 
 class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
@@ -51,7 +56,8 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
 
     def play_again(self):
         """Reset the game to play again."""
-        self.refresh_board()
+        if is_main_thread():
+            self.refresh_board()
         self.cell_status = np.zeros(shape=(self._num_rows, self._num_cols))
         self.row_status = np.zeros(shape=(self._num_rows + 1, self._num_cols))
         self.col_status = np.zeros(shape=(self._num_rows, self._num_cols + 1))
@@ -62,23 +68,19 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
         self.turntext_handle = []
 
         self.already_marked_boxes = []
-        self.display_turn_text()
+        if is_main_thread():
+            self.display_turn_text()
 
     def run(self):
         """Start the Tkinter main loop."""
         self.window.mainloop()
 
-    # ------------------------------------------------------------------
-    # Logical Functions:
-    # The modules required to carry out game logic
-    # ------------------------------------------------------------------
-
     def is_edge_occupied(self, edge_type, logical_position):
         r, c = logical_position
         if edge_type == 'row':
-            return self.row_status[r, c] != 0
+            return self.row_status[r, c] == 1
         if edge_type == 'col':
-            return self.col_status[r, c] != 0
+            return self.col_status[r, c] == 1
         return True
 
 
@@ -225,6 +227,7 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
                 self.emulate_next_move = True
             edge_type, logical_position = self.convert_edge_to_logical_position(grid_position)
             if edge_type and not self.is_edge_occupied(edge_type, logical_position):
+                self.update_board(edge_type, logical_position)
                 self.draw_edge(edge_type, logical_position)
                 self.perform(self.get_action_from(edge_type, logical_position))
             if self.agent_play and self.emulate_next_move:
@@ -246,7 +249,8 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
         )
         if not self._board.is_pass_on():
             self.player1_turn = not self.player1_turn
-            self.display_turn_text()
+            if is_main_thread():
+                self.display_turn_text()
         else:
             self._board.pieces[2, -1] = 0
 
@@ -256,7 +260,7 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
         self.window.update()
 
     def draw_edge(self, edge_type, logical_position):
-        self.update_board(edge_type, logical_position)
+        """Draw the edge on the board."""
         self.make_edge(edge_type, logical_position)
         self.mark_box()
         self.refresh_board()
@@ -290,6 +294,7 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
         action = np.argmax(policy)
         sleep(0.5)
         edge_type, logical_position = self.convert_action_to_logical_position(action)
+        self.update_board(edge_type, logical_position)
         self.draw_edge(edge_type, logical_position)
         self.perform(action)
         sleep(0.5)

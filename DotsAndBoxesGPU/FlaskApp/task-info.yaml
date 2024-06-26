@@ -1,0 +1,27 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 807
+        length: 27
+        placeholder_text: "# TODO: retrieve click coordinates"
+      - offset: 893
+        length: 75
+        placeholder_text: "# TODO: convert coordinates to logical position"
+      - offset: 1098
+        length: 142
+        placeholder_text: "# TODO: update board and perform action"
+      - offset: 1250
+        length: 471
+        placeholder_text: "# TODO: prepare response"
+  - name: tests/test_task.py
+    visible: false
+  - name: __init__.py
+    visible: false
+  - name: tests/__init__.py
+    visible: false
+  - name: templates/index.html
+    visible: true
+  - name: tests/test_public.py
+    visible: true

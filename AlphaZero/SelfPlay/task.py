@@ -1,3 +1,4 @@
+import os
 import random
 
 import numpy as np
@@ -69,8 +70,10 @@ class AlphaZero:
             for epoch in trange(self.args['num_epochs']):
                 self.train(memory)
 
-            torch.save(self.model.state_dict(), f"model_{iteration}.pt")
-            torch.save(self.optimizer.state_dict(), f"optimizer_{iteration}.pt")
+            if not os.path.exists(f"models/"):
+                os.makedirs(f"models/")
+            torch.save(self.model.state_dict(), f"models/model_{iteration}.pt")
+            torch.save(self.optimizer.state_dict(), f"models/optimizer_{iteration}.pt")
 
 
 args = {

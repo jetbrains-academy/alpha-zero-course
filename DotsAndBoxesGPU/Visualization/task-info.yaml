@@ -3,16 +3,16 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 2621
+      - offset: 2570
         length: 197
         placeholder_text: "# TODO: implement occupied checking"
-      - offset: 2889
+      - offset: 2838
         length: 220
         placeholder_text: "# TODO: implement get_action_from"
-      - offset: 4799
+      - offset: 4748
         length: 366
         placeholder_text: "# TODO: implement gameplay updating"
-      - offset: 8348
+      - offset: 8297
         length: 351
         placeholder_text: "# TODO: implement calculation of start and end coordinates"
   - name: tests/test_task.py
