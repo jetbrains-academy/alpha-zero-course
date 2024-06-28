@@ -28,7 +28,7 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = ResNet(final_round.instance_of_game, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
-    model.load_state_dict(torch.load(f'../Training/model_{model_num}.pt'))
+    model.load_state_dict(torch.load(f'../Training/models/model_{model_num}.pt'))
     model.eval()
 
     policy, value = model(tensor_state)

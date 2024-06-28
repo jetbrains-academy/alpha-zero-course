@@ -9,7 +9,7 @@ from ResNetEstimator.Model.task import ResNet
 from TicTacToe.Board.task import Board
 from TicTacToe.Game.task import TicTacToe
 
-from ..task import AlphaZeroTrainer
+from task import AlphaZeroTrainer
 
 model_num = args['num_iterations'] - 1
 

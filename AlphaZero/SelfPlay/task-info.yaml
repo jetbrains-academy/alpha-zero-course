@@ -17,9 +17,5 @@ files:
         placeholder_text: "# TODO: implement learning iterations, where you need firstly\
       \ to accumulate self-playing results in replay memory and secondly use them\
       \ for training of next version model"
-  - name: model_0.pt
-    visible: true
-  - name: optimizer_0.pt
-    visible: true
   - name: tests/test_public.py
     visible: true

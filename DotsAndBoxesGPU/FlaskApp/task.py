@@ -91,7 +91,6 @@ def click():
     }
     return jsonify(success=success, edge_data=edge_data,
                    player_data=player_data, cell_data=cell_data)
-    # return jsonify(success=False)
 
 
 if __name__ == "__main__":
