@@ -78,11 +78,34 @@
 
         function updateTurnText(playerData) {
             const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2 } = playerData;
+                player1_color, player2_color, player1, player2, _ } = playerData;
             const turnText = 'Next turn: ' + (player1_turn ? player1 : player2);
             const color = player1_turn ? player1_color : player2_color;
             document.getElementById('playerTurn').innerText = turnText;
             document.getElementById('playerTurn').style.color = color;
+        }
+
+        function emulateClick(x, y) {
+            fetch('/click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ x: x, y: y })
+            })
+            .then(response => response.json())
+            .then(handleResponse);
+        }
+
+        function handleResponse(data) {
+            if (data.success) {
+                makeEdge(data.edge_data, data.player_data);
+                markBox(data.cell_data, data.player_data);
+                updateTurnText(data.player_data);
+            }
+            if (data.player_data.emulate_click) {
+                emulateClick(0, 0);
+            }
         }
 
         canvas.addEventListener('click', (event) => {
@@ -97,21 +120,15 @@
                 body: JSON.stringify({ x: x, y: y })
             })
             .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log(data);
-                    makeEdge(data.edge_data, data.player_data);
-                    markBox(data.cell_data, data.player_data);
-                    updateTurnText(data.player_data);
-                }
-            });
+            .then(handleResponse);
         });
+
 
         function makeEdge(edgeData, playerData) {
             const { edge_type, logical_position } = edgeData;
             const [r, c] = logical_position;
             const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2 } = playerData;
+                player1_color, player2_color, player1, player2, _ } = playerData;
             const startX = c * distanceBetweenDots + distanceBetweenDots / 2;
             const startY = r * distanceBetweenDots + distanceBetweenDots / 2;
             let endX, endY;
@@ -143,7 +160,7 @@
 
         function markBox(cellData, playerData) {
             const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2 } = playerData;
+                player1_color, player2_color, player1, player2, _ } = playerData;
             const cellStatus = cellData.cell_status;
             for (let row = 0; row < cellStatus.length; row++) {
                 for (let col = 0; col < cellStatus[row].length; col++) {

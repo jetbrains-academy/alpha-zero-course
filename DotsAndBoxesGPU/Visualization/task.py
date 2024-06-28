@@ -231,10 +231,11 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
                 self.draw_edge(edge_type, logical_position)
                 self.perform(self.get_action_from(edge_type, logical_position))
             if self.agent_play and self.emulate_next_move:
-                for _ in range(self._num_rows*self._num_cols):
-                    self.emulate_click(0, 0)
+                self.emulate_click(0, 0)
         elif not self.reset_board and self.agent_play and not self.player1_turn:
             self.agent_move()
+            if self.emulate_next_move:
+                self.emulate_click(0, 0)
         elif self.reset_board:
             grid_position = [event.x, event.y]
             if grid_position != [0, 0]:
@@ -269,12 +270,12 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
     def convert_action_to_logical_position(self, action):
         is_horizontal = action < self._num_cols * (self._num_rows + 1)
         if is_horizontal:
-            logical_position = (int(action / self._num_cols), action % self._num_cols)
+            logical_position = [int(action / self._num_cols), int(action % self._num_cols)]
             edge_type = 'row'
         else:
             action -= self._num_cols * (self._num_rows + 1)
-            logical_position = (int(action / (self._num_cols + 1)),
-                               action % (self._num_cols + 1))
+            logical_position = [int(action / (self._num_cols + 1)),
+                               int(action % (self._num_cols + 1))]
             edge_type = 'col'
         return edge_type, logical_position
 
@@ -295,9 +296,11 @@ class DotsAndBoxesVisualization(DotsAndBoxes, ABC):
         sleep(0.5)
         edge_type, logical_position = self.convert_action_to_logical_position(action)
         self.update_board(edge_type, logical_position)
-        self.draw_edge(edge_type, logical_position)
+        if is_main_thread():
+            self.draw_edge(edge_type, logical_position)
         self.perform(action)
         sleep(0.5)
+        return edge_type, logical_position
 
 
 if __name__ == "__main__":
