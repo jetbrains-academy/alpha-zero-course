@@ -9,10 +9,10 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 1285
+      - offset: 1271
         length: 382
         placeholder_text: "# TODO: calculation of outcomes to form replay memory for training"
-      - offset: 1977
+      - offset: 1963
         length: 296
         placeholder_text: "# TODO: implement learning iterations, where you need firstly\
       \ to accumulate self-playing results in replay memory and secondly use them\

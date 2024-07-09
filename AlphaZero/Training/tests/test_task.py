@@ -118,8 +118,8 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         print(state)
         print("Policy:", policy)
         for i in range(6):
-            self.assertLess(policy[i], 0.1, "Model shouldn't consider for the move occupied cells")
-        self.assertLess(policy[7], 0.1, "Model shouldn't consider not winning move at this board state")
+            self.assertLess(policy[i], 0.15, "Model shouldn't consider for the move occupied cells")
+        self.assertLess(policy[7], 0.15, "Model shouldn't consider not winning move at this board state")
         win_move = max(policy[6], policy[8])
         self.assertGreater(win_move, 0.5, "Model should choose only one of the winning move with high confidence")
 

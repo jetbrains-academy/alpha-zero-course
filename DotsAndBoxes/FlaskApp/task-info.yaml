@@ -3,16 +3,16 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 1421
+      - offset: 1412
         length: 38
         placeholder_text: "# TODO: retrieve click coordinates"
-      - offset: 1739
-        length: 86
+      - offset: 1734
+        length: 82
         placeholder_text: "# TODO: convert coordinates to logical position"
-      - offset: 1990
-        length: 154
+      - offset: 1985
+        length: 150
         placeholder_text: "# TODO: update board and perform action"
-      - offset: 2324
+      - offset: 2315
         length: 464
         placeholder_text: "# TODO: prepare response"
   - name: tests/test_task.py

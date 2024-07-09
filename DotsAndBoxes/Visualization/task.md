@@ -1,5 +1,8 @@
 ### Visualization in Tkinter
 
+Most likely you need to [install Tkinter](https://tkdocs.com/tutorial/install.html) 
+on your system for everything to display.
+
 #### Implement Game Logic Methods
 You will implement the following methods in the `DotsAndBoxesVisualization` class:
 
@@ -33,5 +36,8 @@ You will implement the following methods in the `DotsAndBoxesVisualization` clas
      - `color`: A string representing the color to fill the box with
 
 As a final result, you should get the nice visualization of the game board and the players' moves in the Tkinter window.
+It will work only if you are using the standart version of the course on your own computer, 
+not the remote one. Don't worry, for the remote version, in one step 
+you are implementing web variant, which work in any browser.
 
 Good luck!

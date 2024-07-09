@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 
 from task import (DotsAndBoxesVisualization, PLAYER1_COLOR_LIGHT)
 
-from DotsAndBoxesGPU.Board.task import BoardDandB
+from DotsAndBoxes.Board.task import BoardDandB
 
 
 class TestDotsAndBoxesVisualization(unittest.TestCase):

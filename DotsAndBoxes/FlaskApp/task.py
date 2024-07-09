@@ -3,9 +3,9 @@ import os
 import torch
 from flask import Flask, render_template, request, jsonify
 
-from DotsAndBoxesGPU.Board.task import BoardDandB
-from DotsAndBoxesGPU.TrainAndPlay.main import args
-from DotsAndBoxesGPU.Visualization.task import DotsAndBoxesVisualization
+from DotsAndBoxes.Board.task import BoardDandB
+from DotsAndBoxes.TrainAndPlay.main import args
+from DotsAndBoxes.Visualization.task import DotsAndBoxesVisualization
 from ResNetEstimator.Model.task import ResNet
 
 app = Flask(__name__)

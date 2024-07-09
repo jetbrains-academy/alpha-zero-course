@@ -1,7 +1,7 @@
 import unittest
 
 from TicTacToe.Game.task import TicTacToe
-from DotsAndBoxesGPU.Board.task import BoardDandB
+from DotsAndBoxes.Board.task import BoardDandB
 
 from task import DotsAndBoxes
 

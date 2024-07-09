@@ -83,7 +83,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
         model = self.model
-        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
+        model.load_state_dict(torch.load('./models/model_{}.pt'.format(model_num)))
         model.eval()
 
         policy, value = model(tensor_state)
@@ -109,7 +109,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
         model = self.model
-        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
+        model.load_state_dict(torch.load('./models/model_{}.pt'.format(model_num)))
         model.eval()
 
         policy, _ = model(tensor_state)
@@ -136,7 +136,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
         model = self.model
-        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
+        model.load_state_dict(torch.load('./models/model_{}.pt'.format(model_num)))
         model.eval()
 
         policy, value = model(tensor_state)
@@ -161,7 +161,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         tensor_state = torch.tensor(encoded_state).unsqueeze(0)
 
         model = self.model
-        model.load_state_dict(torch.load('Training/model_{}.pt'.format(model_num)))
+        model.load_state_dict(torch.load('./models/model_{}.pt'.format(model_num)))
         model.eval()
 
         policy, value = model(tensor_state)

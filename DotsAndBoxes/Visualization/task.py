@@ -7,8 +7,8 @@ import numpy as np
 import torch
 import threading
 
-from DotsAndBoxesGPU.Board.task import BoardDandB
-from DotsAndBoxesGPU.Game.task import DotsAndBoxes
+from DotsAndBoxes.Board.task import BoardDandB
+from DotsAndBoxes.Game.task import DotsAndBoxes
 
 # Constants
 SIZE_OF_WINDOW = 600

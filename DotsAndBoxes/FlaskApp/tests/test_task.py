@@ -1,7 +1,8 @@
 import unittest
 import json
 
-from task import app, game, PLAYER1_COLOR, PLAYER2_COLOR, PLAYER1_COLOR_LIGHT, PLAYER2_COLOR_LIGHT
+from task import (app, game, PLAYER1_COLOR, PLAYER2_COLOR,
+                  PLAYER1_COLOR_LIGHT, PLAYER2_COLOR_LIGHT)
 
 
 class DotsAndBoxesClickTestCase(unittest.TestCase):

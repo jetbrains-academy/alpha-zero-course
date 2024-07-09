@@ -2,20 +2,20 @@ import os
 
 import torch
 
-from DotsAndBoxesGPU.Board.task import BoardDandB
-from DotsAndBoxesGPU.Visualization.task import DotsAndBoxesVisualization
+from DotsAndBoxes.Board.task import BoardDandB
+from DotsAndBoxes.Visualization.task import DotsAndBoxesVisualization
 from ResNetEstimator.Model.task import ResNet
 from AlphaZero.Training.task import AlphaZeroTrainer
-from DotsAndBoxesGPU.Game.task import DotsAndBoxes
+from DotsAndBoxes.Game.task import DotsAndBoxes
 
 args = {
     'C': 2,
     'num_searches': 60,
-    'num_iterations': 4,
-    'num_self_play_iterations': 1000,
-    'num_epochs': 4,
+    'num_iterations': 3,
+    'num_self_play_iterations': 100,
+    'num_epochs': 25,
     'temperature': 1.25,
-    'batch_size': 32,
+    'batch_size': 64,
 }
 
 
