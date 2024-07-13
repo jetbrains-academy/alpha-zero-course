@@ -17,9 +17,18 @@
             font-size: 20px;
             margin-top: 20px;
         }
+        .play-info {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+    <div class="play-info" id="playInfo" style="align-content: center">
+        <span id="player1Name"></span>: <span id="player1Score">0</span>
+         vs <span id="player2Name"></span>: <span id="player2Score">0</span>
+    </div>
     <canvas id="gameBoard" width="600" height="600"></canvas>
     <div class="player-turn" id="playerTurn"></div>
     <script>
@@ -78,11 +87,21 @@
 
         function updateTurnText(playerData) {
             const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2, _ } = playerData;
+                player1_color, player2_color, player1, player2, player1_score, player2_score, _ } = playerData;
             const turnText = 'Next turn: ' + (player1_turn ? player1 : player2);
             const color = player1_turn ? player1_color : player2_color;
             document.getElementById('playerTurn').innerText = turnText;
             document.getElementById('playerTurn').style.color = color;
+
+            // Update player names and scores
+            document.getElementById('player1Name').innerText = player1;
+            document.getElementById('player1Score').innerText = player1_score;
+            document.getElementById('player1Name').style.color = player1_color;
+            document.getElementById('player1Score').style.color = player1_color;
+            document.getElementById('player2Name').innerText = player2;
+            document.getElementById('player2Score').innerText = player2_score;
+            document.getElementById('player2Name').style.color = player2_color;
+            document.getElementById('player2Score').style.color = player2_color;
         }
 
         function emulateClick(x, y) {
@@ -128,7 +147,7 @@
             const { edge_type, logical_position } = edgeData;
             const [r, c] = logical_position;
             const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2, _ } = playerData;
+                player1_color, player2_color, player1, player2, _1, _2, _ } = playerData;
             const startX = c * distanceBetweenDots + distanceBetweenDots / 2;
             const startY = r * distanceBetweenDots + distanceBetweenDots / 2;
             let endX, endY;

@@ -12,8 +12,8 @@ files:
       - offset: 1985
         length: 150
         placeholder_text: "# TODO: update board and perform action"
-      - offset: 2315
-        length: 464
+      - offset: 2389
+        length: 574
         placeholder_text: "# TODO: prepare response"
   - name: tests/test_task.py
     visible: false

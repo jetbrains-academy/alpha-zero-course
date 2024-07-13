@@ -70,8 +70,10 @@ def click():
             game.perform(action)
     elif game.agent_play and not game.player1_turn:
         is_cur_player1 = game.player1_turn
-        success = True
         edge_type, logical_position = game.agent_move()
+        success = True
+        if game.is_gameover():
+            game.emulate_next_move = False
 
     edge_data = {
         'edge_type': edge_type,
@@ -84,6 +86,8 @@ def click():
         'player2_color': PLAYER2_COLOR,
         'player1': player1,
         'player2': player2,
+        'player1_score': int(game.get_board()[0, -1]),
+        'player2_score': int(game.get_board()[1, -1]),
         'emulate_click': game.emulate_next_move
     }
     cell_data = {
