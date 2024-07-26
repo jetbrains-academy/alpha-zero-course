@@ -24,6 +24,6 @@ class DotsAndBoxes(TicTacToe, ABC):
         if player == -1:
             # swap score
             tmp = board_changed[0, -1] * player
-            board_changed[0, -1] = board_changed[1, -1]* player
+            board_changed[0, -1] = board_changed[1, -1] * player
             board_changed[1, -1] = tmp
         return board_changed

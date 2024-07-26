@@ -80,7 +80,7 @@ args = {
     'C': 2,
     'num_searches': 60,
     'num_iterations': 3,
-    'num_self_play_iterations': 500,
+    'num_self_play_iterations': 250,
     'num_epochs': 4,
     'temperature': 1.25,
     'batch_size': 32,

@@ -11,10 +11,11 @@ class BoardDandB(Board):
     """
     Board data: the representation of the board in Dots and Boxes
     differs from the one in TicTacToe and Connect Four.
-    Here we have horizontal and vertical lines,
-    and their amount is determined by the number of row. For example,
-    a 3x3 board has 2 horizontal and 3 vertical lines in each row.
-    So the board is represented as a 2D array of size (2*num_rows + 1) x (num_cols + 1).
+    Here we have cells, and also horizontal and vertical lines,
+    and their amount is different in one row.
+    For example, a 3x3 cells board (that corresponds to 4x4 dots)
+    has 3 horizontal and 4 vertical lines in each of three rows.
+    So the lines of the board are represented as a 2D array of size (2*num_rows + 1) x (num_cols + 1).
     The first half of the rows represents the horizontal lines,
     and the second half represents the vertical lines.
     The last column in the first half is used to store three additional numbers:
@@ -28,7 +29,7 @@ class BoardDandB(Board):
         return (2*self._num_rows + 1)*(self._num_cols + 1)
 
     def get_action_size(self):
-        # add 1 for pass
+        # add 1 for pass move
         return 2*self._num_rows*(self._num_cols + 1) + 1
 
     def create_new_board(self):

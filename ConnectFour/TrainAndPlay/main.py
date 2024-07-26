@@ -3,17 +3,17 @@ import os
 import numpy as np
 import torch
 
-from DotsAndBoxesGPU.Board.task import BoardDandB
+from ConnectFour.Board.task import BoardC4
 from ResNetEstimator.Model.task import ResNet
 from AlphaZero.Training.task import AlphaZeroTrainer
-from DotsAndBoxesGPU.Game.task import DotsAndBoxes
+from TicTacToe.Game.task import TicTacToe
 from TicTacToe.Round.task import Round
 
 args = {
     'C': 2,
     'num_searches': 60,
     'num_iterations': 2,
-    'num_self_play_iterations': 100,
+    'num_self_play_iterations': 250,
     'num_epochs': 4,
     'temperature': 1.25,
     'batch_size': 32,
@@ -21,15 +21,15 @@ args = {
 
 
 def train():
-    dots_boxes = DotsAndBoxes(BoardDandB())
+    connect4 = TicTacToe(BoardC4())
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = ResNet(dots_boxes, 4, 64, device=device)
+    model = ResNet(connect4, 4, 64, device=device)
 
     optimizer = torch.optim.Adam(
         model.parameters(), lr=0.001, weight_decay=0.0001
     )
 
-    alphaZero = AlphaZeroTrainer(model, optimizer, dots_boxes, args)
+    alphaZero = AlphaZeroTrainer(model, optimizer, connect4, args)
     alphaZero.learn()
     return model
 
@@ -61,11 +61,12 @@ def play(round, model):
 
 
 if __name__ == '__main__':
-    round = Round(DotsAndBoxes(BoardDandB()))
+    connect4 = TicTacToe(BoardC4())
+    round = Round(connect4)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = ResNet(round.instance_of_game, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
-    filename = f'model_{model_num}.pt'
+    filename = f'./models/model_{model_num}.pt'
 
     if os.path.exists(filename):
         model.load_state_dict(torch.load(filename))

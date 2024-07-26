@@ -1,8 +1,6 @@
 import numpy as np
 import math
 
-from TicTacToe.Board.task import Board
-
 
 class Node:
     def __init__(self, game, args, board_state, parent=None, action_taken=None, prior=0):

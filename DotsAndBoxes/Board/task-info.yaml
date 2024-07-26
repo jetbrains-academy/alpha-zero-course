@@ -3,10 +3,10 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 2209
+      - offset: 2284
         length: 164
         placeholder_text: "# TODO: implement has_valid_moves function"
-      - offset: 2456
+      - offset: 2531
         length: 310
         placeholder_text: "# TODO: calculate mask for valid moves, taking into account\
       \ the self.is_pass_on() value"

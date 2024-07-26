@@ -1,0 +1,25 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 2564
+        length: 197
+        placeholder_text: "# TODO: implement occupied checking"
+      - offset: 2832
+        length: 220
+        placeholder_text: "# TODO: implement get_action_from"
+      - offset: 4720
+        length: 398
+        placeholder_text: "# TODO: implement gameplay updating"
+      - offset: 8301
+        length: 351
+        placeholder_text: "# TODO: implement calculation of start and end coordinates"
+  - name: tests/test_task.py
+    visible: false
+  - name: __init__.py
+    visible: false
+  - name: tests/__init__.py
+    visible: false
+  - name: tests/test_public.py
+    visible: true
