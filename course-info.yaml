@@ -1,16 +1,10 @@
 type: marketplace
 title: AlphaZero
 language: English
-summary: "<p>In this course, you will build an AlphaZero-like artificial intelligence 
-system from scratch.</p>
-
-<p>AlphaZero, developed by DeepMind, represents a groundbreaking approach in the field of AI, 
-capable of mastering complex games like Chess, Shogi, and Go 
-through self-play and deep reinforcement learning.</p>
-
-<p>This project aims to introduce you to the core principles behind 
-AlphaZero's architecture and learning processes by applying these concepts to 
-simpler board games like TicTacToe and Connect Four.</p>"
+summary: |-
+  <p>In this course, you will build an AlphaZero-like artificial intelligence system from scratch.</p>
+  <p>AlphaZero, developed by DeepMind, represents a groundbreaking approach in the field of AI, capable of mastering complex games like Chess, Shogi, and Go through self-play and deep reinforcement learning.</p>
+  <p>This project aims to introduce you to the core principles behind AlphaZero's architecture and learning processes by applying these concepts to simpler board games like TicTacToe and Connect Four.</p>
 programming_language: Python
 environment: unittest
 content:
