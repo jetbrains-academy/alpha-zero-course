@@ -14,7 +14,7 @@
   - Process the data in batches, converting game states into tensors suitable for neural network input, along with corresponding action probability and outcome targets
   - Calculate loss for both action probabilities and game outcomes, backpropagate errors, and update the model using gradient descent
 
-### 3. Depth understanding
+### 3. In depth understanding
 If you would like to dive deeper into the intuition of training process, 
 consider exploring the `test_hard_move` from the `test_public.py` file.
 The model consistently makes the wrong move in a given state, because it tries to occupy the center cell.

@@ -1,10 +1,6 @@
-### Visualization in Tkinter
-
-Most likely you need to [install Tkinter](https://tkdocs.com/tutorial/install.html) 
-on your system for everything to display.
-
 #### Implement Game Logic Methods
-You will implement the following methods in the `DotsAndBoxesVisualization` class:
+Here we offer you to understand the backend for visualization of the game.
+You will implement the following methods in the `Backend` class:
 
 1. **`is_edge_occupied(self, logical_position, edge_type)`**:
    - **Purpose**: Check if a specified edge is already occupied.
@@ -28,16 +24,5 @@ You will implement the following methods in the `DotsAndBoxesVisualization` clas
    - **Functionality**: 
      - Set the corresponding edge in `row_status` or `col_status` arrays to `1`
      - Increment the values in `cell_status` for the affected boxes
-
-3. **`shade_box(self, box, color)`**:
-   - **Purpose**: Shade a completed box with the player's color.
-   - **Parameters**:
-     - `box`: A list `[r, c]` representing the row and column indices of the box
-     - `color`: A string representing the color to fill the box with
-
-As a final result, you should get the nice visualization of the game board and the players' moves in the Tkinter window.
-It will work only if you are using the standart version of the course on your own computer, 
-not the remote one. Don't worry, for the remote version, in one step 
-you are implementing web variant, which work in any browser.
 
 Good luck!

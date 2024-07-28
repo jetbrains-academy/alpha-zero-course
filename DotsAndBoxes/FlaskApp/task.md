@@ -1,6 +1,8 @@
 ### Implementing Web Interface
 
-In this assignment, you will implement the `click` method for a Flask-based web interface of the Dots and Boxes game. The `click` method will handle the game logic when a player clicks on the game board in the web application,almost the same logic as we have done in TKinter application.
+In this assignment, you will implement the `click` method for a Flask-based web interface 
+of the Dots and Boxes game. The `click` method will handle the game logic when a player 
+clicks on the game board in the web application.
 
 #### Step-by-Step Guide
 

@@ -1,14 +1,18 @@
 import unittest
 import json
 
-from task import (app, game, PLAYER1_COLOR, PLAYER2_COLOR,
+from task import (FlaskApp, PLAYER1_COLOR, PLAYER2_COLOR,
                   PLAYER1_COLOR_LIGHT, PLAYER2_COLOR_LIGHT)
+
+from DotsAndBoxes.Backend.task import Backend
+from DotsAndBoxes.Board.task import BoardDandB
 
 
 class DotsAndBoxesClickTestCase(unittest.TestCase):
     def setUp(self):
         # Set up the test client
-        self.app = app
+        self.game_backend = Backend(BoardDandB())
+        self.app = FlaskApp(self.game_backend).app
         self.client = self.app.test_client()
         self.app.config['TESTING'] = True
 
@@ -29,7 +33,7 @@ class DotsAndBoxesClickTestCase(unittest.TestCase):
 
         # Check if the correct player is updated
         self.assertEqual(data['player_data']['is_cur_player1'], True)
-        self.assertEqual(data['player_data']['player1_turn'], game.player1_turn)
+        self.assertEqual(data['player_data']['player1_turn'], self.game_backend.player1_turn)
 
     def test_invalid_click(self):
         # Simulate an invalid click (out of board area)

@@ -1,4 +1,4 @@
-## Creating AlphaMCTS Tree Node
+## Creating AlphaMCTS TreeNode
 Now let's change the tree search implementation, using the policy probabilities and value from a neural network model.
 As usual, you don't have to implement everything from scratch — the interface and some methods are already provided. 
 

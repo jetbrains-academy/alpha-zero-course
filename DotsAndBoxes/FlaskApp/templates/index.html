@@ -26,8 +26,8 @@
 </head>
 <body>
     <div class="play-info" id="playInfo" style="align-content: center">
-        <span id="player1Name"></span>: <span id="player1Score">0</span>
-         vs <span id="player2Name"></span>: <span id="player2Score">0</span>
+        <span id="player1Name"></span> vs <span id="player2Name"></span>
+        <p><span id="player1Score">0</span> : <span id="player2Score">0</span></p>
     </div>
     <canvas id="gameBoard" width="600" height="600"></canvas>
     <div class="player-turn" id="playerTurn"></div>
@@ -38,7 +38,8 @@
         const rows = 3;
         const cols = 3;
         const distanceBetweenDots = size / (Math.max(rows, cols) + 1);
-        const dotRadius = 5;
+        const dotRadius = 10;
+        const edgeWidth = 8;
         let alreadyMarkedBoxes = [];
 
         function drawBoard() {
@@ -86,8 +87,9 @@
         }
 
         function updateTurnText(playerData) {
-            const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2, player1_score, player2_score, _ } = playerData;
+            const { is_cur_player1, player1_turn, player1_color, player2_color,
+                    player1_color_light, player2_color_light,
+                    player1, player2, player1_score, player2_score, _ } = playerData;
             const turnText = 'Next turn: ' + (player1_turn ? player1 : player2);
             const color = player1_turn ? player1_color : player2_color;
             document.getElementById('playerTurn').innerText = turnText;
@@ -143,11 +145,13 @@
         });
 
 
+
         function makeEdge(edgeData, playerData) {
             const { edge_type, logical_position } = edgeData;
             const [r, c] = logical_position;
-            const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2, _1, _2, _ } = playerData;
+            const { is_cur_player1, player1_turn, player1_color, player2_color,
+                    player1_color_light, player2_color_light,
+                    player1, player2, player1_score, player2_score, _ } = playerData;
             const startX = c * distanceBetweenDots + distanceBetweenDots / 2;
             const startY = r * distanceBetweenDots + distanceBetweenDots / 2;
             let endX, endY;
@@ -163,23 +167,24 @@
             ctx.moveTo(startX, startY);
             ctx.lineTo(endX, endY);
             ctx.strokeStyle = color;
-            ctx.lineWidth = 5;
+            ctx.lineWidth = edgeWidth;
             ctx.stroke();
         }
 
         function shadeBox(box, color) {
             const [row, col] = box;
-            const startX = col * distanceBetweenDots + distanceBetweenDots / 2;
-            const startY = row * distanceBetweenDots + distanceBetweenDots / 2;
-            const endX = startX + distanceBetweenDots;
-            const endY = startY + distanceBetweenDots;
+            const startX = col * distanceBetweenDots + distanceBetweenDots / 2 + edgeWidth / 2;
+            const startY = row * distanceBetweenDots + distanceBetweenDots / 2 + edgeWidth / 2;
+            const endX = startX + distanceBetweenDots - edgeWidth;
+            const endY = startY + distanceBetweenDots - edgeWidth;
             ctx.fillStyle = color;
             ctx.fillRect(startX, startY, endX - startX, endY - startY);
         }
 
         function markBox(cellData, playerData) {
-            const { is_cur_player1, player1_turn,
-                player1_color, player2_color, player1, player2, _ } = playerData;
+            const { is_cur_player1, player1_turn, player1_color, player2_color,
+                    player1_color_light, player2_color_light,
+                    player1, player2, player1_score, player2_score, _ } = playerData;
             const cellStatus = cellData.cell_status;
             for (let row = 0; row < cellStatus.length; row++) {
                 for (let col = 0; col < cellStatus[row].length; col++) {
@@ -188,7 +193,7 @@
                         const boxString = JSON.stringify(box);
                         if (!alreadyMarkedBoxes.includes(boxString)) {
                             alreadyMarkedBoxes.push(boxString);
-                            const color = is_cur_player1 ? player1_color : player2_color;
+                            const color = is_cur_player1 ? player1_color_light : player2_color_light;
                             shadeBox(box, color);
                         }
                     }
