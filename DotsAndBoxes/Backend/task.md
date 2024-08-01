@@ -1,4 +1,4 @@
-#### Implement Game Logic Methods
+### Implement Game Logic Methods
 Here we offer you to understand the backend for visualization of the game.
 You will implement the following methods in the `Backend` class:
 
