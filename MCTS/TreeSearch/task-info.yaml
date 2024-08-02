@@ -4,7 +4,7 @@ files:
     visible: true
     placeholders:
       - offset: 352
-        length: 69
+        length: 68
         placeholder_text: "# TODO: call select method while node.is_fully_expanded()"
       - offset: 741
         length: 20

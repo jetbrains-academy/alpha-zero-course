@@ -1,5 +1,3 @@
-## Monte Carlo Tree Search
-
 In this module, you will create a basic **Monte Carlo Tree Search (MCTS)** algorith.
 The main idea of the MCTS is to randomly simulate possible outcomes of a
 decision space, like moves in a game, without exploring every option. 

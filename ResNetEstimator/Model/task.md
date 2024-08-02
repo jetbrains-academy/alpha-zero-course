@@ -1,4 +1,4 @@
-## Building neural network for next move prediction and position evaluation
+### Building neural network for next move prediction and position evaluation
 As we know from the short yet revolutionary article ["Mastering Chess and Shogi by Self-Play with a
 General Reinforcement Learning Algorithm"](https://arxiv.org/abs/1712.01815)
 instead of a handcrafted position evaluation function and move ordering heuristics,

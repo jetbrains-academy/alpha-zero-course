@@ -1,7 +1,8 @@
 content:
   - Board
   - Game
-  - Visualization
-  - TrainAndPlay
+  - Backend
   - FlaskApp
+  - TrainAndPlay
   - TheEnd
+  - TkinterApp

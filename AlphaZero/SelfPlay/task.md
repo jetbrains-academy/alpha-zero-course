@@ -1,4 +1,3 @@
-## Implementing Self-Play and Learning in AlphaZero
 Your next task is to enhance the AlphaZero class by implementing two critical methods: `self_play_random` and `learn`. These methods are pivotal for training the AlphaZero algorithm on the game of TicTacToe, leveraging Monte Carlo Tree Search (MCTS) and deep learning.
 
 ### 1. `self_play_random` method

@@ -1,4 +1,4 @@
-## AlphaMCTS algorithm
+### AlphaMCTS algorithm
 On this step, we will change the implementation of MCTS algorithm to add 
 the policy and value from neural network. 
 

@@ -1,0 +1,23 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 2826
+        length: 378
+        placeholder_text: "# TODO: implement make_edge method"
+      - offset: 6294
+        length: 1238
+        placeholder_text: "# TODO: implement logic of handling click event"
+  - name: tests/test_task.py
+    visible: false
+    propagatable: false
+  - name: __init__.py
+    visible: false
+    propagatable: false
+  - name: tests/__init__.py
+    visible: false
+    propagatable: false
+  - name: tests/test_public.py
+    visible: true
+    propagatable: false

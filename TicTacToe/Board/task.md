@@ -1,4 +1,3 @@
-## Creating the game board
 To start implementing the TicTacToe game logic, we need to first take care of board storage. You don't have to implement everything from scratch — the interface and some methods are already provided. 
 
 Take a good look at the `Board` class before you start the task.
