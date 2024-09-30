@@ -11,6 +11,8 @@ vendor:
 programming_language: Python
 environment: unittest
 content:
+  - Introduction
   - TicTacToe
   - MCTS
   - ResNetEstimator
+  - Next_step
