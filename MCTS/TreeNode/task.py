@@ -39,7 +39,7 @@ class Node:
         return self.state[row, column]
 
     def is_fully_expanded(self):
-        # check if this node can be expanded
+        # check if this node cannot be expanded
         return np.sum(self.expandable_moves) == 0 and len(self.children) > 0
 
     def select(self):

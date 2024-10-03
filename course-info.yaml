@@ -7,6 +7,7 @@ summary: |-
   <p>This project aims to introduce you to the core principles behind AlphaZero's architecture and learning processes by applying these concepts to simpler board games like TicTacToe and Connect Four.</p>
 programming_language: Python
 environment: unittest
+solutions_hidden: true
 content:
   - TicTacToe
   - MCTS

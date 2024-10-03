@@ -3,30 +3,30 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 760
-        length: 55
-        placeholder_text: '# Create numpy array with EMPTY elements'
-      - offset: 1316
+      - offset: 764
+        length: 62
+        placeholder_text: "None # Create numpy array with EMPTY elements"
+      - offset: 1327
         length: 18
         placeholder_text: "# Element with i,j index"
-      - offset: 1406
+      - offset: 1417
         length: 26
         placeholder_text: "# Assign value to element with i,j index"
-      - offset: 1689
+      - offset: 1700
         length: 83
-        placeholder_text: "# True, if at least one element is EMPTY. False otherwise"
-      - offset: 1813
+        placeholder_text: "pass # True, if at least one element is EMPTY. False otherwise"
+      - offset: 1824
         length: 54
-        placeholder_text: '# Implement get_valid_moves function'
-      - offset: 2029
+        placeholder_text: "pass # Implement get_valid_moves function"
+      - offset: 2040
         length: 1098
-        placeholder_text: '# Implement is_win function'
-      - offset: 3243
+        placeholder_text: "pass # Implement is_win function"
+      - offset: 3254
         length: 119
-        placeholder_text: '# TODO'
-      - offset: 3869
-        length: 132
-        placeholder_text: '# numpy stack of boards'
+        placeholder_text: "pass # Implement execute_move function"
+      - offset: 3902
+        length: 143
+        placeholder_text: "None # numpy stack of three masks"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

@@ -8,10 +8,10 @@ files:
         placeholder_text: "# TODO: call select method while node.is_fully_expanded()"
       - offset: 741
         length: 20
-        placeholder_text: "# TODO: expand node"
+        placeholder_text: "pass # TODO: expand node"
       - offset: 807
         length: 23
-        placeholder_text: "# TODO: get value from simulation"
+        placeholder_text: "pass # TODO: get value from simulation"
       - offset: 873
         length: 25
         placeholder_text: "# TODO: backpropagate value"

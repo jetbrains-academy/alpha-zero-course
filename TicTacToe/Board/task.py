@@ -19,11 +19,11 @@ class Board:
     Based on the board for the game of TicTacToe by Evgeny Tyurin, github.com/evg-tyurin
     """
     def __init__(self, num_rows: int = 3, num_cols: int = 3):
-        """Set up initial board configuration"""
+        """Set up the initial board configuration"""
         self._num_rows = num_rows
         self._num_cols = num_cols
         # Create an empty board (numpy 2-dimensional array)
-        self._pieces = np.array([[EMPTY] * num_cols for _ in range(num_rows)])
+        self._pieces = None # np.array([[EMPTY] * num_cols for _ in range(num_rows)])
 
     def get_board_size(self):
         return self._num_rows * self._num_cols
@@ -107,20 +107,20 @@ class Board:
         for x in range(self._num_rows):
             for y in range(self._num_cols):
                 piece = self[x, y]
-                if piece == 1:
+                if piece == WHITE:
                     board_str.append("X")
-                elif piece == -1:
+                elif piece == BLACK:
                     board_str.append("O")
-                else:
+                elif piece == EMPTY:
                     board_str.append("-")
             board_str.append("\n")
         return "".join(board_str)
 
     def get_encoded_state(self):
         encoded_state = np.stack(
-            (self.pieces == -1,
-             self.pieces == 0,
-             self.pieces == 1)
+            (self.pieces == BLACK,
+             self.pieces == EMPTY,
+             self.pieces == WHITE)
         ).astype(np.float32)
         return encoded_state
 

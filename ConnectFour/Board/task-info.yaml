@@ -17,6 +17,6 @@ files:
         placeholder_text: "# TODO: implement get_valid_moves method"
       - offset: 2522
         length: 121
-        placeholder_text: '# TODO:implement execute_move method'
+        placeholder_text: "# TODO:implement execute_move method"
   - name: tests/test_public.py
     visible: true
