@@ -1,4 +1,3 @@
-## Final round demo
 The provided code outlines the process of playing a TicTacToe game up to a certain state 
 and then using a pre-trained neural network model, specifically a ResNet model, to evaluate the current game state. 
 This evaluation includes generating a policy (a probability distribution over possible next moves) 

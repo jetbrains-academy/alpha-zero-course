@@ -1,4 +1,3 @@
-## AlphaMCTS demo
 Here you see a short demo of the current version. A `Round` instance representing the TicTacToe game is created, 
 and the MCTS algorithm is initialized with the game instance and a neural network model.
 

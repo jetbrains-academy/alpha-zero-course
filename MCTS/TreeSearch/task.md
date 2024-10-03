@@ -1,8 +1,6 @@
-## MCTS algorithm
 On this step, we will implement MCTS algorithm. 
 You don't have to implement everything from scratch — the interface and some methods are already provided.
 Take a good look at `Node` and `MCTS` before you start.
-
 
 ### Task
 In this task, you need to implement all the 4 steps of MCTS search algorithm:

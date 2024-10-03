@@ -1,4 +1,4 @@
-## Playing the game
+### Playing the game
 Yay! It's finally time to play!
 
 In this step, we'll implement an interactive interface for Tic-tac-toe. Try playing with someone together or with yourself (don't give in!).
@@ -19,36 +19,31 @@ Example of possible game log (to better ensure what the output should be):
 ---
 
 valid_moves [0, 1, 2, 3, 4, 5, 6, 7, 8]
-1:
-0
+1:0
 X--
 ---
 ---
 
 valid_moves [1, 2, 3, 4, 5, 6, 7, 8]
--1:
-8
+-1:8
 X--
 ---
 --O
 
 valid_moves [1, 2, 3, 4, 5, 6, 7]
-1:
-3
+1:3
 X--
 X--
 --O
 
 valid_moves [1, 2, 4, 5, 6, 7]
--1:
-5
+-1:5
 X--
 X-O
 --O
 
 valid_moves [1, 2, 4, 6, 7]
-1:
-6
+1:6
 X--
 X-O
 X-O

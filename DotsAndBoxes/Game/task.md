@@ -1,5 +1,3 @@
-## Creating the Dots and Boxes game
-
 After we've taken care of storing the board, let's implement the interface of the Dots and Boxes game itself. 
 We will inherit the `TicTacToe` class and change only two methods according to the logic of the game. 
 

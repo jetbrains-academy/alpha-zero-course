@@ -1,4 +1,3 @@
-## Creating MCTS Tree Node
 We will implement a decision tree on the first step. 
 You don't have to implement everything from scratch — the interface and some methods are already provided. 
 Take a good look at the class `Node` before you start.

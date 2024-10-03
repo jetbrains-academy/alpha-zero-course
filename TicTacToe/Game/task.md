@@ -1,4 +1,4 @@
-## Creating the TicTacToe
+### Creating the Tic-tac-toe
 
 After we've taken care of storing the board, let's start implementing the interface of the Tic-tac-toe game itself. We use the `Game` interface and implement methods according to the logic of Tic-tac-toe. 
 

@@ -1,4 +1,4 @@
-### Implement board for "Dots and Boxes" game
+### Implement `Board` for "Dots and Boxes" game
 [Description on Wikipedia.](https://en.wikipedia.org/wiki/Dots_and_boxes)
 
 [Here](https://dotsandboxes.org/) you can get the intuition of the game.
