@@ -5,13 +5,13 @@ files:
     placeholders:
       - offset: 2269
         length: 197
-        placeholder_text: "# TODO: implement occupied checking"
+        placeholder_text: "pass # TODO: implement occupied checking"
       - offset: 2536
         length: 220
-        placeholder_text: "# TODO: implement get_action_from"
+        placeholder_text: "pass # TODO: implement get_action_from"
       - offset: 3269
         length: 396
-        placeholder_text: "# TODO: implement gameplay updating"
+        placeholder_text: "pass # TODO: implement gameplay updating"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py
