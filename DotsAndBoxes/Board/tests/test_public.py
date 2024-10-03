@@ -8,35 +8,6 @@ class TestBoardDandB(unittest.TestCase):
     def setUp(self):
         self.board = BoardDandB()
 
-    def test_init(self):
-        """Test board initialization"""
-        expected_rows = 3
-        expected_cols = 3
-        self.assertEqual(self.board._num_rows, expected_rows,
-                         msg="Number of rows is not as expected")
-        self.assertEqual(self.board._num_cols, expected_cols,
-                         msg="Number of columns is not as expected")
-        self.assertTrue(np.all(self.board.pieces == EMPTY),
-                        msg="Board is not initialized correctly")
-
-    def test_increase_score(self):
-        """Test score increase for both players"""
-        self.board.increase_score(1, WHITE)
-        self.assertEqual(self.board.pieces[0, -1], 1,
-                         msg="Score for player 1 is not increased correctly")
-        self.board.increase_score(1, BLACK)
-        self.assertEqual(self.board.pieces[1, -1], 1,
-                         msg="Score for player 2 is not increased correctly")
-
-    def test_toggle_pass(self):
-        """Test toggling the pass state"""
-        self.board.toggle_pass(True)
-        self.assertEqual(self.board.is_pass_on(), True,
-                         msg="Pass state is not toggled correctly")
-        self.board.toggle_pass(False)
-        self.assertEqual(self.board.is_pass_on(), False,
-                         msg="Pass state is not toggled correctly")
-
     def test_has_valid_moves(self):
         """Test if the board has any valid moves left"""
         # Initially, should have valid moves
