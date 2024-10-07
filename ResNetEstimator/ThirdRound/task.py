@@ -8,10 +8,17 @@ from ResNetEstimator.Model.task import ResNet
 
 
 def init_and_apply_nn(round):
-    encoded_state = round.instance_of_game.get_board().get_encoded_state()
-    tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+    device = torch.device(
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    encoded_state = round.instance_of_game.get_board().get_encoded_state()
+    tensor_state = torch.tensor(encoded_state).unsqueeze(0).to(device)
+
     model = ResNet(round.instance_of_game, 4, 64, device)
     policy, value = model(tensor_state)
 

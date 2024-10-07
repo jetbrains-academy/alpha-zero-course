@@ -5,8 +5,8 @@ files:
     placeholders:
       - offset: 336
         length: 169
-        placeholder_text: "pass # TODO: implement the get_next_state method, where the last\
-      \ action stands for the pass"
+        placeholder_text: "pass # TODO: implement the get_next_state method, where the\
+      \ last action stands for the pass"
       - offset: 564
         length: 337
         placeholder_text: "pass # TODO: implement change_perspective method"

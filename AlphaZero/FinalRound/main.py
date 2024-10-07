@@ -23,9 +23,15 @@ if __name__ == "__main__":
     encoded_state = final_round.instance_of_game.get_board().get_encoded_state()
     print(f"Encoded state = \n{encoded_state}")
 
-    tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+    device = torch.device(
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
+    tensor_state = torch.tensor(encoded_state).unsqueeze(0).to(device)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = ResNet(final_round.instance_of_game, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
     model.load_state_dict(torch.load(f'../Training/models/model_{model_num}.pt'))

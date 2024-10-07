@@ -24,24 +24,17 @@ def train():
 
 
 if __name__ == '__main__':
+    model = ResNet(DotsAndBoxes(BoardDandB()), 4, 64, device=device)
+
     model_num = args['num_iterations'] - 1
     filename = f'models/model_{model_num}.pt'
-
-    if os.path.exists(filename):
-        # for playing with GUI
-        game_backend = Backend(BoardDandB())
-    else:
-        # for training without GUI
-        game_backend = DotsAndBoxes(BoardDandB())
-
-    model = ResNet(game_backend, 4, 64, device=device)
-
     if os.path.exists(filename):
         model.load_state_dict(torch.load(filename, map_location=device))
     else:
         model = train()
 
     model.eval()
+    game_backend = Backend(BoardDandB())
     game_backend.agent = model
     game_backend.agent_play = True
     game_backend.player2 = "AlphaZero"

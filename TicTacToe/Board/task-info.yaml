@@ -4,27 +4,27 @@ files:
     visible: true
     placeholders:
       - offset: 764
-        length: 62
+        length: 55
         placeholder_text: "None # Create numpy array with EMPTY elements"
-      - offset: 1327
+      - offset: 1320
         length: 18
         placeholder_text: "# Element with i,j index"
-      - offset: 1417
+      - offset: 1410
         length: 26
         placeholder_text: "# Assign value to element with i,j index"
-      - offset: 1700
+      - offset: 1693
         length: 83
         placeholder_text: "pass # True, if at least one element is EMPTY. False otherwise"
-      - offset: 1824
+      - offset: 1817
         length: 54
         placeholder_text: "pass # Implement get_valid_moves function"
-      - offset: 2040
+      - offset: 2033
         length: 1098
         placeholder_text: "pass # Implement is_win function"
-      - offset: 3254
+      - offset: 3247
         length: 119
         placeholder_text: "pass # Implement execute_move function"
-      - offset: 3902
+      - offset: 3895
         length: 143
         placeholder_text: "None # numpy stack of three masks"
   - name: tests/test_task.py

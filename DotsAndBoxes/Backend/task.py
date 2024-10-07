@@ -145,7 +145,7 @@ class Backend(DotsAndBoxes, ABC):
         policy *= valid_moves
         policy /= np.sum(policy)
         action = np.argmax(policy)
-        sleep(0.25)
+        sleep(0.05)
         edge_type, logical_position = self.convert_action_to_logical_position(action)
         self.update_board(edge_type, logical_position)
         self.perform(action)

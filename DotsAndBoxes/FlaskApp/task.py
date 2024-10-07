@@ -11,7 +11,7 @@ from ResNetEstimator.Model.task import ResNet
 args = {
     'C': 2,
     'num_searches': 60,
-    'num_iterations': 5,
+    'num_iterations': 3,
     'num_self_play_iterations': 100,
     'num_epochs': 25,
     'temperature': 1.25,

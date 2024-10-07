@@ -86,7 +86,13 @@ args = {
 
 if __name__ == '__main__':
     tictactoe = TicTacToe(Board())
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device(
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
     model = ResNet(tictactoe, 4, 64, device=device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
