@@ -1,6 +1,6 @@
 **Welcome to our course!**
 
-We invite you to join our course [chat on Discord](link!)! It's a great space to ask questions, engage with our instructors, and connect with your fellow students.
+We invite you to join our course [chat on Discord](https://discord.gg/47d5bjUH)! It's a great space to ask questions, engage with our instructors, and connect with your fellow students.
 
 The course is logically divided into lessons in which we will go from creating a simple board game to training a model capable of playing complex board games.
 
