@@ -17,6 +17,14 @@ files:
     visible: false
   - name: tests/test_public.py
     visible: true
+  - name: models/optimizer_0.pt
+    visible: true
+  - name: models/model_0.pt
+    visible: true
+  - name: models/optimizer_1.pt
+    visible: true
+  - name: models/model_1.pt
+    visible: true
   - name: models/optimizer_2.pt
     visible: true
   - name: models/model_2.pt
