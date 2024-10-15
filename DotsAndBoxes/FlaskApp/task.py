@@ -123,7 +123,12 @@ class FlaskApp(ABC):
         self.app.run(debug=False, port=8080)
 
 
-if __name__ == "__main__":
+def main():
+    global app
     game_backend = Backend(BoardDandB())
     app = FlaskApp(game_backend)
     app.run()
+
+
+if __name__ == "__main__":
+    main()

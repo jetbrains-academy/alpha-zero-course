@@ -66,16 +66,19 @@ def play(round, model):
         player = round.instance_of_game.get_opponent(player)
 
 
-if __name__ == '__main__':
+def main():
     connect4 = TicTacToe(BoardC4())
     round = Round(connect4)
     model = ResNet(round.instance_of_game, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
     filename = f'./models/model_{model_num}.pt'
-
     if os.path.exists(filename):
         model.load_state_dict(torch.load(filename))
     else:
         model = train()
     model.eval()
     play(round, model)
+
+
+if __name__ == '__main__':
+    main()

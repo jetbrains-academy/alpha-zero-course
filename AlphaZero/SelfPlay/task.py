@@ -84,7 +84,9 @@ args = {
     'temperature': 1.25,
 }
 
-if __name__ == '__main__':
+
+def main():
+    global device
     tictactoe = TicTacToe(Board())
     device = torch.device(
         "cuda"
@@ -94,8 +96,10 @@ if __name__ == '__main__':
         else "cpu"
     )
     model = ResNet(tictactoe, 4, 64, device=device)
-
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)
-
     alphaZero = AlphaZero(model, optimizer, tictactoe, args)
     alphaZero.learn()
+
+
+if __name__ == '__main__':
+    main()

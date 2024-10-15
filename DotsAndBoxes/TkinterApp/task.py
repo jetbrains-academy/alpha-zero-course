@@ -175,7 +175,12 @@ class TkinterApp(ABC):
         self.update()
 
 
-if __name__ == "__main__":
+def main():
+    global app
     game_backend = Backend(BoardDandB())
     app = TkinterApp(game_backend)
     app.run()
+
+
+if __name__ == "__main__":
+    main()

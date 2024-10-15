@@ -43,10 +43,14 @@ class Round:
         return True
 
 
-if __name__ == '__main__':
+def main():
     first_round = Round(TicTacToe(Board()))
     is_playing = True
     while is_playing:
         first_round.print_game_layout()
         choose = int(input())
         is_playing = first_round.play_game(choose)
+
+
+if __name__ == '__main__':
+    main()

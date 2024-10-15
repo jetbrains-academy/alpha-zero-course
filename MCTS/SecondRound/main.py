@@ -14,13 +14,12 @@ def mcts_init(round):
     return MCTS(round.instance_of_game, args)
 
 
-if __name__ == "__main__":
+def main():
+    global mcts, player
     second_round = Round(TicTacToe(Board()))
     mcts = mcts_init(second_round)
-
     player = second_round.player
     board = second_round.instance_of_game.get_board()
-
     is_playing = True
     while is_playing:
         if player == 1:
@@ -33,3 +32,7 @@ if __name__ == "__main__":
 
         is_playing = second_round.play_game(action)
         player = second_round.instance_of_game.get_opponent(player)
+
+
+if __name__ == "__main__":
+    main()

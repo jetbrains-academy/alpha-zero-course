@@ -27,7 +27,7 @@ def init_and_apply_nn(round):
     return value_item, policy_probs
 
 
-if __name__ == '__main__':
+def main():
     third_round = Round(TicTacToe(Board()))
     # player 1
     third_round.play_game(2)
@@ -35,12 +35,13 @@ if __name__ == '__main__':
     third_round.play_game(7)
     print("Current game board is:")
     third_round.print_game_layout()
-
     encoded_state = third_round.instance_of_game.get_board().get_encoded_state()
     print(f"Encoded state = \n{encoded_state}")
-
     value, policy_probs = init_and_apply_nn(third_round)
     print(f"Value = {value}, \npolicy_probs = {policy_probs}")
-
     plt.bar(range(third_round.instance_of_game.get_board().get_action_size()), policy_probs)
     plt.show()
+
+
+if __name__ == '__main__':
+    main()

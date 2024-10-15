@@ -23,16 +23,15 @@ def train():
     return model
 
 
-if __name__ == '__main__':
+def main():
+    global game_backend
     model = ResNet(DotsAndBoxes(BoardDandB()), 4, 64, device=device)
-
     model_num = args['num_iterations'] - 1
     filename = f'models/model_{model_num}.pt'
     if os.path.exists(filename):
         model.load_state_dict(torch.load(filename, map_location=device))
     else:
         model = train()
-
     model.eval()
     game_backend = Backend(BoardDandB())
     game_backend.agent = model
@@ -40,3 +39,7 @@ if __name__ == '__main__':
     game_backend.player2 = "AlphaZero"
     app = FlaskApp(game_backend)
     app.run()
+
+
+if __name__ == '__main__':
+    main()
