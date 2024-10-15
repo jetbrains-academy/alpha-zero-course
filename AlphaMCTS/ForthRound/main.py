@@ -19,13 +19,12 @@ def mcts_init(round):
     return AlphaMCTS(round.instance_of_game, args, model)
 
 
-if __name__ == "__main__":
+def main():
+    global mcts, player
     fourth_round = Round(TicTacToe(Board()))
     mcts = mcts_init(fourth_round)
-
     player = fourth_round.player
     board = fourth_round.instance_of_game.get_board()
-
     is_playing = True
     while is_playing:
         if player == 1:
@@ -38,3 +37,7 @@ if __name__ == "__main__":
 
         is_playing = fourth_round.play_game(action)
         player = fourth_round.instance_of_game.get_opponent(player)
+
+
+if __name__ == "__main__":
+    main()

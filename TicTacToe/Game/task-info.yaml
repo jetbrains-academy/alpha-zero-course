@@ -5,15 +5,15 @@ files:
     placeholders:
       - offset: 147
         length: 5
-        placeholder_text: '# Init with Board instance'
+        placeholder_text: "None # Init with Board instance"
       - offset: 455
         length: 158
         placeholder_text: "# Return 1 if player is win, -1 if -player is win (that means\
       \ player is loose), 0 if where are legal moves"
       - offset: 1107
         length: 90
-        placeholder_text: '# Change 1 to -1 and vice versa for -1 player and save it in
-      changed_board'
+        placeholder_text: "None # Change 1 to -1 and vice versa for -1 player and save\
+      \ it in changed_board"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

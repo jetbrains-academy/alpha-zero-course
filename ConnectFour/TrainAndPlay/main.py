@@ -19,10 +19,16 @@ args = {
     'batch_size': 32,
 }
 
+device = torch.device(
+    "cuda"
+    if torch.cuda.is_available()
+    else "mps"
+    if torch.backends.mps.is_available()
+    else "cpu"
+)
 
 def train():
     connect4 = TicTacToe(BoardC4())
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = ResNet(connect4, 4, 64, device=device)
 
     optimizer = torch.optim.Adam(
@@ -44,7 +50,7 @@ def play(round, model):
             action = int(input())
         else:
             encoded_state = round.instance_of_game.get_board().get_encoded_state()
-            tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+            tensor_state = torch.tensor(encoded_state).unsqueeze(0).to(device)
 
             policy, value = model(tensor_state)
             policy = (
@@ -60,17 +66,19 @@ def play(round, model):
         player = round.instance_of_game.get_opponent(player)
 
 
-if __name__ == '__main__':
+def main():
     connect4 = TicTacToe(BoardC4())
     round = Round(connect4)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = ResNet(round.instance_of_game, 4, 64, device=device)
     model_num = args['num_iterations'] - 1
     filename = f'./models/model_{model_num}.pt'
-
     if os.path.exists(filename):
         model.load_state_dict(torch.load(filename))
     else:
         model = train()
     model.eval()
     play(round, model)
+
+
+if __name__ == '__main__':
+    main()

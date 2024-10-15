@@ -3,27 +3,27 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 667
-        length: 53
-        placeholder_text: '# add calculation for expandable moves'
+      - offset: 691
+        length: 29
+        placeholder_text: "None # implement calculation for expandable moves"
       - offset: 1062
         length: 205
-        placeholder_text: '# return player for this node'
-      - offset: 1355
+        placeholder_text: "pass # return player for this node"
+      - offset: 1358
         length: 68
-        placeholder_text: '# check if the node can be expanded and is fully expanded'
-      - offset: 1455
+        placeholder_text: "pass # check if the node is fully expanded"
+      - offset: 1458
         length: 269
-        placeholder_text: '# return the best child using UCB formula'
-      - offset: 2069
+        placeholder_text: "pass # return the best child using UCB formula"
+      - offset: 2072
         length: 654
-        placeholder_text: "# implement expansion step, return new child for the node"
-      - offset: 2793
+        placeholder_text: "pass # implement expansion step, return new child for the node"
+      - offset: 2796
         length: 830
-        placeholder_text: '# simulate random game from the current node'
-      - offset: 3789
+        placeholder_text: "pass # simulate random game from the current node"
+      - offset: 3792
         length: 187
-        placeholder_text: '# implement backpropagation step'
+        placeholder_text: "pass # implement backpropagation step"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

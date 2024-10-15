@@ -5,7 +5,7 @@ files:
     placeholders:
       - offset: 2284
         length: 164
-        placeholder_text: "# TODO: implement has_valid_moves function"
+        placeholder_text: "pass # TODO: implement has_valid_moves function"
       - offset: 2531
         length: 310
         placeholder_text: "# TODO: calculate mask for valid moves, taking into account\

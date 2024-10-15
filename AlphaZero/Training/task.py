@@ -80,20 +80,30 @@ args = {
     'C': 2,
     'num_searches': 60,
     'num_iterations': 3,
-    'num_self_play_iterations': 250,
+    'num_self_play_iterations': 500,
     'num_epochs': 4,
     'temperature': 1.25,
     'batch_size': 32,
 }
 
-if __name__ == '__main__':
-    tictactoe = TicTacToe(Board())
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model = ResNet(tictactoe, 4, 64, device=device)
 
+def main():
+    global device
+    tictactoe = TicTacToe(Board())
+    device = torch.device(
+        "cuda"
+        if torch.cuda.is_available()
+        else "mps"
+        if torch.backends.mps.is_available()
+        else "cpu"
+    )
+    model = ResNet(tictactoe, 4, 64, device=device)
     optimizer = torch.optim.Adam(
         model.parameters(), lr=0.001, weight_decay=0.0001
     )
-
     alphaZero = AlphaZeroTrainer(model, optimizer, tictactoe, args)
     alphaZero.learn()
+
+
+if __name__ == '__main__':
+    main()

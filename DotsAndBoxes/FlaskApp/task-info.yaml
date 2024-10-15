@@ -5,7 +5,7 @@ files:
     placeholders:
       - offset: 1588
         length: 38
-        placeholder_text: "# TODO: retrieve click coordinates"
+        placeholder_text: "# TODO: set grid_position with click coordinates"
       - offset: 2037
         length: 159
         placeholder_text: "# TODO: convert coordinates to logical position"
@@ -14,7 +14,7 @@ files:
         placeholder_text: "# TODO: update board and perform action"
       - offset: 2961
         length: 765
-        placeholder_text: "# TODO: prepare response"
+        placeholder_text: "# TODO: prepare edge_data and player_data for the response"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py

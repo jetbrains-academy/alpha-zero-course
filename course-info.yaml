@@ -9,6 +9,7 @@ vendor:
   name: Igor Gerasimov
 programming_language: Python
 environment: unittest
+solutions_hidden: true
 content:
   - TicTacToe
   - MCTS

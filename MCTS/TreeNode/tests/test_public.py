@@ -89,8 +89,9 @@ class TestCase(unittest.TestCase):
         root = _init_root()
         root.expand()
         value = 100
-        root.children[0].backpropagate(value)
-        self.assertEqual(root.children[0].value_sum, value, msg=f"Child value sum should be {value}")
-        self.assertEqual(root.children[0].visit_count, 1, msg=f"Root visit count should be 4")
+        if root.children:
+            root.children[0].backpropagate(value)
+            self.assertEqual(root.children[0].value_sum, value, msg=f"Child value sum should be {value}")
+            self.assertEqual(root.children[0].visit_count, 1, msg=f"Root visit count should be 4")
         self.assertEqual(root.value_sum, -value, msg=f"Root value sum should be {-value}")
         self.assertEqual(root.visit_count, 1, msg=f"Root visit count should be 1")

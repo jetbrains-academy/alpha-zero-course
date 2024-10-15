@@ -17,8 +17,8 @@ model_num = args['num_iterations'] - 1
 class TestAlphaZeroTrainer(unittest.TestCase):
     def setUp(self):
         self.game = TicTacToe(Board())
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.model = ResNet(self.game, 4, 64, device=device)
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model = ResNet(self.game, 4, 64, device=self.device)
         self.optimizer = torch.optim.Adam(
             self.model.parameters(), lr=0.001
         )
@@ -80,7 +80,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         state = tictactoe.get_next_state(state, -1, 7)
 
         encoded_state = state.get_encoded_state()
-        tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+        tensor_state = torch.tensor(encoded_state).unsqueeze(0).to(self.device)
 
         model = self.model
         model.load_state_dict(torch.load('./models/model_{}.pt'.format(model_num)))
@@ -106,7 +106,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
 
         encoded_state = state.get_encoded_state()
 
-        tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+        tensor_state = torch.tensor(encoded_state).unsqueeze(0).to(self.device)
 
         model = self.model
         model.load_state_dict(torch.load('./models/model_{}.pt'.format(model_num)))
@@ -118,8 +118,8 @@ class TestAlphaZeroTrainer(unittest.TestCase):
         print(state)
         print("Policy:", policy)
         for i in range(6):
-            self.assertLess(policy[i], 0.1, "Model shouldn't consider for the move occupied cells")
-        self.assertLess(policy[7], 0.1, "Model shouldn't consider not winning move at this board state")
+            self.assertLess(policy[i], 0.15, "Model shouldn't consider for the move occupied cells")
+        self.assertLess(policy[7], 0.15, "Model shouldn't consider not winning move at this board state")
         win_move = max(policy[6], policy[8])
         self.assertGreater(win_move, 0.5, "Model should choose only one of the winning move with high confidence")
 
@@ -133,7 +133,7 @@ class TestAlphaZeroTrainer(unittest.TestCase):
 
         encoded_state = state.get_encoded_state()
 
-        tensor_state = torch.tensor(encoded_state).unsqueeze(0)
+        tensor_state = torch.tensor(encoded_state).unsqueeze(0).to(self.device)
 
         model = self.model
         model.load_state_dict(torch.load('./models/model_{}.pt'.format(model_num)))

@@ -5,13 +5,13 @@ files:
     placeholders:
       - offset: 764
         length: 150
-        placeholder_text: "pass # TODO"
+        placeholder_text: "None # TODO"
       - offset: 1058
         length: 290
-        placeholder_text: "pass # TODO"
+        placeholder_text: "None # TODO"
       - offset: 1375
         length: 255
-        placeholder_text: "pass # TODO"
+        placeholder_text: "None # TODO"
   - name: tests/test_task.py
     visible: false
   - name: __init__.py
