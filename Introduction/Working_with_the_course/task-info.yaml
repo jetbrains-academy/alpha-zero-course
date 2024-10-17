@@ -1,5 +1,5 @@
 type: theory
-custom_name: Working with a course
+custom_name: Working with the course
 files:
   - name: main.py
     visible: true
