@@ -1,0 +1,18 @@
+type: theory
+custom_name: Working with the course
+files:
+  - name: main.py
+    visible: true
+  - name: __init__.py
+    visible: false
+    propagatable: false
+  - name: images/cover.svg
+    visible: false
+  - name: images/launch_button.svg
+    visible: false
+  - name: images/progress_web.svg
+    visible: false
+  - name: images/progress_ide_dark.png
+    visible: false
+  - name: images/progress_ide.png
+    visible: false
