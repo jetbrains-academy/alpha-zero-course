@@ -10,7 +10,6 @@ from AlphaZero.Training.task import args
 
 
 def main():
-    global device
     final_round = Round(TicTacToe(Board()))
     # player 1
     final_round.play_game(2)

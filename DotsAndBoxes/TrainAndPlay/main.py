@@ -24,7 +24,6 @@ def train():
 
 
 def main():
-    global game_backend
     model = ResNet(DotsAndBoxes(BoardDandB()), 4, 64, device=device)
     model_num = args['num_iterations'] - 1
     filename = f'models/model_{model_num}.pt'

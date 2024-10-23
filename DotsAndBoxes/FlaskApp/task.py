@@ -124,7 +124,6 @@ class FlaskApp(ABC):
 
 
 def main():
-    global app
     game_backend = Backend(BoardDandB())
     app = FlaskApp(game_backend)
     app.run()
