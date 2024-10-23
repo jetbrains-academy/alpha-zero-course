@@ -1,8 +1,8 @@
-We have made every effort to ensure that working with the course is as comfortable as possible. For this purpose, we have gathered all the necessary information on the [course web page](https://academy.jetbrains.com/course/build-games-with-ai-and-alphazero). You can view your progress in the course, run the course in the IDE, and check the status of your trial license.
+We have made every effort to ensure that working with the course is as comfortable as possible. For this purpose, we have gathered all the necessary information on the [course web page](https://academy.jetbrains.com/course/build-games-with-ai-and-alphazero).
 
 ![](images/cover.svg)
 
-You can close the IDE and return to the course at any time. To do this, go to [the course page](https://academy.jetbrains.com/course/build-games-with-ai-and-alphazero) and click the _Launch_ button.
+You can close the IDE and return to the course at any time. To do this, click the _Launch_ button.
 
 ![](images/launch_button.svg)
 
