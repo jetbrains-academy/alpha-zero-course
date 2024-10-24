@@ -86,7 +86,6 @@ args = {
 
 
 def main():
-    global device
     tictactoe = TicTacToe(Board())
     device = torch.device(
         "cuda"

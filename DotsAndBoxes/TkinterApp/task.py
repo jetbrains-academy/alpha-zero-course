@@ -176,7 +176,6 @@ class TkinterApp(ABC):
 
 
 def main():
-    global app
     game_backend = Backend(BoardDandB())
     app = TkinterApp(game_backend)
     app.run()

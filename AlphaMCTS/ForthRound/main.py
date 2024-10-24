@@ -20,7 +20,6 @@ def mcts_init(round):
 
 
 def main():
-    global mcts, player
     fourth_round = Round(TicTacToe(Board()))
     mcts = mcts_init(fourth_round)
     player = fourth_round.player
