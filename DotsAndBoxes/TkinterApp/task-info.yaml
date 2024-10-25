@@ -3,10 +3,10 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 2826
+      - offset: 2830
         length: 378
         placeholder_text: "# TODO: implement make_edge method"
-      - offset: 6294
+      - offset: 6298
         length: 1238
         placeholder_text: "# TODO: implement logic of handling click event"
   - name: tests/test_task.py
