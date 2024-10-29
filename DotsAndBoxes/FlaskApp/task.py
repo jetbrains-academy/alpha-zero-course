@@ -28,10 +28,10 @@ device = torch.device(
 
 # Constants for the game
 SIZE_OF_WINDOW = 600
-PLAYER1_COLOR = '#0492CF'  # Blue
-PLAYER1_COLOR_LIGHT = '#67B0CF'  # Light Blue
-PLAYER2_COLOR = '#EE4035'  # Red
-PLAYER2_COLOR_LIGHT = '#EE7E77'  # Light Red
+PLAYER1_COLOR = '#6c57fb'  # Blue
+PLAYER2_COLOR = '#20d689'  # Green
+PLAYER1_COLOR_LIGHT = '#a291ff'  # Light Blue
+PLAYER2_COLOR_LIGHT = '#65ecb7'  # Light Green
 
 
 class FlaskApp(ABC):
