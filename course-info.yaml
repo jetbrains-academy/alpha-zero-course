@@ -13,6 +13,7 @@ programming_language: Python
 environment: unittest
 solutions_hidden: true
 content:
+  - Introduction
   - TicTacToe
   - MCTS
   - ResNetEstimator
@@ -20,4 +21,3 @@ content:
   - AlphaZero
   - ConnectFour
   - DotsAndBoxes
-  - Introduction
