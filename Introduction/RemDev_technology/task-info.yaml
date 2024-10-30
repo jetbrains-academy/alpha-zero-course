@@ -1,0 +1,10 @@
+type: theory
+custom_name: RemDev technology
+files:
+  - name: main.py
+    visible: true
+  - name: __init__.py
+    visible: false
+    propagatable: false
+  - name: remdev_arch.png
+    visible: false
