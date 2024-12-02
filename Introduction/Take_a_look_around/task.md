@@ -1,6 +1,6 @@
 **Welcome to our course!**
 
-We invite you to join our course [Discord chat](https://discord.gg/47d5bjUH)! It's a great space to ask questions, engage with our instructors, and connect with your fellow students.
+We invite you to join our course [Discord chat](https://jb.gg/academy/discord/masterAI)! It's a great space to ask questions, engage with our instructors, and connect with your fellow students.
 
 The course is logically divided into lessons, where we will start by creating a simple board game and progress to training a model capable of playing complex board games.
 
