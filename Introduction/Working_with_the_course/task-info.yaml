@@ -14,5 +14,7 @@ files:
     visible: false
   - name: images/progress_ide_dark.png
     visible: false
+    is_binary: true
   - name: images/progress_ide.png
     visible: false
+    is_binary: true

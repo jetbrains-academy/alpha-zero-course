@@ -8,8 +8,8 @@ files:
         placeholder_text: "None # Init with Board instance"
       - offset: 455
         length: 158
-        placeholder_text: "# Return 1 if player won, -1 if -player won (that means\
-      \ player lost), 0 if where are legal moves"
+        placeholder_text: "# Return 1 if player won, -1 if -player won (that means player\
+      \ lost), 0 if where are legal moves"
       - offset: 1107
         length: 90
         placeholder_text: "None # Change 1 to -1 and vice versa for -1 player and save\

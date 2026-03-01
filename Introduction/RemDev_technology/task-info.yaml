@@ -8,3 +8,4 @@ files:
     propagatable: false
   - name: remdev_arch.png
     visible: false
+    is_binary: true

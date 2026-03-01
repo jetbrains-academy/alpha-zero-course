@@ -21,3 +21,9 @@ content:
   - AlphaZero
   - ConnectFour
   - DotsAndBoxes
+additional_files:
+  - name: LICENSE
+  - name: README.md
+  - name: GameInterface.py
+  - name: requirements.txt
+yaml_version: 5
