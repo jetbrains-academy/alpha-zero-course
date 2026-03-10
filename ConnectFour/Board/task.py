@@ -43,7 +43,8 @@ class BoardC4(Board):
         return any(self[0, y] == EMPTY for y in range(self._num_cols))
 
     def get_valid_moves(self):
-        return (self.pieces[0] == 0).astype(np.uint8)
+        """Should return a uint8 binary mask as numpy array of shape (num_cols,)"""
+        return (self._pieces[0] == 0).astype(np.uint8)
 
     def is_win(self, player: int) -> bool:
         # Horizontal check

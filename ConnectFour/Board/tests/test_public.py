@@ -45,6 +45,46 @@ class TestBoard(unittest.TestCase):
         self.assertEqual(BLACK, self.board[4, 0],
                          msg="Test executing a move updates the board correctly")
 
+    def test_get_valid_moves_returns_binary_mask_on_empty_board(self):
+        """get_valid_moves should return a uint8 binary mask, not a list of columns"""
+        expected = np.ones(self.board._num_cols, dtype=np.uint8)
+        actual = self.board.get_valid_moves()
+
+        self.assertIsInstance(
+            actual, np.ndarray,
+            msg="get_valid_moves should return numpy.ndarray"
+        )
+        self.assertEqual(
+            actual.dtype, np.uint8,
+            msg="get_valid_moves should return np.uint8 mask"
+        )
+        np.testing.assert_array_equal(
+            actual, expected,
+            err_msg="On empty board all columns should be valid"
+        )
+
+    def test_get_valid_moves_marks_full_column_as_invalid(self):
+        """A full column should be marked with 0 in valid moves mask"""
+        for _ in range(self.board._num_rows):
+            self.board.execute_move(WHITE, 0)
+
+        expected = np.ones(self.board._num_cols, dtype=np.uint8)
+        expected[0] = 0
+        actual = self.board.get_valid_moves()
+
+        self.assertIsInstance(
+            actual, np.ndarray,
+            msg="get_valid_moves should return numpy.ndarray"
+        )
+        self.assertEqual(
+            actual.dtype, np.uint8,
+            msg="get_valid_moves should return np.uint8 mask"
+        )
+        np.testing.assert_array_equal(
+            actual, expected,
+            err_msg="Filled column should be marked as invalid"
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
