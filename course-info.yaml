@@ -10,6 +10,7 @@ vendor:
   email: support@jetbrains.com
   url: https://www.jetbrains.com/
 programming_language: Python
+programming_language_version: 3.12
 environment: unittest
 solutions_hidden: true
 content:
