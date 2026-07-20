@@ -4,7 +4,7 @@ In this assignment, you will implement the `click` method for a Flask-based web 
 of the Dots and Boxes game. The `click` method will handle the game logic when a player 
 clicks on the game board in the web application.
 
-#### Step-by-Step Guide
+### Step-by-Step Guide
 
 1. **Retrieve Click Coordinates**: 
    - Get the `x` and `y` coordinates from the POST request data.

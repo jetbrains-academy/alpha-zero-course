@@ -1,5 +1,3 @@
-### Implementing Training in AlphaZero for TicTacToe
-
 ### Objectives:
 1. **Self-Play (`self_play`):** Develop a method that simulates games of TicTacToe where the AI plays against itself. This process should generate valuable data (game states, action probabilities, and outcomes) for training the neural network. Use the MCTS algorithm to explore possible moves and select actions based on a temperature-adjusted strategy.
 2. **Training (`train`):** Implement a method to train the neural network model using the data collected from self-play. Your training process should update the model to better predict action probabilities and game outcomes (win/loss/draw), thereby improving the AI's decision-making in future games.
